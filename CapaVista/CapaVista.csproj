@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{00DD4E98-00B2-4828-9A1E-ABA4991EDED2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CapaVista</RootNamespace>
+    <AssemblyName>CapaVista</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CapaControlador">
+      <HintPath>..\CapaControlador\bin\Debug\CapaControlador.dll</HintPath>
+    </Reference>
+    <Reference Include="CapaModelo">
+      <HintPath>..\CapaModelo\bin\Debug\CapaModelo.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Inicio de Sesión.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inicio de Sesión.Designer.cs">
+      <DependentUpon>Inicio de Sesión.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento de Equipos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento de Equipos.Designer.cs">
+      <DependentUpon>Mantenimiento de Equipos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento de Usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento de Usuarios.Designer.cs">
+      <DependentUpon>Mantenimiento de Usuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Movimiento de Bodegas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movimiento de Bodegas.Designer.cs">
+      <DependentUpon>Movimiento de Bodegas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Movimiento de empleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movimiento de empleados.Designer.cs">
+      <DependentUpon>Movimiento de empleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Movimientos de Inventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movimientos de Inventario.Designer.cs">
+      <DependentUpon>Movimientos de Inventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Registro de Usuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro de Usuario.Designer.cs">
+      <DependentUpon>Registro de Usuario.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Inicio de Sesión.resx">
+      <DependentUpon>Inicio de Sesión.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento de Equipos.resx">
+      <DependentUpon>Mantenimiento de Equipos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento de Usuarios.resx">
+      <DependentUpon>Mantenimiento de Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimiento de Bodegas.resx">
+      <DependentUpon>Movimiento de Bodegas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimiento de empleados.resx">
+      <DependentUpon>Movimiento de empleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimientos de Inventario.resx">
+      <DependentUpon>Movimientos de Inventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro de Usuario.resx">
+      <DependentUpon>Registro de Usuario.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_usuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar-usuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rotacion-de-puestos-de-trabajo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flecha-circular.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sistema-informatico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\avatar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inventario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nuevo_registro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guardar_registro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\modificar_registro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guardar_registro1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\actualizar_registro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eliminar_usuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ayuda_registro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reporte_registro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\salir_registro.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
