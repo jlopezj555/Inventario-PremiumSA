@@ -24,6 +24,7 @@ namespace CapaControlador
         {
             return c_Sentencias.iniciarSesion(nombre_usuario, contraseña);
         }
+
         //Movimiento de empleados
         public void guardar_movimientoEmpleado(string nombre_empleado, string apellido_empleado, string rol_empleado, string area, string tipo_movimiento)
         {
@@ -40,6 +41,24 @@ namespace CapaControlador
         public void eliminarEmpleado(int idEmpleado)
         {
             c_Sentencias.eliminarEmpleado(idEmpleado);
+        }
+
+        //Movimiento de bodegas
+        public void guardar_movimientoBodega(string nombre_bodega, string ubicacion_bodega, string capacidad_bodega)
+        {
+            c_Sentencias.guardar_Movimientobodega(nombre_bodega, ubicacion_bodega, capacidad_bodega);
+        }
+        public DataTable obtenerBodegas()
+        {
+            return c_Sentencias.obtenerBodegas();
+        }
+        public void editar_movimientoBodega(int idBodega, string nombre_bodega, string ubicacion_bodega, string capacidad_bodega)
+        {
+            c_Sentencias.editar_movimientoBodega(idBodega, nombre_bodega, ubicacion_bodega, capacidad_bodega);
+        }
+        public void eliminarBodega(int idBodega)
+        {
+            c_Sentencias.eliminarBodega(idBodega);
         }
     }
 }

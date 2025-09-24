@@ -16,5 +16,13 @@ namespace CapaVista
         {
             InitializeComponent();
         }
+
+        private void salir_usuario_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Menu menu = new Menu();
+            menu.ShowDialog();
+            this.Close();
+        }
     }
 }

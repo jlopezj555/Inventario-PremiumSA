@@ -21,8 +21,10 @@ namespace CapaVista
 
         private void salir_movbodegas_Click(object sender, EventArgs e)
         {
+            this.Hide();
             Menu menu = new Menu(); 
-            menu.Show();
+            menu.ShowDialog();
+            this.Close();
         }
 
         private void btn_guardarMovimiento_Click(object sender, EventArgs e)
@@ -119,6 +121,11 @@ namespace CapaVista
                     MessageBox.Show("Error al eliminar: " + ex.Message);
                 }
             }
+        }
+
+        private void btn_registrousuario_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

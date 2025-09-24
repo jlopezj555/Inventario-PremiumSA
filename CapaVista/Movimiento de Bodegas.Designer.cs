@@ -41,16 +41,17 @@ namespace CapaVista
             this.lbl_contacto = new System.Windows.Forms.Label();
             this.dgv_bodegas = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_reporteusuario = new System.Windows.Forms.Button();
-            this.btn_ayudausuario = new System.Windows.Forms.Button();
-            this.btn_eliminarusuario = new System.Windows.Forms.Button();
-            this.btn_actualizarusuario = new System.Windows.Forms.Button();
-            this.btn_guardarregistrousuario = new System.Windows.Forms.Button();
-            this.btn_modregistrousuario = new System.Windows.Forms.Button();
-            this.btn_registrousuario = new System.Windows.Forms.Button();
+            this.btn_reportebodega = new System.Windows.Forms.Button();
+            this.btn_ayudabodega = new System.Windows.Forms.Button();
+            this.btn_eliminarbodega = new System.Windows.Forms.Button();
+            this.btn_actualizarbodega = new System.Windows.Forms.Button();
+            this.btn_guardarregistrobodega = new System.Windows.Forms.Button();
+            this.btn_modregistrobodega = new System.Windows.Forms.Button();
+            this.btn_registrobodega = new System.Windows.Forms.Button();
             this.panel_mantenimientou = new System.Windows.Forms.Panel();
             this.salir_movbodegas = new System.Windows.Forms.Button();
             this.lbl_mantenimientousuarios = new System.Windows.Forms.Label();
+            this.txt_idBodega = new System.Windows.Forms.TextBox();
             this.panel_menumantenimientou.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_bodegas)).BeginInit();
@@ -177,96 +178,102 @@ namespace CapaVista
             this.dgv_bodegas.Name = "dgv_bodegas";
             this.dgv_bodegas.Size = new System.Drawing.Size(389, 226);
             this.dgv_bodegas.TabIndex = 6;
+            this.dgv_bodegas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_bodegas_CellClick);
+            this.dgv_bodegas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_bodegas_CellContentClick);
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.btn_reporteusuario);
-            this.panel1.Controls.Add(this.btn_ayudausuario);
-            this.panel1.Controls.Add(this.btn_eliminarusuario);
-            this.panel1.Controls.Add(this.btn_actualizarusuario);
-            this.panel1.Controls.Add(this.btn_guardarregistrousuario);
-            this.panel1.Controls.Add(this.btn_modregistrousuario);
-            this.panel1.Controls.Add(this.btn_registrousuario);
+            this.panel1.Controls.Add(this.btn_reportebodega);
+            this.panel1.Controls.Add(this.btn_ayudabodega);
+            this.panel1.Controls.Add(this.btn_eliminarbodega);
+            this.panel1.Controls.Add(this.btn_actualizarbodega);
+            this.panel1.Controls.Add(this.btn_guardarregistrobodega);
+            this.panel1.Controls.Add(this.btn_modregistrobodega);
+            this.panel1.Controls.Add(this.btn_registrobodega);
             this.panel1.ForeColor = System.Drawing.SystemColors.Control;
             this.panel1.Location = new System.Drawing.Point(45, 18);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(734, 120);
             this.panel1.TabIndex = 2;
             // 
-            // btn_reporteusuario
+            // btn_reportebodega
             // 
-            this.btn_reporteusuario.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_reporteusuario.Image = global::CapaVista.Properties.Resources.reporte_registro;
-            this.btn_reporteusuario.Location = new System.Drawing.Point(638, 3);
-            this.btn_reporteusuario.Name = "btn_reporteusuario";
-            this.btn_reporteusuario.Size = new System.Drawing.Size(93, 107);
-            this.btn_reporteusuario.TabIndex = 9;
-            this.btn_reporteusuario.UseVisualStyleBackColor = true;
+            this.btn_reportebodega.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btn_reportebodega.Image = global::CapaVista.Properties.Resources.reporte_registro;
+            this.btn_reportebodega.Location = new System.Drawing.Point(638, 3);
+            this.btn_reportebodega.Name = "btn_reportebodega";
+            this.btn_reportebodega.Size = new System.Drawing.Size(93, 107);
+            this.btn_reportebodega.TabIndex = 9;
+            this.btn_reportebodega.UseVisualStyleBackColor = true;
             // 
-            // btn_ayudausuario
+            // btn_ayudabodega
             // 
-            this.btn_ayudausuario.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_ayudausuario.Image = global::CapaVista.Properties.Resources.ayuda_registro;
-            this.btn_ayudausuario.Location = new System.Drawing.Point(539, 3);
-            this.btn_ayudausuario.Name = "btn_ayudausuario";
-            this.btn_ayudausuario.Size = new System.Drawing.Size(93, 107);
-            this.btn_ayudausuario.TabIndex = 8;
-            this.btn_ayudausuario.UseVisualStyleBackColor = true;
+            this.btn_ayudabodega.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btn_ayudabodega.Image = global::CapaVista.Properties.Resources.ayuda_registro;
+            this.btn_ayudabodega.Location = new System.Drawing.Point(539, 3);
+            this.btn_ayudabodega.Name = "btn_ayudabodega";
+            this.btn_ayudabodega.Size = new System.Drawing.Size(93, 107);
+            this.btn_ayudabodega.TabIndex = 8;
+            this.btn_ayudabodega.UseVisualStyleBackColor = true;
             // 
-            // btn_eliminarusuario
+            // btn_eliminarbodega
             // 
-            this.btn_eliminarusuario.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_eliminarusuario.Image = global::CapaVista.Properties.Resources.eliminar_usuario;
-            this.btn_eliminarusuario.Location = new System.Drawing.Point(426, 3);
-            this.btn_eliminarusuario.Name = "btn_eliminarusuario";
-            this.btn_eliminarusuario.Size = new System.Drawing.Size(107, 107);
-            this.btn_eliminarusuario.TabIndex = 7;
-            this.btn_eliminarusuario.UseVisualStyleBackColor = true;
+            this.btn_eliminarbodega.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btn_eliminarbodega.Image = global::CapaVista.Properties.Resources.eliminar_usuario;
+            this.btn_eliminarbodega.Location = new System.Drawing.Point(426, 3);
+            this.btn_eliminarbodega.Name = "btn_eliminarbodega";
+            this.btn_eliminarbodega.Size = new System.Drawing.Size(107, 107);
+            this.btn_eliminarbodega.TabIndex = 7;
+            this.btn_eliminarbodega.UseVisualStyleBackColor = true;
+            this.btn_eliminarbodega.Click += new System.EventHandler(this.btn_eliminarbodega_Click);
             // 
-            // btn_actualizarusuario
+            // btn_actualizarbodega
             // 
-            this.btn_actualizarusuario.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_actualizarusuario.Image = global::CapaVista.Properties.Resources.actualizar_registro;
-            this.btn_actualizarusuario.Location = new System.Drawing.Point(315, 3);
-            this.btn_actualizarusuario.Name = "btn_actualizarusuario";
-            this.btn_actualizarusuario.Size = new System.Drawing.Size(105, 107);
-            this.btn_actualizarusuario.TabIndex = 6;
-            this.btn_actualizarusuario.UseVisualStyleBackColor = true;
+            this.btn_actualizarbodega.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btn_actualizarbodega.Image = global::CapaVista.Properties.Resources.actualizar_registro;
+            this.btn_actualizarbodega.Location = new System.Drawing.Point(315, 3);
+            this.btn_actualizarbodega.Name = "btn_actualizarbodega";
+            this.btn_actualizarbodega.Size = new System.Drawing.Size(105, 107);
+            this.btn_actualizarbodega.TabIndex = 6;
+            this.btn_actualizarbodega.UseVisualStyleBackColor = true;
             // 
-            // btn_guardarregistrousuario
+            // btn_guardarregistrobodega
             // 
-            this.btn_guardarregistrousuario.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_guardarregistrousuario.Image = global::CapaVista.Properties.Resources.guardar_registro1;
-            this.btn_guardarregistrousuario.Location = new System.Drawing.Point(216, 3);
-            this.btn_guardarregistrousuario.Name = "btn_guardarregistrousuario";
-            this.btn_guardarregistrousuario.Size = new System.Drawing.Size(93, 107);
-            this.btn_guardarregistrousuario.TabIndex = 5;
-            this.btn_guardarregistrousuario.UseVisualStyleBackColor = true;
+            this.btn_guardarregistrobodega.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btn_guardarregistrobodega.Image = global::CapaVista.Properties.Resources.guardar_registro1;
+            this.btn_guardarregistrobodega.Location = new System.Drawing.Point(216, 3);
+            this.btn_guardarregistrobodega.Name = "btn_guardarregistrobodega";
+            this.btn_guardarregistrobodega.Size = new System.Drawing.Size(93, 107);
+            this.btn_guardarregistrobodega.TabIndex = 5;
+            this.btn_guardarregistrobodega.UseVisualStyleBackColor = true;
+            this.btn_guardarregistrobodega.Click += new System.EventHandler(this.btn_guardarregistrobodega_Click);
             // 
-            // btn_modregistrousuario
+            // btn_modregistrobodega
             // 
-            this.btn_modregistrousuario.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_modregistrousuario.Image = global::CapaVista.Properties.Resources.modificar_registro;
-            this.btn_modregistrousuario.Location = new System.Drawing.Point(102, 3);
-            this.btn_modregistrousuario.Name = "btn_modregistrousuario";
-            this.btn_modregistrousuario.Size = new System.Drawing.Size(108, 107);
-            this.btn_modregistrousuario.TabIndex = 4;
-            this.btn_modregistrousuario.UseVisualStyleBackColor = true;
+            this.btn_modregistrobodega.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btn_modregistrobodega.Image = global::CapaVista.Properties.Resources.modificar_registro;
+            this.btn_modregistrobodega.Location = new System.Drawing.Point(102, 3);
+            this.btn_modregistrobodega.Name = "btn_modregistrobodega";
+            this.btn_modregistrobodega.Size = new System.Drawing.Size(108, 107);
+            this.btn_modregistrobodega.TabIndex = 4;
+            this.btn_modregistrobodega.UseVisualStyleBackColor = true;
+            this.btn_modregistrobodega.Click += new System.EventHandler(this.btn_modregistrobodega_Click);
             // 
-            // btn_registrousuario
+            // btn_registrobodega
             // 
-            this.btn_registrousuario.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_registrousuario.Image = global::CapaVista.Properties.Resources.nuevo_registro;
-            this.btn_registrousuario.Location = new System.Drawing.Point(3, 3);
-            this.btn_registrousuario.Name = "btn_registrousuario";
-            this.btn_registrousuario.Size = new System.Drawing.Size(93, 107);
-            this.btn_registrousuario.TabIndex = 3;
-            this.btn_registrousuario.UseVisualStyleBackColor = true;
+            this.btn_registrobodega.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btn_registrobodega.Image = global::CapaVista.Properties.Resources.nuevo_registro;
+            this.btn_registrobodega.Location = new System.Drawing.Point(3, 3);
+            this.btn_registrobodega.Name = "btn_registrobodega";
+            this.btn_registrobodega.Size = new System.Drawing.Size(93, 107);
+            this.btn_registrobodega.TabIndex = 3;
+            this.btn_registrobodega.UseVisualStyleBackColor = true;
             // 
             // panel_mantenimientou
             // 
             this.panel_mantenimientou.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_mantenimientou.Controls.Add(this.txt_idBodega);
             this.panel_mantenimientou.Controls.Add(this.salir_movbodegas);
             this.panel_mantenimientou.Controls.Add(this.lbl_mantenimientousuarios);
             this.panel_mantenimientou.ForeColor = System.Drawing.SystemColors.Control;
@@ -284,6 +291,7 @@ namespace CapaVista
             this.salir_movbodegas.Size = new System.Drawing.Size(71, 63);
             this.salir_movbodegas.TabIndex = 10;
             this.salir_movbodegas.UseVisualStyleBackColor = true;
+            this.salir_movbodegas.Click += new System.EventHandler(this.salir_movbodegas_Click);
             // 
             // lbl_mantenimientousuarios
             // 
@@ -296,6 +304,15 @@ namespace CapaVista
             this.lbl_mantenimientousuarios.Size = new System.Drawing.Size(327, 32);
             this.lbl_mantenimientousuarios.TabIndex = 2;
             this.lbl_mantenimientousuarios.Text = "Movimiento de Bodegas";
+            // 
+            // txt_idBodega
+            // 
+            this.txt_idBodega.Location = new System.Drawing.Point(773, 28);
+            this.txt_idBodega.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_idBodega.Name = "txt_idBodega";
+            this.txt_idBodega.Size = new System.Drawing.Size(20, 20);
+            this.txt_idBodega.TabIndex = 6;
+            this.txt_idBodega.Visible = false;
             // 
             // Movimiento_de_Bodegas
             // 
@@ -331,17 +348,18 @@ namespace CapaVista
         private System.Windows.Forms.TextBox txt_nombreBodega;
         private System.Windows.Forms.Label lbl_nombrebodega;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btn_reporteusuario;
-        private System.Windows.Forms.Button btn_ayudausuario;
-        private System.Windows.Forms.Button btn_eliminarusuario;
-        private System.Windows.Forms.Button btn_actualizarusuario;
-        private System.Windows.Forms.Button btn_guardarregistrousuario;
-        private System.Windows.Forms.Button btn_modregistrousuario;
-        private System.Windows.Forms.Button btn_registrousuario;
+        private System.Windows.Forms.Button btn_reportebodega;
+        private System.Windows.Forms.Button btn_ayudabodega;
+        private System.Windows.Forms.Button btn_eliminarbodega;
+        private System.Windows.Forms.Button btn_actualizarbodega;
+        private System.Windows.Forms.Button btn_guardarregistrobodega;
+        private System.Windows.Forms.Button btn_modregistrobodega;
+        private System.Windows.Forms.Button btn_registrobodega;
         private System.Windows.Forms.Panel panel_mantenimientou;
         private System.Windows.Forms.Label lbl_mantenimientousuarios;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button salir_movbodegas;
+        private System.Windows.Forms.TextBox txt_idBodega;
     }
 }

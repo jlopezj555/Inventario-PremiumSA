@@ -348,6 +348,7 @@ namespace CapaVista
             this.btn_guardarregistroequipo.Size = new System.Drawing.Size(93, 107);
             this.btn_guardarregistroequipo.TabIndex = 5;
             this.btn_guardarregistroequipo.UseVisualStyleBackColor = true;
+            this.btn_guardarregistroequipo.Click += new System.EventHandler(this.btn_guardarregistroequipo_Click);
             // 
             // btn_modregistroequipo
             // 
@@ -368,6 +369,7 @@ namespace CapaVista
             this.btn_registroequipo.Size = new System.Drawing.Size(93, 107);
             this.btn_registroequipo.TabIndex = 3;
             this.btn_registroequipo.UseVisualStyleBackColor = true;
+            this.btn_registroequipo.Click += new System.EventHandler(this.btn_registroequipo_Click);
             // 
             // panel_mantenimientou
             // 
@@ -389,6 +391,7 @@ namespace CapaVista
             this.salir_equipo.Size = new System.Drawing.Size(71, 63);
             this.salir_equipo.TabIndex = 11;
             this.salir_equipo.UseVisualStyleBackColor = true;
+            this.salir_equipo.Click += new System.EventHandler(this.salir_equipo_Click);
             // 
             // lbl_mantenimientoequipos
             // 

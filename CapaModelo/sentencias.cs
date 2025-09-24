@@ -155,5 +155,93 @@ namespace CapaModelo
                 }
             }
         }
+
+        //CRUD movimiento de bodegas
+        public void guardar_Movimientobodega(string nombre_bodega, string ubicacion_bodega, string capacidad_bodega)
+        {
+            OdbcConnection connection = cn.Conexion();
+            if (connection == null)
+            {
+                MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                string query_guardar_movimientoBodega = "INSERT INTO tbl_bodega (nombre_bodega, ubicacion_bodega, capacidad_bodega) VALUES (?, ?, ?)";
+                OdbcCommand cmd = new OdbcCommand(query_guardar_movimientoBodega, connection);
+                cmd.Parameters.AddWithValue("@nombre_bodega", nombre_bodega);
+                cmd.Parameters.AddWithValue("@ubicacion_bodega", ubicacion_bodega);
+                cmd.Parameters.AddWithValue("@capacidad_bodega", capacidad_bodega);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hubo un error al intentar registrar el movimiento" + ex.Message, "Error: ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally { cn.Conexion(); }
+        }
+
+        public DataTable obtenerBodegas()
+        {
+            DataTable dt = new DataTable();
+            using (OdbcConnection connection = cn.Conexion())
+            {
+                string query = "SELECT ID_bodega, nombre_bodega, ubicacion_bodega, capacidad_bodega FROM tbl_bodega";
+                using (OdbcDataAdapter da = new OdbcDataAdapter(query, connection))
+                {
+                    da.Fill(dt);
+                }
+            }
+
+            return dt;
+        }
+
+        public void editar_movimientoBodega(int idBodega, string nombre_bodega, string ubicacion_bodega, string capacidad_bodega)
+        {
+            OdbcConnection connection = cn.Conexion();
+            if (connection == null)
+            {
+                MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                string query_editar_MovimientoEmpleado = @"UPDATE tbl_bodega 
+                             SET nombre_bodega = ?, ubicacion_bodega = ?, capacidad_bodega = ?
+                             WHERE ID_bodega = ?";
+                OdbcCommand cmd2 = new OdbcCommand(query_editar_MovimientoEmpleado, connection);
+                cmd2.Parameters.AddWithValue("nombre_bodega", nombre_bodega);
+                cmd2.Parameters.AddWithValue("ubicacion_bodega", ubicacion_bodega);
+                cmd2.Parameters.AddWithValue("capacidad_bodega", capacidad_bodega);
+                cmd2.Parameters.AddWithValue("ID_bodega", idBodega);
+
+                int filas = cmd2.ExecuteNonQuery();
+                if (filas > 0)
+                {
+                    MessageBox.Show("Empleado actualizado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el empleado con el ID especificado");
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Hubo un error al intentar registrar el movimiento" + e.Message, "Error: ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void eliminarBodega(int idBodega)
+        {
+            using (OdbcConnection connection = cn.Conexion())
+            {
+                string query = "DELETE FROM tbl_bodega WHERE ID_bodega = ?";
+                using (OdbcCommand cmd = new OdbcCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@ID_bodega", idBodega);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

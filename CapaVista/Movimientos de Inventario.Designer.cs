@@ -420,6 +420,7 @@ namespace CapaVista
             this.salir_movinventario.Size = new System.Drawing.Size(71, 63);
             this.salir_movinventario.TabIndex = 11;
             this.salir_movinventario.UseVisualStyleBackColor = true;
+            this.salir_movinventario.Click += new System.EventHandler(this.salir_movinventario_Click);
             // 
             // lbl_movimientoinventario
             // 

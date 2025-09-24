@@ -78,6 +78,7 @@ namespace CapaVista
             this.salir_usuario.Size = new System.Drawing.Size(71, 63);
             this.salir_usuario.TabIndex = 15;
             this.salir_usuario.UseVisualStyleBackColor = true;
+            this.salir_usuario.Click += new System.EventHandler(this.salir_usuario_Click);
             // 
             // lbl_mantenimientousuarios
             // 
