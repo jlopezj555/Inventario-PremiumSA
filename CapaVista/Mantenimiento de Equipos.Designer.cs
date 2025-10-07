@@ -90,25 +90,27 @@ namespace CapaVista
             this.panel_menumantenimientou.Controls.Add(this.lbl_nombreequipo);
             this.panel_menumantenimientou.Controls.Add(this.panel1);
             this.panel_menumantenimientou.ForeColor = System.Drawing.SystemColors.Control;
-            this.panel_menumantenimientou.Location = new System.Drawing.Point(49, 83);
+            this.panel_menumantenimientou.Location = new System.Drawing.Point(74, 128);
+            this.panel_menumantenimientou.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel_menumantenimientou.Name = "panel_menumantenimientou";
-            this.panel_menumantenimientou.Size = new System.Drawing.Size(807, 654);
+            this.panel_menumantenimientou.Size = new System.Drawing.Size(1210, 1005);
             this.panel_menumantenimientou.TabIndex = 3;
             // 
             // dgv_equipos
             // 
             this.dgv_equipos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_equipos.Location = new System.Drawing.Point(49, 411);
+            this.dgv_equipos.Location = new System.Drawing.Point(4, 602);
+            this.dgv_equipos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgv_equipos.Name = "dgv_equipos";
-            this.dgv_equipos.Size = new System.Drawing.Size(728, 226);
+            this.dgv_equipos.RowHeadersWidth = 62;
+            this.dgv_equipos.Size = new System.Drawing.Size(1200, 308);
             this.dgv_equipos.TabIndex = 23;
             // 
             // txt_fechagarantiaEquipo
             // 
-            this.txt_fechagarantiaEquipo.Location = new System.Drawing.Point(534, 321);
-            this.txt_fechagarantiaEquipo.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_fechagarantiaEquipo.Location = new System.Drawing.Point(801, 494);
             this.txt_fechagarantiaEquipo.Name = "txt_fechagarantiaEquipo";
-            this.txt_fechagarantiaEquipo.Size = new System.Drawing.Size(185, 20);
+            this.txt_fechagarantiaEquipo.Size = new System.Drawing.Size(276, 26);
             this.txt_fechagarantiaEquipo.TabIndex = 22;
             // 
             // lbl_fechagarantequipo
@@ -116,19 +118,17 @@ namespace CapaVista
             this.lbl_fechagarantequipo.AutoSize = true;
             this.lbl_fechagarantequipo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_fechagarantequipo.ForeColor = System.Drawing.Color.White;
-            this.lbl_fechagarantequipo.Location = new System.Drawing.Point(356, 317);
-            this.lbl_fechagarantequipo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_fechagarantequipo.Location = new System.Drawing.Point(534, 488);
             this.lbl_fechagarantequipo.Name = "lbl_fechagarantequipo";
-            this.lbl_fechagarantequipo.Size = new System.Drawing.Size(174, 22);
+            this.lbl_fechagarantequipo.Size = new System.Drawing.Size(264, 32);
             this.lbl_fechagarantequipo.TabIndex = 21;
             this.lbl_fechagarantequipo.Text = "Fecha de garantía";
             // 
             // txt_preciouEquipo
             // 
-            this.txt_preciouEquipo.Location = new System.Drawing.Point(534, 274);
-            this.txt_preciouEquipo.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_preciouEquipo.Location = new System.Drawing.Point(801, 422);
             this.txt_preciouEquipo.Name = "txt_preciouEquipo";
-            this.txt_preciouEquipo.Size = new System.Drawing.Size(185, 20);
+            this.txt_preciouEquipo.Size = new System.Drawing.Size(276, 26);
             this.txt_preciouEquipo.TabIndex = 20;
             // 
             // lbl_preciouequipo
@@ -136,19 +136,17 @@ namespace CapaVista
             this.lbl_preciouequipo.AutoSize = true;
             this.lbl_preciouequipo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_preciouequipo.ForeColor = System.Drawing.Color.White;
-            this.lbl_preciouequipo.Location = new System.Drawing.Point(387, 270);
-            this.lbl_preciouequipo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_preciouequipo.Location = new System.Drawing.Point(580, 415);
             this.lbl_preciouequipo.Name = "lbl_preciouequipo";
-            this.lbl_preciouequipo.Size = new System.Drawing.Size(143, 22);
+            this.lbl_preciouequipo.Size = new System.Drawing.Size(217, 32);
             this.lbl_preciouequipo.TabIndex = 19;
             this.lbl_preciouequipo.Text = "Precio unitario";
             // 
             // txt_modeloEquipo
             // 
-            this.txt_modeloEquipo.Location = new System.Drawing.Point(534, 226);
-            this.txt_modeloEquipo.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_modeloEquipo.Location = new System.Drawing.Point(801, 348);
             this.txt_modeloEquipo.Name = "txt_modeloEquipo";
-            this.txt_modeloEquipo.Size = new System.Drawing.Size(185, 20);
+            this.txt_modeloEquipo.Size = new System.Drawing.Size(276, 26);
             this.txt_modeloEquipo.TabIndex = 18;
             // 
             // lbl_modeloequipo
@@ -156,19 +154,17 @@ namespace CapaVista
             this.lbl_modeloequipo.AutoSize = true;
             this.lbl_modeloequipo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_modeloequipo.ForeColor = System.Drawing.Color.White;
-            this.lbl_modeloequipo.Location = new System.Drawing.Point(454, 222);
-            this.lbl_modeloequipo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_modeloequipo.Location = new System.Drawing.Point(681, 342);
             this.lbl_modeloequipo.Name = "lbl_modeloequipo";
-            this.lbl_modeloequipo.Size = new System.Drawing.Size(76, 22);
+            this.lbl_modeloequipo.Size = new System.Drawing.Size(114, 32);
             this.lbl_modeloequipo.TabIndex = 17;
             this.lbl_modeloequipo.Text = "Modelo";
             // 
             // txt_descripcionEquipo
             // 
-            this.txt_descripcionEquipo.Location = new System.Drawing.Point(534, 177);
-            this.txt_descripcionEquipo.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_descripcionEquipo.Location = new System.Drawing.Point(801, 272);
             this.txt_descripcionEquipo.Name = "txt_descripcionEquipo";
-            this.txt_descripcionEquipo.Size = new System.Drawing.Size(185, 20);
+            this.txt_descripcionEquipo.Size = new System.Drawing.Size(276, 26);
             this.txt_descripcionEquipo.TabIndex = 16;
             // 
             // lbl_descripcionequipo
@@ -176,19 +172,17 @@ namespace CapaVista
             this.lbl_descripcionequipo.AutoSize = true;
             this.lbl_descripcionequipo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_descripcionequipo.ForeColor = System.Drawing.Color.White;
-            this.lbl_descripcionequipo.Location = new System.Drawing.Point(411, 173);
-            this.lbl_descripcionequipo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_descripcionequipo.Location = new System.Drawing.Point(616, 266);
             this.lbl_descripcionequipo.Name = "lbl_descripcionequipo";
-            this.lbl_descripcionequipo.Size = new System.Drawing.Size(119, 22);
+            this.lbl_descripcionequipo.Size = new System.Drawing.Size(181, 32);
             this.lbl_descripcionequipo.TabIndex = 15;
             this.lbl_descripcionequipo.Text = "Descripción";
             // 
             // txt_provEquipo
             // 
-            this.txt_provEquipo.Location = new System.Drawing.Point(146, 369);
-            this.txt_provEquipo.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_provEquipo.Location = new System.Drawing.Point(219, 568);
             this.txt_provEquipo.Name = "txt_provEquipo";
-            this.txt_provEquipo.Size = new System.Drawing.Size(185, 20);
+            this.txt_provEquipo.Size = new System.Drawing.Size(276, 26);
             this.txt_provEquipo.TabIndex = 14;
             // 
             // lbl_proveedorequipo
@@ -196,19 +190,17 @@ namespace CapaVista
             this.lbl_proveedorequipo.AutoSize = true;
             this.lbl_proveedorequipo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_proveedorequipo.ForeColor = System.Drawing.Color.White;
-            this.lbl_proveedorequipo.Location = new System.Drawing.Point(37, 365);
-            this.lbl_proveedorequipo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_proveedorequipo.Location = new System.Drawing.Point(56, 562);
             this.lbl_proveedorequipo.Name = "lbl_proveedorequipo";
-            this.lbl_proveedorequipo.Size = new System.Drawing.Size(105, 22);
+            this.lbl_proveedorequipo.Size = new System.Drawing.Size(158, 32);
             this.lbl_proveedorequipo.TabIndex = 13;
             this.lbl_proveedorequipo.Text = "Proveedor";
             // 
             // txt_stockEquipo
             // 
-            this.txt_stockEquipo.Location = new System.Drawing.Point(146, 321);
-            this.txt_stockEquipo.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_stockEquipo.Location = new System.Drawing.Point(219, 494);
             this.txt_stockEquipo.Name = "txt_stockEquipo";
-            this.txt_stockEquipo.Size = new System.Drawing.Size(185, 20);
+            this.txt_stockEquipo.Size = new System.Drawing.Size(276, 26);
             this.txt_stockEquipo.TabIndex = 12;
             // 
             // lbl_stockequipo
@@ -216,19 +208,17 @@ namespace CapaVista
             this.lbl_stockequipo.AutoSize = true;
             this.lbl_stockequipo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_stockequipo.ForeColor = System.Drawing.Color.White;
-            this.lbl_stockequipo.Location = new System.Drawing.Point(79, 317);
-            this.lbl_stockequipo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_stockequipo.Location = new System.Drawing.Point(118, 488);
             this.lbl_stockequipo.Name = "lbl_stockequipo";
-            this.lbl_stockequipo.Size = new System.Drawing.Size(63, 22);
+            this.lbl_stockequipo.Size = new System.Drawing.Size(93, 32);
             this.lbl_stockequipo.TabIndex = 11;
             this.lbl_stockequipo.Text = "Stock";
             // 
             // txt_categoriaEquipo
             // 
-            this.txt_categoriaEquipo.Location = new System.Drawing.Point(146, 274);
-            this.txt_categoriaEquipo.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_categoriaEquipo.Location = new System.Drawing.Point(219, 422);
             this.txt_categoriaEquipo.Name = "txt_categoriaEquipo";
-            this.txt_categoriaEquipo.Size = new System.Drawing.Size(185, 20);
+            this.txt_categoriaEquipo.Size = new System.Drawing.Size(276, 26);
             this.txt_categoriaEquipo.TabIndex = 10;
             // 
             // lbl_categoriaequipo
@@ -236,19 +226,17 @@ namespace CapaVista
             this.lbl_categoriaequipo.AutoSize = true;
             this.lbl_categoriaequipo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_categoriaequipo.ForeColor = System.Drawing.Color.White;
-            this.lbl_categoriaequipo.Location = new System.Drawing.Point(41, 270);
-            this.lbl_categoriaequipo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_categoriaequipo.Location = new System.Drawing.Point(62, 415);
             this.lbl_categoriaequipo.Name = "lbl_categoriaequipo";
-            this.lbl_categoriaequipo.Size = new System.Drawing.Size(100, 22);
+            this.lbl_categoriaequipo.Size = new System.Drawing.Size(151, 32);
             this.lbl_categoriaequipo.TabIndex = 9;
             this.lbl_categoriaequipo.Text = "Categoría";
             // 
             // txt_marcaEquipo
             // 
-            this.txt_marcaEquipo.Location = new System.Drawing.Point(146, 226);
-            this.txt_marcaEquipo.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_marcaEquipo.Location = new System.Drawing.Point(219, 348);
             this.txt_marcaEquipo.Name = "txt_marcaEquipo";
-            this.txt_marcaEquipo.Size = new System.Drawing.Size(185, 20);
+            this.txt_marcaEquipo.Size = new System.Drawing.Size(276, 26);
             this.txt_marcaEquipo.TabIndex = 8;
             // 
             // lbl_marcaequipo
@@ -256,19 +244,17 @@ namespace CapaVista
             this.lbl_marcaequipo.AutoSize = true;
             this.lbl_marcaequipo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_marcaequipo.ForeColor = System.Drawing.Color.White;
-            this.lbl_marcaequipo.Location = new System.Drawing.Point(75, 222);
-            this.lbl_marcaequipo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_marcaequipo.Location = new System.Drawing.Point(112, 342);
             this.lbl_marcaequipo.Name = "lbl_marcaequipo";
-            this.lbl_marcaequipo.Size = new System.Drawing.Size(67, 22);
+            this.lbl_marcaequipo.Size = new System.Drawing.Size(100, 32);
             this.lbl_marcaequipo.TabIndex = 7;
             this.lbl_marcaequipo.Text = "Marca";
             // 
             // txt_nombreEquipo
             // 
-            this.txt_nombreEquipo.Location = new System.Drawing.Point(146, 177);
-            this.txt_nombreEquipo.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_nombreEquipo.Location = new System.Drawing.Point(219, 272);
             this.txt_nombreEquipo.Name = "txt_nombreEquipo";
-            this.txt_nombreEquipo.Size = new System.Drawing.Size(185, 20);
+            this.txt_nombreEquipo.Size = new System.Drawing.Size(276, 26);
             this.txt_nombreEquipo.TabIndex = 5;
             // 
             // lbl_nombreequipo
@@ -276,10 +262,9 @@ namespace CapaVista
             this.lbl_nombreequipo.AutoSize = true;
             this.lbl_nombreequipo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_nombreequipo.ForeColor = System.Drawing.Color.White;
-            this.lbl_nombreequipo.Location = new System.Drawing.Point(59, 173);
-            this.lbl_nombreequipo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_nombreequipo.Location = new System.Drawing.Point(88, 266);
             this.lbl_nombreequipo.Name = "lbl_nombreequipo";
-            this.lbl_nombreequipo.Size = new System.Drawing.Size(83, 22);
+            this.lbl_nombreequipo.Size = new System.Drawing.Size(124, 32);
             this.lbl_nombreequipo.TabIndex = 4;
             this.lbl_nombreequipo.Text = "Nombre";
             // 
@@ -294,18 +279,20 @@ namespace CapaVista
             this.panel1.Controls.Add(this.btn_modregistroequipo);
             this.panel1.Controls.Add(this.btn_registroequipo);
             this.panel1.ForeColor = System.Drawing.SystemColors.Control;
-            this.panel1.Location = new System.Drawing.Point(45, 18);
+            this.panel1.Location = new System.Drawing.Point(68, 28);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(734, 120);
+            this.panel1.Size = new System.Drawing.Size(1100, 184);
             this.panel1.TabIndex = 2;
             // 
             // btn_reporteequipo
             // 
             this.btn_reporteequipo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_reporteequipo.Image = global::CapaVista.Properties.Resources.reporte_registro;
-            this.btn_reporteequipo.Location = new System.Drawing.Point(638, 3);
+            this.btn_reporteequipo.Location = new System.Drawing.Point(957, 5);
+            this.btn_reporteequipo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_reporteequipo.Name = "btn_reporteequipo";
-            this.btn_reporteequipo.Size = new System.Drawing.Size(93, 107);
+            this.btn_reporteequipo.Size = new System.Drawing.Size(140, 165);
             this.btn_reporteequipo.TabIndex = 9;
             this.btn_reporteequipo.UseVisualStyleBackColor = true;
             // 
@@ -313,9 +300,10 @@ namespace CapaVista
             // 
             this.btn_ayudaequipo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_ayudaequipo.Image = global::CapaVista.Properties.Resources.ayuda_registro;
-            this.btn_ayudaequipo.Location = new System.Drawing.Point(539, 3);
+            this.btn_ayudaequipo.Location = new System.Drawing.Point(808, 5);
+            this.btn_ayudaequipo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_ayudaequipo.Name = "btn_ayudaequipo";
-            this.btn_ayudaequipo.Size = new System.Drawing.Size(93, 107);
+            this.btn_ayudaequipo.Size = new System.Drawing.Size(140, 165);
             this.btn_ayudaequipo.TabIndex = 8;
             this.btn_ayudaequipo.UseVisualStyleBackColor = true;
             // 
@@ -323,9 +311,10 @@ namespace CapaVista
             // 
             this.btn_eliminarequipo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_eliminarequipo.Image = global::CapaVista.Properties.Resources.eliminar_usuario;
-            this.btn_eliminarequipo.Location = new System.Drawing.Point(426, 3);
+            this.btn_eliminarequipo.Location = new System.Drawing.Point(639, 5);
+            this.btn_eliminarequipo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_eliminarequipo.Name = "btn_eliminarequipo";
-            this.btn_eliminarequipo.Size = new System.Drawing.Size(107, 107);
+            this.btn_eliminarequipo.Size = new System.Drawing.Size(160, 165);
             this.btn_eliminarequipo.TabIndex = 7;
             this.btn_eliminarequipo.UseVisualStyleBackColor = true;
             // 
@@ -333,9 +322,10 @@ namespace CapaVista
             // 
             this.btn_actualizarequipo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_actualizarequipo.Image = global::CapaVista.Properties.Resources.actualizar_registro;
-            this.btn_actualizarequipo.Location = new System.Drawing.Point(315, 3);
+            this.btn_actualizarequipo.Location = new System.Drawing.Point(472, 5);
+            this.btn_actualizarequipo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_actualizarequipo.Name = "btn_actualizarequipo";
-            this.btn_actualizarequipo.Size = new System.Drawing.Size(105, 107);
+            this.btn_actualizarequipo.Size = new System.Drawing.Size(158, 165);
             this.btn_actualizarequipo.TabIndex = 6;
             this.btn_actualizarequipo.UseVisualStyleBackColor = true;
             // 
@@ -343,9 +333,10 @@ namespace CapaVista
             // 
             this.btn_guardarregistroequipo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_guardarregistroequipo.Image = global::CapaVista.Properties.Resources.guardar_registro1;
-            this.btn_guardarregistroequipo.Location = new System.Drawing.Point(216, 3);
+            this.btn_guardarregistroequipo.Location = new System.Drawing.Point(324, 5);
+            this.btn_guardarregistroequipo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_guardarregistroequipo.Name = "btn_guardarregistroequipo";
-            this.btn_guardarregistroequipo.Size = new System.Drawing.Size(93, 107);
+            this.btn_guardarregistroequipo.Size = new System.Drawing.Size(140, 165);
             this.btn_guardarregistroequipo.TabIndex = 5;
             this.btn_guardarregistroequipo.UseVisualStyleBackColor = true;
             this.btn_guardarregistroequipo.Click += new System.EventHandler(this.btn_guardarregistroequipo_Click);
@@ -354,9 +345,10 @@ namespace CapaVista
             // 
             this.btn_modregistroequipo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_modregistroequipo.Image = global::CapaVista.Properties.Resources.modificar_registro;
-            this.btn_modregistroequipo.Location = new System.Drawing.Point(102, 3);
+            this.btn_modregistroequipo.Location = new System.Drawing.Point(153, 5);
+            this.btn_modregistroequipo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_modregistroequipo.Name = "btn_modregistroequipo";
-            this.btn_modregistroequipo.Size = new System.Drawing.Size(108, 107);
+            this.btn_modregistroequipo.Size = new System.Drawing.Size(162, 165);
             this.btn_modregistroequipo.TabIndex = 4;
             this.btn_modregistroequipo.UseVisualStyleBackColor = true;
             // 
@@ -364,9 +356,10 @@ namespace CapaVista
             // 
             this.btn_registroequipo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_registroequipo.Image = global::CapaVista.Properties.Resources.nuevo_registro;
-            this.btn_registroequipo.Location = new System.Drawing.Point(3, 3);
+            this.btn_registroequipo.Location = new System.Drawing.Point(4, 5);
+            this.btn_registroequipo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_registroequipo.Name = "btn_registroequipo";
-            this.btn_registroequipo.Size = new System.Drawing.Size(93, 107);
+            this.btn_registroequipo.Size = new System.Drawing.Size(140, 165);
             this.btn_registroequipo.TabIndex = 3;
             this.btn_registroequipo.UseVisualStyleBackColor = true;
             this.btn_registroequipo.Click += new System.EventHandler(this.btn_registroequipo_Click);
@@ -377,18 +370,20 @@ namespace CapaVista
             this.panel_mantenimientou.Controls.Add(this.salir_equipo);
             this.panel_mantenimientou.Controls.Add(this.lbl_mantenimientoequipos);
             this.panel_mantenimientou.ForeColor = System.Drawing.SystemColors.Control;
-            this.panel_mantenimientou.Location = new System.Drawing.Point(49, 12);
+            this.panel_mantenimientou.Location = new System.Drawing.Point(74, 18);
+            this.panel_mantenimientou.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel_mantenimientou.Name = "panel_mantenimientou";
-            this.panel_mantenimientou.Size = new System.Drawing.Size(807, 74);
+            this.panel_mantenimientou.Size = new System.Drawing.Size(1210, 113);
             this.panel_mantenimientou.TabIndex = 2;
             // 
             // salir_equipo
             // 
             this.salir_equipo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.salir_equipo.Image = global::CapaVista.Properties.Resources.salir_registro;
-            this.salir_equipo.Location = new System.Drawing.Point(3, 3);
+            this.salir_equipo.Location = new System.Drawing.Point(4, 5);
+            this.salir_equipo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.salir_equipo.Name = "salir_equipo";
-            this.salir_equipo.Size = new System.Drawing.Size(71, 63);
+            this.salir_equipo.Size = new System.Drawing.Size(106, 97);
             this.salir_equipo.TabIndex = 11;
             this.salir_equipo.UseVisualStyleBackColor = true;
             this.salir_equipo.Click += new System.EventHandler(this.salir_equipo_Click);
@@ -398,21 +393,21 @@ namespace CapaVista
             this.lbl_mantenimientoequipos.AutoSize = true;
             this.lbl_mantenimientoequipos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_mantenimientoequipos.ForeColor = System.Drawing.Color.White;
-            this.lbl_mantenimientoequipos.Location = new System.Drawing.Point(204, 16);
-            this.lbl_mantenimientoequipos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_mantenimientoequipos.Location = new System.Drawing.Point(306, 25);
             this.lbl_mantenimientoequipos.Name = "lbl_mantenimientoequipos";
-            this.lbl_mantenimientoequipos.Size = new System.Drawing.Size(425, 32);
+            this.lbl_mantenimientoequipos.Size = new System.Drawing.Size(632, 46);
             this.lbl_mantenimientoequipos.TabIndex = 2;
             this.lbl_mantenimientoequipos.Text = "MANTENIMIENTO DE EQUIPOS";
             // 
             // Mantenimiento_de_Equipos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(903, 755);
+            this.ClientSize = new System.Drawing.Size(1325, 1050);
             this.Controls.Add(this.panel_menumantenimientou);
             this.Controls.Add(this.panel_mantenimientou);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Mantenimiento_de_Equipos";
             this.Text = "Mantenimiento de Equipos";
             this.panel_menumantenimientou.ResumeLayout(false);

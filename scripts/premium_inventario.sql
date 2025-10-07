@@ -87,3 +87,23 @@ CREATE TABLE tbl_usuario (
     correo VARCHAR(100) UNIQUE NOT NULL,
     telefono VARCHAR(20)
 );
+CREATE TABLE tbl_equipos (
+    id_equipo INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    marca VARCHAR(100) NOT NULL,
+    categoria VARCHAR(100),
+    stock INT DEFAULT 0,
+    proveedor VARCHAR(100),
+    descripcion TEXT,
+    modelo VARCHAR(100),
+    precio_unitario DECIMAL(10,2),
+    fecha_garantia DATE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE tbl_usuarios (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20),
+    correo VARCHAR(100) UNIQUE,
+    direccion VARCHAR(200),
+    contacto VARCHAR(100)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

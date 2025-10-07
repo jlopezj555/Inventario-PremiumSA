@@ -31,7 +31,7 @@ namespace CapaVista
                 {
                     MessageBox.Show("Bienvenido " + usuario + "!");
                     this.Hide();
-                    Menu menu = new Menu();
+                    Menu menu = new Menu(usuario);
                     menu.ShowDialog();
                     this.Close();
                 }

@@ -12,15 +12,17 @@ namespace CapaVista
 {
     public partial class Mantenimiento_de_Equipos : Form
     {
-        public Mantenimiento_de_Equipos()
+        private string nombreUsuario;
+        public Mantenimiento_de_Equipos(string nombreUsuario)
         {
             InitializeComponent();
+            this.nombreUsuario = nombreUsuario;
         }
 
         private void salir_equipo_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Menu menu = new Menu();
+            Menu menu = new Menu(nombreUsuario);
             menu.ShowDialog();
             this.Close();
         }

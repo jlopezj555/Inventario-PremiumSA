@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapaVista
@@ -19,17 +12,26 @@ namespace CapaVista
         }
         private void btn_registrarUsuario_Click(object sender, EventArgs e)
         {
-            Inicio_de_Sesión inicio_De_Sesión = new Inicio_de_Sesión();
             try
             {
-                capaControlador_registroUsuario.registrarUsuario(txt_nombreUsuario.Text, txt_Contraseña.Text, txt_Correo.Text, txt_Telefono.Text);
-                MessageBox.Show("Usuario registrado con exito");
-                inicio_De_Sesión.Show();
+                capaControlador_registroUsuario.registrarUsuario(
+                    txt_nombreUsuario.Text,
+                    txt_Contraseña.Text,
+                    txt_Correo.Text,
+                    txt_Telefono.Text
+                );
+
+                MessageBox.Show("Usuario registrado con éxito");
+
+                // Vuelve al login sin cerrar la aplicación principal
+                this.Hide();
+                Inicio_de_Sesión login = new Inicio_de_Sesión();
+                login.ShowDialog();
                 this.Close();
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                MessageBox.Show("Ocurrio un error" + ex);
+                MessageBox.Show("Ocurrió un error: " + ex.Message + "\n" + ex.StackTrace);
             }
         }
 

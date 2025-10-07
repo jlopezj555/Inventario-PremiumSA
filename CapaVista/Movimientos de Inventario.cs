@@ -12,15 +12,17 @@ namespace CapaVista
 {
     public partial class Movimientos_de_Inventario : Form
     {
-        public Movimientos_de_Inventario()
+        private string nombreUsuario;
+        public Movimientos_de_Inventario(string nombreUsuario)
         {
             InitializeComponent();
+            this.nombreUsuario = nombreUsuario;
         }
 
         private void salir_movinventario_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Menu menu = new Menu();
+            Menu menu = new Menu(nombreUsuario);
             menu.ShowDialog();
             this.Close();
         }

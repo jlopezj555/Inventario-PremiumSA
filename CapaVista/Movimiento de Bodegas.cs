@@ -12,17 +12,19 @@ namespace CapaVista
 {
     public partial class Movimiento_de_Bodegas : Form
     {
+        private string nombreUsuario;
         CapaControlador.controlador capaControlador_movimiento = new CapaControlador.controlador();
-        public Movimiento_de_Bodegas()
+        public Movimiento_de_Bodegas(string nombreUsuario)
         {
             InitializeComponent();
             CargarBodegas();
+            this.nombreUsuario = nombreUsuario;
         }
 
         private void salir_movbodegas_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Menu menu = new Menu();
+            Menu menu = new Menu(nombreUsuario);
             menu.ShowDialog();
             this.Close();
         }

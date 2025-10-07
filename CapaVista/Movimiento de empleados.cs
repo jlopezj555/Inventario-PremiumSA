@@ -12,17 +12,23 @@ namespace CapaVista
 {
     public partial class Movimiento_de_empleados : Form
     {
+        private string nombreUsuario;
         CapaControlador.controlador capaControlador_movimiento = new CapaControlador.controlador();
-        public Movimiento_de_empleados()
+        public Movimiento_de_empleados(string nombreUsuario)
         {
             InitializeComponent();
             CargarEmpleados();
+            this.nombreUsuario = nombreUsuario;
+            this.Size = new Size(960, 600); // ancho x alto
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void salir_movbodegas_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Menu menu = new Menu(); 
+            Menu menu = new Menu(nombreUsuario); 
             menu.ShowDialog();
             this.Close();
         }
@@ -69,6 +75,7 @@ namespace CapaVista
 
         private void dgv_empleados_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             if (e.RowIndex >= 0) // validar que no sea header
             {
                 DataGridViewRow fila = dgv_empleados.Rows[e.RowIndex];
@@ -121,11 +128,6 @@ namespace CapaVista
                     MessageBox.Show("Error al eliminar: " + ex.Message);
                 }
             }
-        }
-
-        private void btn_registrousuario_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
