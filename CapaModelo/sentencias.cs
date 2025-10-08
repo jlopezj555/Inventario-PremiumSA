@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Odbc;
-using System.Windows.Forms;
 using System.Data;
+using System.Data.Odbc;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 
 namespace CapaModelo
@@ -243,5 +247,215 @@ namespace CapaModelo
                 }
             }
         }
+        //Logica de movimiento de equipos
+        public void guardarequipos(string nombre, string marca, string categoria, int stock, string proveedor, string descripcion, string modelo, float precio_unitario, DateTime fecha_garantia)
+        {
+            OdbcConnection connection = cn.Conexion();
+            if (connection == null)
+            {
+                MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                string query_guardar_equipo = "INSERT INTO tbl_equipos (nombre, marca, categoria, stock, proveedor, descripcion, modelo, precio_unitario, fecha_garantia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                OdbcCommand cmd = new OdbcCommand(query_guardar_equipo, connection);
+                cmd.Parameters.AddWithValue("@nombre", nombre);
+                cmd.Parameters.AddWithValue("@marca", marca);
+                cmd.Parameters.AddWithValue("@categoria", categoria);
+                cmd.Parameters.AddWithValue("@stock", stock);
+                cmd.Parameters.AddWithValue("@proveedor", proveedor);
+                cmd.Parameters.AddWithValue("@descripcion", descripcion);
+                cmd.Parameters.AddWithValue("@modelo", modelo);
+                cmd.Parameters.AddWithValue("@precio_unitario", precio_unitario);
+                cmd.Parameters.AddWithValue("fecha_garantia", fecha_garantia);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hubo un error al intentar registrar el equipo" + ex.Message, "Error: ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally { cn.Conexion(); }
+        }
+        public DataTable obtenerEquipos()
+        {
+            DataTable dt = new DataTable();
+            using (OdbcConnection connection = cn.Conexion())
+            {
+                string query = "SELECT id_equipo, nombre, marca, categoria, stock, proveedor, descripcion, modelo, precio_unitario, fecha_garantia FROM tbl_equipos";
+                using (OdbcDataAdapter da = new OdbcDataAdapter(query, connection))
+                {
+                    da.Fill(dt);
+                }
+            }
+
+            return dt;
+        }
+        public void editar_equipos(int id_equipo, string nombre, string marca, string categoria, int stock, string proveedor, string descripcion, string modelo, float precio_unitario, DateTime fecha_garantia)
+        {
+            OdbcConnection connection = cn.Conexion();
+            if (connection == null)
+            {
+                MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                string query_editar_equipo = @"UPDATE tbl_equipos 
+                             SET nombre = ?, marca = ?, categoria = ?, stock = ?, proveedor = ?, descripcion = ?, modelo = ?,
+                             precio_unitario = ?, fecha_garantia = ?
+                             WHERE id_equipo = ?";
+                OdbcCommand cmd = new OdbcCommand(query_editar_equipo, connection);
+                cmd.Parameters.AddWithValue("@nombre", nombre);
+                cmd.Parameters.AddWithValue("@marca", marca);
+                cmd.Parameters.AddWithValue("@categoria", categoria);
+                cmd.Parameters.AddWithValue("@stock", stock);
+                cmd.Parameters.AddWithValue("@proveedor", proveedor);
+                cmd.Parameters.AddWithValue("@descripcion", descripcion);
+                cmd.Parameters.AddWithValue("@modelo", modelo);
+                cmd.Parameters.AddWithValue("@precio_unitario", precio_unitario);
+                cmd.Parameters.AddWithValue("fecha_garantia", fecha_garantia);
+                cmd.Parameters.AddWithValue("id_equipo", id_equipo);
+
+                int filas = cmd.ExecuteNonQuery();
+                if (filas > 0)
+                {
+                    MessageBox.Show("Equipo actualizado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el equipo con el ID especificado");
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Hubo un error al intentar registrar el equipo" + e.Message, "Error: ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally { cn.Conexion(); }
+
+        }
+        public void eliminarequipo(int id_equipo)
+        {
+            using (OdbcConnection connection = cn.Conexion())
+            {
+                string query = "DELETE FROM tbl_equipos WHERE id_equipo = ?";
+                using (OdbcCommand cmd = new OdbcCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@ID_bodega", id_equipo);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        //logica de Usuarios pero de la tabla no del registro
+        public void guardarUsuarios(string nombre, string telefono, string correo, string direccion, string contacto)
+        {
+            OdbcConnection connection = cn.Conexion();
+            if (connection == null)
+            {
+                MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                string query_guardar_usuario = "INSERT INTO tbl_usuarios (nombre, telefono, correo, direccion, contacto) VALUES (?, ?, ?, ?, ?)";
+                OdbcCommand cmd = new OdbcCommand(query_guardar_usuario, connection);
+                cmd.Parameters.AddWithValue("@nombre", nombre);
+                cmd.Parameters.AddWithValue("@telefono", telefono);
+                cmd.Parameters.AddWithValue("@correo", correo);
+                cmd.Parameters.AddWithValue("@direccion", direccion);
+                cmd.Parameters.AddWithValue("@contacto", contacto);
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Usuario guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hubo un error al intentar registrar el usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+        public DataTable obtenerUsuarios()
+        {
+            DataTable dt = new DataTable();
+
+            using (OdbcConnection connection = cn.Conexion())
+            {
+                string query = "SELECT id_usuario, nombre, telefono, correo, direccion, contacto FROM tbl_usuarios";
+                using (OdbcDataAdapter da = new OdbcDataAdapter(query, connection))
+                {
+                    da.Fill(dt);
+                }
+            }
+
+            return dt;
+        }
+        public void editar_usuario(int id_usuario, string nombre, string telefono, string correo, string direccion, string contacto)
+        {
+            OdbcConnection connection = cn.Conexion();
+            if (connection == null)
+            {
+                MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                string query_editar_usuario = @"UPDATE tbl_usuarios 
+                                        SET nombre = ?, telefono = ?, correo = ?, direccion = ?, contacto = ?
+                                        WHERE id_usuario = ?";
+                OdbcCommand cmd = new OdbcCommand(query_editar_usuario, connection);
+                cmd.Parameters.AddWithValue("@nombre", nombre);
+                cmd.Parameters.AddWithValue("@telefono", telefono);
+                cmd.Parameters.AddWithValue("@correo", correo);
+                cmd.Parameters.AddWithValue("@direccion", direccion);
+                cmd.Parameters.AddWithValue("@contacto", contacto);
+                cmd.Parameters.AddWithValue("@id_usuario", id_usuario);
+
+                int filas = cmd.ExecuteNonQuery();
+                if (filas > 0)
+                {
+                    MessageBox.Show("Usuario actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el usuario con el ID especificado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Hubo un error al intentar actualizar el usuario: " + e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+        public void eliminar_usuario(int id_usuario)
+        {
+            using (OdbcConnection connection = cn.Conexion())
+            {
+                string query = "DELETE FROM tbl_usuarios WHERE id_usuario = ?";
+                using (OdbcCommand cmd = new OdbcCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@id_usuario", id_usuario);
+                    int filas = cmd.ExecuteNonQuery();
+
+                    if (filas > 0)
+                    {
+                        MessageBox.Show("Usuario eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró el usuario con el ID especificado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+        }
+
     }
 }

@@ -39,6 +39,7 @@ namespace CapaVista
             {
                 capaControlador_movimiento.guardar_movimientoEmpleado(txt_Nombre.Text, txt_Apellido.Text, txt_roles.Text, txt_area.Text, txt_tipoMovimiento.Text);
                 MessageBox.Show("Se registro el movimiento correctamente");
+                LimpiarCampos();
             }
             catch(Exception ex)
             {
@@ -65,7 +66,9 @@ namespace CapaVista
                     txt_tipoMovimiento.Text
 
                 );
+                MessageBox.Show("Empleado editado correctamente");
                 CargarEmpleados();
+                LimpiarCampos();
             }
             catch(Exception ex)
             {

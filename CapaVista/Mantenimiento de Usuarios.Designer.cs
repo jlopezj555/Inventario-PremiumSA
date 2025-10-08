@@ -51,7 +51,8 @@ namespace CapaVista
             this.btn_actualizarusuario = new System.Windows.Forms.Button();
             this.btn_guardarregistrousuario = new System.Windows.Forms.Button();
             this.btn_modregistrousuario = new System.Windows.Forms.Button();
-            this.btn_registrousuario = new System.Windows.Forms.Button();
+            this.txt_idUsuario = new System.Windows.Forms.TextBox();
+            this.lbl_idUsuario = new System.Windows.Forms.Label();
             this.panel_mantenimientou.SuspendLayout();
             this.panel_menumantenimientou.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_usuarios)).BeginInit();
@@ -64,18 +65,20 @@ namespace CapaVista
             this.panel_mantenimientou.Controls.Add(this.salir_usuario);
             this.panel_mantenimientou.Controls.Add(this.lbl_mantenimientousuarios);
             this.panel_mantenimientou.ForeColor = System.Drawing.SystemColors.Control;
-            this.panel_mantenimientou.Location = new System.Drawing.Point(49, 12);
+            this.panel_mantenimientou.Location = new System.Drawing.Point(74, 18);
+            this.panel_mantenimientou.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel_mantenimientou.Name = "panel_mantenimientou";
-            this.panel_mantenimientou.Size = new System.Drawing.Size(807, 74);
+            this.panel_mantenimientou.Size = new System.Drawing.Size(1210, 113);
             this.panel_mantenimientou.TabIndex = 0;
             // 
             // salir_usuario
             // 
             this.salir_usuario.ForeColor = System.Drawing.SystemColors.ControlText;
             this.salir_usuario.Image = global::CapaVista.Properties.Resources.salir_registro;
-            this.salir_usuario.Location = new System.Drawing.Point(3, 3);
+            this.salir_usuario.Location = new System.Drawing.Point(4, 5);
+            this.salir_usuario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.salir_usuario.Name = "salir_usuario";
-            this.salir_usuario.Size = new System.Drawing.Size(71, 63);
+            this.salir_usuario.Size = new System.Drawing.Size(106, 97);
             this.salir_usuario.TabIndex = 15;
             this.salir_usuario.UseVisualStyleBackColor = true;
             this.salir_usuario.Click += new System.EventHandler(this.salir_usuario_Click);
@@ -85,16 +88,17 @@ namespace CapaVista
             this.lbl_mantenimientousuarios.AutoSize = true;
             this.lbl_mantenimientousuarios.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_mantenimientousuarios.ForeColor = System.Drawing.Color.White;
-            this.lbl_mantenimientousuarios.Location = new System.Drawing.Point(196, 16);
-            this.lbl_mantenimientousuarios.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_mantenimientousuarios.Location = new System.Drawing.Point(294, 25);
             this.lbl_mantenimientousuarios.Name = "lbl_mantenimientousuarios";
-            this.lbl_mantenimientousuarios.Size = new System.Drawing.Size(445, 32);
+            this.lbl_mantenimientousuarios.Size = new System.Drawing.Size(661, 46);
             this.lbl_mantenimientousuarios.TabIndex = 2;
             this.lbl_mantenimientousuarios.Text = "MANTENIMIENTO DE USUARIOS";
             // 
             // panel_menumantenimientou
             // 
             this.panel_menumantenimientou.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_menumantenimientou.Controls.Add(this.lbl_idUsuario);
+            this.panel_menumantenimientou.Controls.Add(this.txt_idUsuario);
             this.panel_menumantenimientou.Controls.Add(this.txt_Contacto);
             this.panel_menumantenimientou.Controls.Add(this.lbl_contacto);
             this.panel_menumantenimientou.Controls.Add(this.txt_direccionUsuario);
@@ -108,17 +112,17 @@ namespace CapaVista
             this.panel_menumantenimientou.Controls.Add(this.lbl_nombreusuario);
             this.panel_menumantenimientou.Controls.Add(this.panel1);
             this.panel_menumantenimientou.ForeColor = System.Drawing.SystemColors.Control;
-            this.panel_menumantenimientou.Location = new System.Drawing.Point(49, 83);
+            this.panel_menumantenimientou.Location = new System.Drawing.Point(74, 128);
+            this.panel_menumantenimientou.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel_menumantenimientou.Name = "panel_menumantenimientou";
-            this.panel_menumantenimientou.Size = new System.Drawing.Size(807, 406);
+            this.panel_menumantenimientou.Size = new System.Drawing.Size(1210, 646);
             this.panel_menumantenimientou.TabIndex = 1;
             // 
             // txt_Contacto
             // 
-            this.txt_Contacto.Location = new System.Drawing.Point(146, 369);
-            this.txt_Contacto.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_Contacto.Location = new System.Drawing.Point(219, 568);
             this.txt_Contacto.Name = "txt_Contacto";
-            this.txt_Contacto.Size = new System.Drawing.Size(185, 20);
+            this.txt_Contacto.Size = new System.Drawing.Size(276, 26);
             this.txt_Contacto.TabIndex = 14;
             // 
             // lbl_contacto
@@ -126,19 +130,17 @@ namespace CapaVista
             this.lbl_contacto.AutoSize = true;
             this.lbl_contacto.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_contacto.ForeColor = System.Drawing.Color.White;
-            this.lbl_contacto.Location = new System.Drawing.Point(49, 365);
-            this.lbl_contacto.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_contacto.Location = new System.Drawing.Point(74, 562);
             this.lbl_contacto.Name = "lbl_contacto";
-            this.lbl_contacto.Size = new System.Drawing.Size(93, 22);
+            this.lbl_contacto.Size = new System.Drawing.Size(140, 32);
             this.lbl_contacto.TabIndex = 13;
             this.lbl_contacto.Text = "Contacto";
             // 
             // txt_direccionUsuario
             // 
-            this.txt_direccionUsuario.Location = new System.Drawing.Point(146, 321);
-            this.txt_direccionUsuario.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_direccionUsuario.Location = new System.Drawing.Point(219, 494);
             this.txt_direccionUsuario.Name = "txt_direccionUsuario";
-            this.txt_direccionUsuario.Size = new System.Drawing.Size(185, 20);
+            this.txt_direccionUsuario.Size = new System.Drawing.Size(276, 26);
             this.txt_direccionUsuario.TabIndex = 12;
             // 
             // lbl_direccion
@@ -146,19 +148,17 @@ namespace CapaVista
             this.lbl_direccion.AutoSize = true;
             this.lbl_direccion.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_direccion.ForeColor = System.Drawing.Color.White;
-            this.lbl_direccion.Location = new System.Drawing.Point(45, 317);
-            this.lbl_direccion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_direccion.Location = new System.Drawing.Point(68, 488);
             this.lbl_direccion.Name = "lbl_direccion";
-            this.lbl_direccion.Size = new System.Drawing.Size(97, 22);
+            this.lbl_direccion.Size = new System.Drawing.Size(148, 32);
             this.lbl_direccion.TabIndex = 11;
             this.lbl_direccion.Text = "Dirección";
             // 
             // txt_correoUsuario
             // 
-            this.txt_correoUsuario.Location = new System.Drawing.Point(146, 274);
-            this.txt_correoUsuario.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_correoUsuario.Location = new System.Drawing.Point(219, 422);
             this.txt_correoUsuario.Name = "txt_correoUsuario";
-            this.txt_correoUsuario.Size = new System.Drawing.Size(185, 20);
+            this.txt_correoUsuario.Size = new System.Drawing.Size(276, 26);
             this.txt_correoUsuario.TabIndex = 10;
             // 
             // lbl_correo
@@ -166,19 +166,17 @@ namespace CapaVista
             this.lbl_correo.AutoSize = true;
             this.lbl_correo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_correo.ForeColor = System.Drawing.Color.White;
-            this.lbl_correo.Location = new System.Drawing.Point(69, 270);
-            this.lbl_correo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_correo.Location = new System.Drawing.Point(104, 415);
             this.lbl_correo.Name = "lbl_correo";
-            this.lbl_correo.Size = new System.Drawing.Size(73, 22);
+            this.lbl_correo.Size = new System.Drawing.Size(110, 32);
             this.lbl_correo.TabIndex = 9;
             this.lbl_correo.Text = "Correo";
             // 
             // txt_telefonoUsuario
             // 
-            this.txt_telefonoUsuario.Location = new System.Drawing.Point(146, 226);
-            this.txt_telefonoUsuario.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_telefonoUsuario.Location = new System.Drawing.Point(219, 348);
             this.txt_telefonoUsuario.Name = "txt_telefonoUsuario";
-            this.txt_telefonoUsuario.Size = new System.Drawing.Size(185, 20);
+            this.txt_telefonoUsuario.Size = new System.Drawing.Size(276, 26);
             this.txt_telefonoUsuario.TabIndex = 8;
             // 
             // lbl_telefono
@@ -186,27 +184,28 @@ namespace CapaVista
             this.lbl_telefono.AutoSize = true;
             this.lbl_telefono.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_telefono.ForeColor = System.Drawing.Color.White;
-            this.lbl_telefono.Location = new System.Drawing.Point(54, 222);
-            this.lbl_telefono.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_telefono.Location = new System.Drawing.Point(81, 342);
             this.lbl_telefono.Name = "lbl_telefono";
-            this.lbl_telefono.Size = new System.Drawing.Size(88, 22);
+            this.lbl_telefono.Size = new System.Drawing.Size(134, 32);
             this.lbl_telefono.TabIndex = 7;
             this.lbl_telefono.Text = "Teléfono";
             // 
             // dgv_usuarios
             // 
             this.dgv_usuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_usuarios.Location = new System.Drawing.Point(390, 163);
+            this.dgv_usuarios.Location = new System.Drawing.Point(585, 251);
+            this.dgv_usuarios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgv_usuarios.Name = "dgv_usuarios";
-            this.dgv_usuarios.Size = new System.Drawing.Size(389, 226);
+            this.dgv_usuarios.RowHeadersWidth = 62;
+            this.dgv_usuarios.Size = new System.Drawing.Size(584, 348);
             this.dgv_usuarios.TabIndex = 6;
+            this.dgv_usuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_usuarios_CellClick);
             // 
             // txt_nombreUsuario
             // 
-            this.txt_nombreUsuario.Location = new System.Drawing.Point(146, 177);
-            this.txt_nombreUsuario.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_nombreUsuario.Location = new System.Drawing.Point(218, 288);
             this.txt_nombreUsuario.Name = "txt_nombreUsuario";
-            this.txt_nombreUsuario.Size = new System.Drawing.Size(185, 20);
+            this.txt_nombreUsuario.Size = new System.Drawing.Size(276, 26);
             this.txt_nombreUsuario.TabIndex = 5;
             // 
             // lbl_nombreusuario
@@ -214,10 +213,9 @@ namespace CapaVista
             this.lbl_nombreusuario.AutoSize = true;
             this.lbl_nombreusuario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_nombreusuario.ForeColor = System.Drawing.Color.White;
-            this.lbl_nombreusuario.Location = new System.Drawing.Point(59, 173);
-            this.lbl_nombreusuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_nombreusuario.Location = new System.Drawing.Point(88, 281);
             this.lbl_nombreusuario.Name = "lbl_nombreusuario";
-            this.lbl_nombreusuario.Size = new System.Drawing.Size(83, 22);
+            this.lbl_nombreusuario.Size = new System.Drawing.Size(124, 32);
             this.lbl_nombreusuario.TabIndex = 4;
             this.lbl_nombreusuario.Text = "Nombre";
             // 
@@ -230,20 +228,21 @@ namespace CapaVista
             this.panel1.Controls.Add(this.btn_actualizarusuario);
             this.panel1.Controls.Add(this.btn_guardarregistrousuario);
             this.panel1.Controls.Add(this.btn_modregistrousuario);
-            this.panel1.Controls.Add(this.btn_registrousuario);
             this.panel1.ForeColor = System.Drawing.SystemColors.Control;
-            this.panel1.Location = new System.Drawing.Point(45, 18);
+            this.panel1.Location = new System.Drawing.Point(164, 33);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(734, 120);
+            this.panel1.Size = new System.Drawing.Size(966, 184);
             this.panel1.TabIndex = 2;
             // 
             // btn_reporteusuario
             // 
             this.btn_reporteusuario.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_reporteusuario.Image = global::CapaVista.Properties.Resources.reporte_registro;
-            this.btn_reporteusuario.Location = new System.Drawing.Point(638, 3);
+            this.btn_reporteusuario.Location = new System.Drawing.Point(811, 5);
+            this.btn_reporteusuario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_reporteusuario.Name = "btn_reporteusuario";
-            this.btn_reporteusuario.Size = new System.Drawing.Size(93, 107);
+            this.btn_reporteusuario.Size = new System.Drawing.Size(140, 165);
             this.btn_reporteusuario.TabIndex = 9;
             this.btn_reporteusuario.UseVisualStyleBackColor = true;
             // 
@@ -251,9 +250,10 @@ namespace CapaVista
             // 
             this.btn_ayudausuario.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_ayudausuario.Image = global::CapaVista.Properties.Resources.ayuda_registro;
-            this.btn_ayudausuario.Location = new System.Drawing.Point(539, 3);
+            this.btn_ayudausuario.Location = new System.Drawing.Point(663, 5);
+            this.btn_ayudausuario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_ayudausuario.Name = "btn_ayudausuario";
-            this.btn_ayudausuario.Size = new System.Drawing.Size(93, 107);
+            this.btn_ayudausuario.Size = new System.Drawing.Size(140, 165);
             this.btn_ayudausuario.TabIndex = 8;
             this.btn_ayudausuario.UseVisualStyleBackColor = true;
             // 
@@ -261,60 +261,77 @@ namespace CapaVista
             // 
             this.btn_eliminarusuario.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_eliminarusuario.Image = global::CapaVista.Properties.Resources.eliminar_usuario;
-            this.btn_eliminarusuario.Location = new System.Drawing.Point(426, 3);
+            this.btn_eliminarusuario.Location = new System.Drawing.Point(495, 5);
+            this.btn_eliminarusuario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_eliminarusuario.Name = "btn_eliminarusuario";
-            this.btn_eliminarusuario.Size = new System.Drawing.Size(107, 107);
+            this.btn_eliminarusuario.Size = new System.Drawing.Size(160, 165);
             this.btn_eliminarusuario.TabIndex = 7;
             this.btn_eliminarusuario.UseVisualStyleBackColor = true;
+            this.btn_eliminarusuario.Click += new System.EventHandler(this.btn_eliminarusuario_Click);
             // 
             // btn_actualizarusuario
             // 
             this.btn_actualizarusuario.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_actualizarusuario.Image = global::CapaVista.Properties.Resources.actualizar_registro;
-            this.btn_actualizarusuario.Location = new System.Drawing.Point(315, 3);
+            this.btn_actualizarusuario.Location = new System.Drawing.Point(329, 5);
+            this.btn_actualizarusuario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_actualizarusuario.Name = "btn_actualizarusuario";
-            this.btn_actualizarusuario.Size = new System.Drawing.Size(105, 107);
+            this.btn_actualizarusuario.Size = new System.Drawing.Size(158, 165);
             this.btn_actualizarusuario.TabIndex = 6;
             this.btn_actualizarusuario.UseVisualStyleBackColor = true;
+            this.btn_actualizarusuario.Click += new System.EventHandler(this.btn_actualizarusuario_Click);
             // 
             // btn_guardarregistrousuario
             // 
             this.btn_guardarregistrousuario.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_guardarregistrousuario.Image = global::CapaVista.Properties.Resources.guardar_registro1;
-            this.btn_guardarregistrousuario.Location = new System.Drawing.Point(216, 3);
+            this.btn_guardarregistrousuario.Location = new System.Drawing.Point(11, 5);
+            this.btn_guardarregistrousuario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_guardarregistrousuario.Name = "btn_guardarregistrousuario";
-            this.btn_guardarregistrousuario.Size = new System.Drawing.Size(93, 107);
+            this.btn_guardarregistrousuario.Size = new System.Drawing.Size(140, 165);
             this.btn_guardarregistrousuario.TabIndex = 5;
             this.btn_guardarregistrousuario.UseVisualStyleBackColor = true;
+            this.btn_guardarregistrousuario.Click += new System.EventHandler(this.btn_guardarregistrousuario_Click);
             // 
             // btn_modregistrousuario
             // 
             this.btn_modregistrousuario.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_modregistrousuario.Image = global::CapaVista.Properties.Resources.modificar_registro;
-            this.btn_modregistrousuario.Location = new System.Drawing.Point(102, 3);
+            this.btn_modregistrousuario.Location = new System.Drawing.Point(159, 5);
+            this.btn_modregistrousuario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_modregistrousuario.Name = "btn_modregistrousuario";
-            this.btn_modregistrousuario.Size = new System.Drawing.Size(108, 107);
+            this.btn_modregistrousuario.Size = new System.Drawing.Size(162, 165);
             this.btn_modregistrousuario.TabIndex = 4;
             this.btn_modregistrousuario.UseVisualStyleBackColor = true;
+            this.btn_modregistrousuario.Click += new System.EventHandler(this.btn_modregistrousuario_Click);
             // 
-            // btn_registrousuario
+            // txt_idUsuario
             // 
-            this.btn_registrousuario.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_registrousuario.Image = global::CapaVista.Properties.Resources.nuevo_registro;
-            this.btn_registrousuario.Location = new System.Drawing.Point(3, 3);
-            this.btn_registrousuario.Name = "btn_registrousuario";
-            this.btn_registrousuario.Size = new System.Drawing.Size(93, 107);
-            this.btn_registrousuario.TabIndex = 3;
-            this.btn_registrousuario.UseVisualStyleBackColor = true;
+            this.txt_idUsuario.Location = new System.Drawing.Point(291, 238);
+            this.txt_idUsuario.Name = "txt_idUsuario";
+            this.txt_idUsuario.Size = new System.Drawing.Size(204, 26);
+            this.txt_idUsuario.TabIndex = 15;
+            // 
+            // lbl_idUsuario
+            // 
+            this.lbl_idUsuario.AutoSize = true;
+            this.lbl_idUsuario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_idUsuario.ForeColor = System.Drawing.Color.White;
+            this.lbl_idUsuario.Location = new System.Drawing.Point(88, 232);
+            this.lbl_idUsuario.Name = "lbl_idUsuario";
+            this.lbl_idUsuario.Size = new System.Drawing.Size(197, 32);
+            this.lbl_idUsuario.TabIndex = 16;
+            this.lbl_idUsuario.Text = "Id de Usuario";
             // 
             // Mantenimiento_de_Usuarios
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(903, 512);
+            this.ClientSize = new System.Drawing.Size(1354, 788);
             this.Controls.Add(this.panel_menumantenimientou);
             this.Controls.Add(this.panel_mantenimientou);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Mantenimiento_de_Usuarios";
             this.Text = "Mantenimiento de Usuarios";
             this.panel_mantenimientou.ResumeLayout(false);
@@ -332,7 +349,6 @@ namespace CapaVista
         private System.Windows.Forms.Panel panel_mantenimientou;
         private System.Windows.Forms.Label lbl_mantenimientousuarios;
         private System.Windows.Forms.Panel panel_menumantenimientou;
-        private System.Windows.Forms.Button btn_registrousuario;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lbl_nombreusuario;
         private System.Windows.Forms.TextBox txt_Contacto;
@@ -352,5 +368,7 @@ namespace CapaVista
         private System.Windows.Forms.Button btn_guardarregistrousuario;
         private System.Windows.Forms.Button btn_modregistrousuario;
         private System.Windows.Forms.Button salir_usuario;
+        private System.Windows.Forms.Label lbl_idUsuario;
+        private System.Windows.Forms.TextBox txt_idUsuario;
     }
 }
