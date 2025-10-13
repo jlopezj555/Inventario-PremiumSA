@@ -11,13 +11,7 @@ namespace CapaVista
             InitializeComponent();
             nombreUsuario = usuario;
         }
-        private void btn_movimientoEmpleados_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Movimiento_de_empleados movimiento_De_Empleados = new Movimiento_de_empleados(nombreUsuario);
-            movimiento_De_Empleados.ShowDialog();
-            this.Close();
-        }
+        
 
         private void btn_mantenimientoequipos_Click(object sender, EventArgs e)
         {
@@ -55,6 +49,22 @@ namespace CapaVista
         {
             lbl_Usuariomenu.Text = nombreUsuario;
             lbl_Fechamenu.Text = DateTime.Now.ToString("dd/MM/yyyy");
+        }
+
+        private void btn_categorias_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Categorias categorias = new Categorias(nombreUsuario);
+            categorias.ShowDialog();
+            this.Close();
+        }
+
+        private void btn_estado_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Estado_de_equipos estado_De_Equipos = new Estado_de_equipos(nombreUsuario);
+            estado_De_Equipos.ShowDialog();
+            this.Close();
         }
     }
 }

@@ -35,6 +35,8 @@ namespace CapaVista
             {
                 capaControlador_movimiento.guardar_movimientoBodega(txt_nombreBodega.Text, txt_ubicacionBodega.Text, txt_capacidadBodega.Text);
                 MessageBox.Show("Se registro el movimiento correctamente");
+                CargarBodegas();
+                LimpiarCampos();
             }
             catch (Exception ex)
             {
@@ -60,6 +62,7 @@ namespace CapaVista
                     txt_capacidadBodega.Text
                     );
                 CargarBodegas();
+                LimpiarCampos();
             }
             catch (Exception ex)
             {
@@ -91,6 +94,7 @@ namespace CapaVista
                     capaControlador_movimiento.eliminarBodega(idBodega);
                     MessageBox.Show("Bodega eliminada correctamente.");
                     CargarBodegas(); // refrescar DataGridView
+                    LimpiarCampos();
                 }
                 catch (Exception ex)
                 {
@@ -115,6 +119,13 @@ namespace CapaVista
                 txt_ubicacionBodega.Text = fila.Cells["ubicacion_bodega"].Value.ToString();
                 txt_capacidadBodega.Text = fila.Cells["capacidad_bodega"].Value.ToString();
             }
+        }
+        private void LimpiarCampos()
+        {
+            txt_idBodega.Clear();
+            txt_nombreBodega.Clear();
+            txt_ubicacionBodega.Clear();
+            txt_capacidadBodega.Clear();
         }
     }
 }

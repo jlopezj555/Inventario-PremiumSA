@@ -49,6 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Categorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Categorias.Designer.cs">
+      <DependentUpon>Categorias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Estado de equipos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Estado de equipos.Designer.cs">
+      <DependentUpon>Estado de equipos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inicio de Sesión.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,12 +91,6 @@
     <Compile Include="Movimiento de Bodegas.Designer.cs">
       <DependentUpon>Movimiento de Bodegas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Movimiento de empleados.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Movimiento de empleados.Designer.cs">
-      <DependentUpon>Movimiento de empleados.cs</DependentUpon>
-    </Compile>
     <Compile Include="Movimientos de Inventario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +111,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Categorias.resx">
+      <DependentUpon>Categorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Estado de equipos.resx">
+      <DependentUpon>Estado de equipos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inicio de Sesión.resx">
       <DependentUpon>Inicio de Sesión.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,9 +131,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Movimiento de Bodegas.resx">
       <DependentUpon>Movimiento de Bodegas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Movimiento de empleados.resx">
-      <DependentUpon>Movimiento de empleados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Movimientos de Inventario.resx">
       <DependentUpon>Movimientos de Inventario.cs</DependentUpon>
@@ -181,6 +190,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\salir_registro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\categorizacion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\instrumentos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\instrumentos %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

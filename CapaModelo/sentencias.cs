@@ -19,32 +19,50 @@ namespace CapaModelo
         private conexion cn = new conexion();
 
         //Logica para registrar un nuevo usuario
-        public void registrarUsuario(string nombre_usuario, string contraseña, string correo, string telefono)
-        {
-            OdbcConnection connection = cn.Conexion();
-            if (connection == null)
+        public void registrarUsuario(
+            string nombre_completo,
+            string usuario_login,
+            string contraseña,
+            string correo,
+            string telefono,
+            string puesto = null,
+            string departamento = null)
             {
+                OdbcConnection connection = cn.Conexion();
+                if (connection == null)
+                {
                 MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }
-            try
-            {
-                string query_registrarUsuario = "INSERT INTO tbl_usuario (nombre_usuario, contraseña, correo, telefono) VALUES (?, ?, ?, ?)";
-                OdbcCommand cmd = new OdbcCommand(query_registrarUsuario, connection);
-                cmd.Parameters.AddWithValue("@nombre_usuario", nombre_usuario);
-                cmd.Parameters.AddWithValue("@contraseña", contraseña);
-                cmd.Parameters.AddWithValue("@correo", correo);
-                cmd.Parameters.AddWithValue("@telefono", telefono);
-                cmd.ExecuteNonQuery();
+                }
+                try
+                {
+                    string query_registrarUsuario = @"INSERT INTO Usuarios 
+                    (nombre_completo, usuario_login, contraseña, puesto, departamento, telefono, correo) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hubo un error al intentar registrar el usuario" + ex.Message, "Error: ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            { cn.Conexion(); }
+                    OdbcCommand cmd = new OdbcCommand(query_registrarUsuario, connection);
+                    cmd.Parameters.AddWithValue("@nombre_completo", nombre_completo);
+                    cmd.Parameters.AddWithValue("@usuario_login", usuario_login);
+                    cmd.Parameters.AddWithValue("@contraseña", contraseña); 
+                    cmd.Parameters.AddWithValue("@puesto", puesto ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@departamento", departamento ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@telefono", telefono ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@correo", correo);
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Usuario registrado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Hubo un error al intentar registrar el usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    connection.Close();
+                }
         }
+
         //Logica para iniciar sesión
         public bool iniciarSesion(string nombre_usuario, string contraseña)
         {
@@ -56,9 +74,9 @@ namespace CapaModelo
             }
             try
             {
-                string query_iniciarSesion = "SELECT COUNT(*) FROM tbl_usuario WHERE nombre_usuario = ? AND contraseña = ?";
+                string query_iniciarSesion = "SELECT COUNT(*) FROM Usuarios WHERE usuario_login = ? AND contraseña = ?";
                 OdbcCommand cmd = new OdbcCommand(query_iniciarSesion, connection);
-                cmd.Parameters.AddWithValue("nombre_usuario", nombre_usuario);
+                cmd.Parameters.AddWithValue("usuario_login", nombre_usuario);
                 cmd.Parameters.AddWithValue("contraseña", contraseña);
 
                 int resultado = Convert.ToInt32(cmd.ExecuteScalar());
@@ -70,96 +88,6 @@ namespace CapaModelo
                 return false;
             }
         }
-        //CRUD movimiento de empleados
-        public void guardar_Movimientoempleado(string nombre_Empleado, string apellido_Empleado, string area, string rol, string tipomovimiento)
-        {
-            OdbcConnection connection = cn.Conexion();
-            if (connection == null)
-            {
-                MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            try
-            {
-                string query_guardar_movimientoEmpleado = "INSERT INTO tbl_empleado (nombre_empleado, apellido_empleado, rol_empleado, area, tipo_movimiento) VALUES (?, ?, ?, ?, ?)";
-                OdbcCommand cmd = new OdbcCommand(query_guardar_movimientoEmpleado, connection);
-                cmd.Parameters.AddWithValue("@nombre_empleado", nombre_Empleado);
-                cmd.Parameters.AddWithValue("@apellido_empleado", apellido_Empleado);
-                cmd.Parameters.AddWithValue("@rol_empleado", rol);
-                cmd.Parameters.AddWithValue("@area", area);
-                cmd.Parameters.AddWithValue("@tipo_movimiento", tipomovimiento);
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hubo un error al intentar registrar el movimiento" + ex.Message, "Error: ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally { cn.Conexion(); }
-        }
-        public DataTable obtenerEmpleados()
-        {
-            DataTable dt = new DataTable();
-            using (OdbcConnection connection = cn.Conexion())
-            {
-                string query = "SELECT ID_empleado, nombre_empleado, apellido_empleado, rol_empleado, area, tipo_movimiento FROM tbl_empleado";
-                using (OdbcDataAdapter da = new OdbcDataAdapter(query, connection))
-                {
-                    da.Fill(dt);
-                }
-            }
-
-            return dt;
-        }
-        public void editar_Movimientoempleaod(int idEmpleado, string nombre, string apellido, string rol, string area, string tipoMovimiento)
-        {
-            OdbcConnection connection = cn.Conexion();
-            if (connection == null)
-            {
-                MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            try
-            {
-                string query_editar_MovimientoEmpleado = @"UPDATE tbl_empleado 
-                             SET nombre_empleado = ?, apellido_empleado = ?, rol_empleado = ?, 
-                                 area = ?, tipo_movimiento = ?
-                             WHERE ID_empleado = ?";
-                OdbcCommand cmd = new OdbcCommand(query_editar_MovimientoEmpleado, connection);
-                cmd.Parameters.AddWithValue("nombre_empleado", nombre);
-                cmd.Parameters.AddWithValue("apellido_empleado", apellido);
-                cmd.Parameters.AddWithValue("rol_empleado", rol);
-                cmd.Parameters.AddWithValue("area", area);
-                cmd.Parameters.AddWithValue("tipo_movimiento", tipoMovimiento);
-                cmd.Parameters.AddWithValue("ID_empleado", idEmpleado);
-
-                int filas = cmd.ExecuteNonQuery();
-                if (filas > 0)
-                {
-                    MessageBox.Show("Empleado actualizado correctamente");
-                }
-                else
-                {
-                    MessageBox.Show("No se encontró el empleado con el ID especificado");
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Hubo un error al intentar registrar el movimiento" + e.Message, "Error: ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        public void eliminarEmpleado(int idEmpleado)
-        {
-            using (OdbcConnection connection = cn.Conexion())
-            {
-                string query = "DELETE FROM tbl_empleado WHERE ID_empleado = ?";
-                using (OdbcCommand cmd = new OdbcCommand(query, connection))
-                {
-                    cmd.Parameters.AddWithValue("@ID_empleado", idEmpleado);
-                    cmd.ExecuteNonQuery();
-                }
-            }
-        }
-
         //CRUD movimiento de bodegas
         public void guardar_Movimientobodega(string nombre_bodega, string ubicacion_bodega, string capacidad_bodega)
         {
@@ -171,7 +99,7 @@ namespace CapaModelo
             }
             try
             {
-                string query_guardar_movimientoBodega = "INSERT INTO tbl_bodega (nombre_bodega, ubicacion_bodega, capacidad_bodega) VALUES (?, ?, ?)";
+                string query_guardar_movimientoBodega = "INSERT INTO Bodegas (nombre_bodega, ubicacion_bodega, capacidad_bodega) VALUES (?, ?, ?)";
                 OdbcCommand cmd = new OdbcCommand(query_guardar_movimientoBodega, connection);
                 cmd.Parameters.AddWithValue("@nombre_bodega", nombre_bodega);
                 cmd.Parameters.AddWithValue("@ubicacion_bodega", ubicacion_bodega);
@@ -190,7 +118,7 @@ namespace CapaModelo
             DataTable dt = new DataTable();
             using (OdbcConnection connection = cn.Conexion())
             {
-                string query = "SELECT ID_bodega, nombre_bodega, ubicacion_bodega, capacidad_bodega FROM tbl_bodega";
+                string query = "SELECT id_bodega, nombre_bodega, ubicacion_bodega, capacidad_bodega FROM Bodegas";
                 using (OdbcDataAdapter da = new OdbcDataAdapter(query, connection))
                 {
                     da.Fill(dt);
@@ -210,14 +138,14 @@ namespace CapaModelo
             }
             try
             {
-                string query_editar_MovimientoEmpleado = @"UPDATE tbl_bodega 
+                string query_editar_MovimientoEmpleado = @"UPDATE Bodegas 
                              SET nombre_bodega = ?, ubicacion_bodega = ?, capacidad_bodega = ?
-                             WHERE ID_bodega = ?";
+                             WHERE id_bodega = ?";
                 OdbcCommand cmd2 = new OdbcCommand(query_editar_MovimientoEmpleado, connection);
                 cmd2.Parameters.AddWithValue("nombre_bodega", nombre_bodega);
                 cmd2.Parameters.AddWithValue("ubicacion_bodega", ubicacion_bodega);
                 cmd2.Parameters.AddWithValue("capacidad_bodega", capacidad_bodega);
-                cmd2.Parameters.AddWithValue("ID_bodega", idBodega);
+                cmd2.Parameters.AddWithValue("id_bodega", idBodega);
 
                 int filas = cmd2.ExecuteNonQuery();
                 if (filas > 0)
@@ -239,16 +167,29 @@ namespace CapaModelo
         {
             using (OdbcConnection connection = cn.Conexion())
             {
-                string query = "DELETE FROM tbl_bodega WHERE ID_bodega = ?";
+                string query = "DELETE FROM Bodegas WHERE id_bodega = ?";
                 using (OdbcCommand cmd = new OdbcCommand(query, connection))
                 {
-                    cmd.Parameters.AddWithValue("@ID_bodega", idBodega);
+                    cmd.Parameters.AddWithValue("@id_bodega", idBodega);
                     cmd.ExecuteNonQuery();
                 }
             }
         }
         //Logica de movimiento de equipos
-        public void guardarequipos(string nombre, string marca, string categoria, int stock, string proveedor, string descripcion, string modelo, float precio_unitario, DateTime fecha_garantia)
+        public void guardarEquipo(
+            string codigoInventario,
+            string nombreEquipo,
+            string marca,
+            string modelo,
+            string numeroSerie,
+            string descripcion,
+            int idCategoria,
+            int idEstado,
+            int idBodega,
+            DateTime fechaIngreso,
+            DateTime fechaGarantia,
+            string observaciones
+        )
         {
             OdbcConnection connection = cn.Conexion();
             if (connection == null)
@@ -256,33 +197,68 @@ namespace CapaModelo
                 MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             try
             {
-                string query_guardar_equipo = "INSERT INTO tbl_equipos (nombre, marca, categoria, stock, proveedor, descripcion, modelo, precio_unitario, fecha_garantia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                string query_guardar_equipo = @"INSERT INTO Equipos 
+            (codigo_inventario, nombre_equipo, marca, modelo, numero_serie, descripcion, 
+             id_categoria, id_estado, id_bodega, fecha_ingreso, fecha_garantia, observaciones)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
                 OdbcCommand cmd = new OdbcCommand(query_guardar_equipo, connection);
-                cmd.Parameters.AddWithValue("@nombre", nombre);
+                cmd.Parameters.AddWithValue("@codigo_inventario", codigoInventario);
+                cmd.Parameters.AddWithValue("@nombre_equipo", nombreEquipo);
                 cmd.Parameters.AddWithValue("@marca", marca);
-                cmd.Parameters.AddWithValue("@categoria", categoria);
-                cmd.Parameters.AddWithValue("@stock", stock);
-                cmd.Parameters.AddWithValue("@proveedor", proveedor);
-                cmd.Parameters.AddWithValue("@descripcion", descripcion);
                 cmd.Parameters.AddWithValue("@modelo", modelo);
-                cmd.Parameters.AddWithValue("@precio_unitario", precio_unitario);
-                cmd.Parameters.AddWithValue("fecha_garantia", fecha_garantia);
+                cmd.Parameters.AddWithValue("@numero_serie", numeroSerie);
+                cmd.Parameters.AddWithValue("@descripcion", descripcion);
+                cmd.Parameters.AddWithValue("@id_categoria", idCategoria);
+                cmd.Parameters.AddWithValue("@id_estado", idEstado);
+                cmd.Parameters.AddWithValue("@id_bodega", idBodega);
+                cmd.Parameters.AddWithValue("@fecha_ingreso", fechaIngreso);
+                cmd.Parameters.AddWithValue("@fecha_garantia", fechaGarantia);
+                cmd.Parameters.AddWithValue("@observaciones", observaciones);
+
                 cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Equipo guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hubo un error al intentar registrar el equipo" + ex.Message, "Error: ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hubo un error al intentar registrar el equipo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally { cn.Conexion(); }
+            finally
+            {
+                connection.Close();
+            }
         }
+
         public DataTable obtenerEquipos()
         {
             DataTable dt = new DataTable();
             using (OdbcConnection connection = cn.Conexion())
             {
-                string query = "SELECT id_equipo, nombre, marca, categoria, stock, proveedor, descripcion, modelo, precio_unitario, fecha_garantia FROM tbl_equipos";
+                string query = @"
+            SELECT 
+                e.id_equipo,
+                e.codigo_inventario,
+                e.nombre_equipo,
+                e.marca,
+                e.modelo,
+                e.numero_serie,
+                e.descripcion,
+                c.nombre_categoria AS categoria,
+                s.nombre_estado AS estado,
+                b.nombre_bodega AS bodega,
+                e.fecha_ingreso,
+                e.fecha_garantia,
+                e.observaciones
+            FROM Equipos e
+            LEFT JOIN Categorias c ON e.id_categoria = c.id_categoria
+            LEFT JOIN Estados_Equipos s ON e.id_estado = s.id_estado
+            LEFT JOIN Bodegas b ON e.id_bodega = b.id_bodega
+            ORDER BY e.id_equipo";
+
                 using (OdbcDataAdapter da = new OdbcDataAdapter(query, connection))
                 {
                     da.Fill(dt);
@@ -291,7 +267,21 @@ namespace CapaModelo
 
             return dt;
         }
-        public void editar_equipos(int id_equipo, string nombre, string marca, string categoria, int stock, string proveedor, string descripcion, string modelo, float precio_unitario, DateTime fecha_garantia)
+        public void editar_equipos(
+            int id_equipo,
+            string codigoInventario,
+            string nombre,
+            string marca,
+            string modelo,
+            string numeroSerie,
+            string descripcion,
+            int idCategoria,
+            int idEstado,
+            int idBodega,
+            DateTime fechaIngreso,
+            DateTime fechaGarantia,
+            string observaciones
+        )
         {
             OdbcConnection connection = cn.Conexion();
             if (connection == null)
@@ -299,51 +289,203 @@ namespace CapaModelo
                 MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             try
             {
-                string query_editar_equipo = @"UPDATE tbl_equipos 
-                             SET nombre = ?, marca = ?, categoria = ?, stock = ?, proveedor = ?, descripcion = ?, modelo = ?,
-                             precio_unitario = ?, fecha_garantia = ?
-                             WHERE id_equipo = ?";
-                OdbcCommand cmd = new OdbcCommand(query_editar_equipo, connection);
-                cmd.Parameters.AddWithValue("@nombre", nombre);
+                string query_editar = @"UPDATE Equipos 
+                                SET codigo_inventario = ?,
+                                    nombre_equipo = ?,
+                                    marca = ?,
+                                    modelo = ?,
+                                    numero_serie = ?,
+                                    descripcion = ?,
+                                    id_categoria = ?,
+                                    id_estado = ?,
+                                    id_bodega = ?,
+                                    fecha_ingreso = ?,
+                                    fecha_garantia = ?,
+                                    observaciones = ?
+                                WHERE id_equipo = ?";
+
+                OdbcCommand cmd = new OdbcCommand(query_editar, connection);
+                cmd.Parameters.AddWithValue("@codigo_inventario", codigoInventario);
+                cmd.Parameters.AddWithValue("@nombre_equipo", nombre);
                 cmd.Parameters.AddWithValue("@marca", marca);
-                cmd.Parameters.AddWithValue("@categoria", categoria);
-                cmd.Parameters.AddWithValue("@stock", stock);
-                cmd.Parameters.AddWithValue("@proveedor", proveedor);
-                cmd.Parameters.AddWithValue("@descripcion", descripcion);
                 cmd.Parameters.AddWithValue("@modelo", modelo);
-                cmd.Parameters.AddWithValue("@precio_unitario", precio_unitario);
-                cmd.Parameters.AddWithValue("fecha_garantia", fecha_garantia);
-                cmd.Parameters.AddWithValue("id_equipo", id_equipo);
+                cmd.Parameters.AddWithValue("@numero_serie", numeroSerie);
+                cmd.Parameters.AddWithValue("@descripcion", descripcion);
+                cmd.Parameters.AddWithValue("@id_categoria", idCategoria);
+                cmd.Parameters.AddWithValue("@id_estado", idEstado);
+                cmd.Parameters.AddWithValue("@id_bodega", idBodega);
+                cmd.Parameters.AddWithValue("@fecha_ingreso", fechaIngreso);
+                cmd.Parameters.AddWithValue("@fecha_garantia", fechaGarantia);
+                cmd.Parameters.AddWithValue("@observaciones", observaciones);
+                cmd.Parameters.AddWithValue("@id_equipo", id_equipo);
+
+                int filas = cmd.ExecuteNonQuery();
+
+                if (filas > 0)
+                {
+                    MessageBox.Show("Equipo actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el equipo con el ID especificado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al editar el equipo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+        public void eliminar_equipo(int id_equipo)
+        {
+            OdbcConnection connection = cn.Conexion();
+            if (connection == null)
+            {
+                MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                string query = "DELETE FROM Equipos WHERE id_equipo = ?";
+                OdbcCommand cmd = new OdbcCommand(query, connection);
+                cmd.Parameters.AddWithValue("@id_equipo", id_equipo);
 
                 int filas = cmd.ExecuteNonQuery();
                 if (filas > 0)
                 {
-                    MessageBox.Show("Equipo actualizado correctamente");
+                    MessageBox.Show("Equipo eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("No se encontró el equipo con el ID especificado");
+                    MessageBox.Show("No se encontró el equipo con el ID especificado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                MessageBox.Show("Hubo un error al intentar registrar el equipo" + e.Message, "Error: ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al eliminar el equipo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally { cn.Conexion(); }
-
+            finally
+            {
+                connection.Close();
+            }
         }
-        public void eliminarequipo(int id_equipo)
+        //Logica combo box
+        public DataTable obtenerCategorias()
         {
+            DataTable dt = new DataTable();
             using (OdbcConnection connection = cn.Conexion())
             {
-                string query = "DELETE FROM tbl_equipos WHERE id_equipo = ?";
-                using (OdbcCommand cmd = new OdbcCommand(query, connection))
+                string query = "SELECT id_categoria, nombre_categoria FROM Categorias";
+                using (OdbcDataAdapter da = new OdbcDataAdapter(query, connection))
                 {
-                    cmd.Parameters.AddWithValue("@ID_bodega", id_equipo);
-                    cmd.ExecuteNonQuery();
+                    da.Fill(dt);
                 }
+            }
+
+            return dt;
+        }
+        public DataTable obtenerEstado()
+        {
+            DataTable dt = new DataTable();
+            using (OdbcConnection connection = cn.Conexion())
+            {
+                string query = "SELECT id_estado, nombre_estado FROM Estados_Equipos";
+                using (OdbcDataAdapter da = new OdbcDataAdapter(query, connection))
+                {
+                    da.Fill(dt);
+                }
+            }
+
+            return dt;
+        }
+        public DataTable obtenerBodega()
+        {
+            DataTable dt = new DataTable();
+            using (OdbcConnection connection = cn.Conexion())
+            {
+                string query = "SELECT id_bodega, nombre_bodega FROM Bodegas";
+                using (OdbcDataAdapter da = new OdbcDataAdapter(query, connection))
+                {
+                    da.Fill(dt);
+                }
+            }
+
+            return dt;
+        }
+        public void CargarCategorias(ComboBox combo)
+        {
+            try
+            {
+                using (OdbcConnection connection = cn.Conexion())
+                {
+                    string query = "SELECT id_categoria, nombre_categoria FROM Categorias";
+                    using (OdbcDataAdapter da = new OdbcDataAdapter(query, connection))
+                    {
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        combo.DataSource = dt;
+                        combo.DisplayMember = "nombre_categoria";  // lo que se muestra
+                        combo.ValueMember = "id_categoria";        // lo que se guarda
+                        combo.SelectedIndex = -1; // Ninguno seleccionado al inicio
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar categorías: " + ex.Message);
+            }
+        }
+        public void CargarEstados (ComboBox combo)
+        {
+            try
+            {
+                using (OdbcConnection connection = cn.Conexion())
+                {
+                    string query = "SELECT id_estado, nombre_estado FROM Estados_Equipos";
+                    using (OdbcDataAdapter da = new OdbcDataAdapter(query, connection))
+                    {
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        combo.DataSource = dt;
+                        combo.DisplayMember = "nombre_categoria";  // lo que se muestra
+                        combo.ValueMember = "id_categoria";        // lo que se guarda
+                        combo.SelectedIndex = -1; // Ninguno seleccionado al inicio
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar categorías: " + ex.Message);
+            }
+        }
+        public void CargarBodegas (ComboBox combo)
+        {
+            try
+            {
+                using (OdbcConnection connection = cn.Conexion())
+                {
+                    string query = "SELECT id_bodega, nombre_bodega FROM Bodegas";
+                    using (OdbcDataAdapter da = new OdbcDataAdapter(query, connection))
+                    {
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        combo.DataSource = dt;
+                        combo.DisplayMember = "nombre_categoria";  // lo que se muestra
+                        combo.ValueMember = "id_categoria";        // lo que se guarda
+                        combo.SelectedIndex = -1; // Ninguno seleccionado al inicio
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar categorías: " + ex.Message);
             }
         }
         //logica de Usuarios pero de la tabla no del registro

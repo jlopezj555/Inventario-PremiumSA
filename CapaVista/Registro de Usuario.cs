@@ -16,8 +16,11 @@ namespace CapaVista
             {
                 capaControlador_registroUsuario.registrarUsuario(
                     txt_nombreUsuario.Text,
+                    txt_Usuariologin.Text,
                     txt_Contraseña.Text,
                     txt_Correo.Text,
+                    txt_puesto.Text,
+                    txt_departamento.Text,
                     txt_Telefono.Text
                 );
 
