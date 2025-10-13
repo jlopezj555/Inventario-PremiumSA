@@ -693,5 +693,118 @@ namespace CapaModelo
                 }
             }
         }
+
+        // Obtener todo el inventario
+        public DataTable obtenerInventario()
+        {
+            DataTable dt = new DataTable();
+            using (OdbcConnection connection = cn.Conexion())
+            {
+                string query = @"
+
+            SELECT 
+                i.id_inventario,
+                i.nombre_equipo,
+                i.id_categoria,
+                c.nombre_categoria AS nombre_categoria,
+                i.marca,
+                i.modelo,
+                i.stock_actual,
+                i.stock_minimo
+            FROM Inventario_Equipos i
+            LEFT JOIN Categorias c ON i.id_categoria = c.id_categoria";
+
+                using (OdbcDataAdapter da = new OdbcDataAdapter(query, connection))
+                {
+                    da.Fill(dt);
+                }
+            }
+            return dt;
+        }
+
+
+
+        // Guardar registro de inventario
+        public void guardarInventario(string nombre_equipo, int id_categoria, string marca, string modelo, int stock_minimo)
+        {
+            using (OdbcConnection connection = cn.Conexion())
+            {
+                try
+                {
+                    string query = @"INSERT INTO Inventario_Equipos (nombre_equipo, id_categoria, marca, modelo, stock_minimo)
+                             VALUES (?, ?, ?, ?, ?)";
+                    OdbcCommand cmd = new OdbcCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@nombre_equipo", nombre_equipo);
+                    cmd.Parameters.AddWithValue("@id_categoria", id_categoria);
+                    cmd.Parameters.AddWithValue("@marca", marca ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@modelo", modelo ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@stock_minimo", stock_minimo);
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Inventario registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al registrar inventario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        // Editar registro de inventario
+        public void editarInventario(int id_inventario, string nombre_equipo, int id_categoria, string marca, string modelo, int stock_minimo)
+        {
+            using (OdbcConnection connection = cn.Conexion())
+            {
+                try
+                {
+                    string query = @"UPDATE Inventario_Equipos
+                             SET nombre_equipo = ?, id_categoria = ?, marca = ?, modelo = ?, stock_minimo = ?
+                             WHERE id_inventario = ?";
+                    OdbcCommand cmd = new OdbcCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@nombre_equipo", nombre_equipo);
+                    cmd.Parameters.AddWithValue("@id_categoria", id_categoria);
+                    cmd.Parameters.AddWithValue("@marca", marca ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@modelo", modelo ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@stock_minimo", stock_minimo);
+                    cmd.Parameters.AddWithValue("@id_inventario", id_inventario);
+
+                    int filas = cmd.ExecuteNonQuery();
+                    if (filas > 0)
+                        MessageBox.Show("Inventario actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("No se encontró el registro con el ID especificado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al actualizar inventario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        // Eliminar registro de inventario
+        public void eliminarInventario(int id_inventario)
+        {
+            using (OdbcConnection connection = cn.Conexion())
+            {
+                try
+                {
+                    string query = "DELETE FROM Inventario_Equipos WHERE id_inventario = ?";
+                    OdbcCommand cmd = new OdbcCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@id_inventario", id_inventario);
+
+                    int filas = cmd.ExecuteNonQuery();
+                    if (filas > 0)
+                        MessageBox.Show("Registro de inventario eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("No se encontró el registro con el ID especificado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar inventario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
     }
 }

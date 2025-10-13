@@ -67,6 +67,12 @@
     <Compile Include="Inicio de Sesión.Designer.cs">
       <DependentUpon>Inicio de Sesión.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inventario Equipos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventario Equipos.Designer.cs">
+      <DependentUpon>Inventario Equipos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mantenimiento de Equipos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio de Sesión.resx">
       <DependentUpon>Inicio de Sesión.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario Equipos.resx">
+      <DependentUpon>Inventario Equipos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenimiento de Equipos.resx">
       <DependentUpon>Mantenimiento de Equipos.cs</DependentUpon>

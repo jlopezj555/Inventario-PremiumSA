@@ -194,5 +194,3 @@ BEGIN
         UPDATE Equipos SET id_estado = 1 WHERE id_equipo = p_id_equipo;
     END IF;
 END $$
-
-DELIMITER ;

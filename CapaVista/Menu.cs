@@ -66,5 +66,13 @@ namespace CapaVista
             estado_De_Equipos.ShowDialog();
             this.Close();
         }
+
+        private void Btn_InventarioEquipos_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Inventario_Equipos inventario_De_Equipos = new Inventario_Equipos(nombreUsuario);
+            inventario_De_Equipos.ShowDialog();
+            this.Close();
+        }
     }
 }

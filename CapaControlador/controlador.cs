@@ -180,5 +180,29 @@ namespace CapaControlador
         {
             c_Sentencias.eliminarEstado(idCategoria);
         }
+
+        // Inventario de equipos
+        public void guardarInventario(string nombre_equipo, int id_categoria, string marca, string modelo, int stock_minimo)
+        {
+            c_Sentencias.guardarInventario(nombre_equipo, id_categoria, marca, modelo, stock_minimo);
+        }
+
+        public DataTable obtenerInventario()
+        {
+            return c_Sentencias.obtenerInventario();
+        }
+
+
+
+        public void editarInventario(int id_inventario, string nombre_equipo, int id_categoria, string marca, string modelo, int stock_minimo)
+        {
+            c_Sentencias.editarInventario(id_inventario, nombre_equipo, id_categoria, marca, modelo, stock_minimo);
+        }
+
+        public void eliminarInventario(int id_inventario)
+        {
+            c_Sentencias.eliminarInventario(id_inventario);
+        }
+
     }
 }
