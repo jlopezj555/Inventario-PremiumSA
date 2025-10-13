@@ -12,38 +12,28 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
+
 namespace CapaModelo
 {
     public class Cls_sentencias
     {
         private conexion cn = new conexion();
 
-        //Logica para registrar un nuevo usuario
-        public void registrarUsuario(
-            string nombre_completo,
-            string usuario_login,
-            string contraseña,
-            string correo,
-            string telefono,
-            string puesto = null,
-            string departamento = null)
+        // Registrar usuario nuevo
+        public void registrarUsuario(string nombre_completo, string usuario_login, string contrasena, string correo, string telefono, string puesto = null, string departamento = null)
+        {
+            using (OdbcConnection connection = cn.Conexion())
             {
-                OdbcConnection connection = cn.Conexion();
-                if (connection == null)
-                {
-                MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-                }
                 try
                 {
-                    string query_registrarUsuario = @"INSERT INTO Usuarios 
-                    (nombre_completo, usuario_login, contraseña, puesto, departamento, telefono, correo) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    string query = @"INSERT INTO Usuarios 
+                                (nombre_completo, usuario_login, contrasena, puesto, departamento, telefono, correo)
+                                VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-                    OdbcCommand cmd = new OdbcCommand(query_registrarUsuario, connection);
+                    OdbcCommand cmd = new OdbcCommand(query, connection);
                     cmd.Parameters.AddWithValue("@nombre_completo", nombre_completo);
                     cmd.Parameters.AddWithValue("@usuario_login", usuario_login);
-                    cmd.Parameters.AddWithValue("@contraseña", contraseña); 
+                    cmd.Parameters.AddWithValue("@contrasena", contrasena);
                     cmd.Parameters.AddWithValue("@puesto", puesto ?? (object)DBNull.Value);
                     cmd.Parameters.AddWithValue("@departamento", departamento ?? (object)DBNull.Value);
                     cmd.Parameters.AddWithValue("@telefono", telefono ?? (object)DBNull.Value);
@@ -51,20 +41,17 @@ namespace CapaModelo
 
                     cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Usuario registrado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Usuario registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Hubo un error al intentar registrar el usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al registrar usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                finally
-                {
-                    connection.Close();
-                }
+            }
         }
 
         //Logica para iniciar sesión
-        public bool iniciarSesion(string nombre_usuario, string contraseña)
+        public bool iniciarSesion(string nombre_usuario, string contrasena)
         {
             OdbcConnection connection = cn.Conexion();
             if (connection == null)
@@ -74,10 +61,10 @@ namespace CapaModelo
             }
             try
             {
-                string query_iniciarSesion = "SELECT COUNT(*) FROM Usuarios WHERE usuario_login = ? AND contraseña = ?";
+                string query_iniciarSesion = "SELECT COUNT(*) FROM Usuarios WHERE usuario_login = ? AND contrasena = ?";
                 OdbcCommand cmd = new OdbcCommand(query_iniciarSesion, connection);
                 cmd.Parameters.AddWithValue("usuario_login", nombre_usuario);
-                cmd.Parameters.AddWithValue("contraseña", contraseña);
+                cmd.Parameters.AddWithValue("contrasena", contrasena);
 
                 int resultado = Convert.ToInt32(cmd.ExecuteScalar());
                 return resultado > 0;
@@ -442,7 +429,7 @@ namespace CapaModelo
                 MessageBox.Show("Error al cargar categorías: " + ex.Message);
             }
         }
-        public void CargarEstados (ComboBox combo)
+        public void CargarEstados(ComboBox combo)
         {
             try
             {
@@ -465,7 +452,7 @@ namespace CapaModelo
                 MessageBox.Show("Error al cargar categorías: " + ex.Message);
             }
         }
-        public void CargarBodegas (ComboBox combo)
+        public void CargarBodegas(ComboBox combo)
         {
             try
             {
@@ -488,116 +475,83 @@ namespace CapaModelo
                 MessageBox.Show("Error al cargar categorías: " + ex.Message);
             }
         }
-        //logica de Usuarios pero de la tabla no del registro
-        public void guardarUsuarios(string nombre, string telefono, string correo, string direccion, string contacto)
+        // Guardar usuario (equivalente al registrar)
+        public void guardarUsuario(string nombre_completo, string usuario_login, string contrasena, string correo, string telefono, string puesto, string departamento)
         {
-            OdbcConnection connection = cn.Conexion();
-            if (connection == null)
-            {
-                MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            try
-            {
-                string query_guardar_usuario = "INSERT INTO tbl_usuarios (nombre, telefono, correo, direccion, contacto) VALUES (?, ?, ?, ?, ?)";
-                OdbcCommand cmd = new OdbcCommand(query_guardar_usuario, connection);
-                cmd.Parameters.AddWithValue("@nombre", nombre);
-                cmd.Parameters.AddWithValue("@telefono", telefono);
-                cmd.Parameters.AddWithValue("@correo", correo);
-                cmd.Parameters.AddWithValue("@direccion", direccion);
-                cmd.Parameters.AddWithValue("@contacto", contacto);
-
-                cmd.ExecuteNonQuery();
-
-                MessageBox.Show("Usuario guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hubo un error al intentar registrar el usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                connection.Close();
-            }
+            registrarUsuario(nombre_completo, usuario_login, contrasena, correo, telefono, puesto, departamento);
         }
+
+        // Obtener todos los usuarios
         public DataTable obtenerUsuarios()
         {
             DataTable dt = new DataTable();
-
             using (OdbcConnection connection = cn.Conexion())
             {
-                string query = "SELECT id_usuario, nombre, telefono, correo, direccion, contacto FROM tbl_usuarios";
+                string query = @"SELECT id_usuario, nombre_completo, usuario_login, contrasena, puesto, departamento, telefono, correo
+                             FROM Usuarios";
                 using (OdbcDataAdapter da = new OdbcDataAdapter(query, connection))
                 {
                     da.Fill(dt);
                 }
             }
-
             return dt;
         }
-        public void editar_usuario(int id_usuario, string nombre, string telefono, string correo, string direccion, string contacto)
-        {
-            OdbcConnection connection = cn.Conexion();
-            if (connection == null)
-            {
-                MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            try
-            {
-                string query_editar_usuario = @"UPDATE tbl_usuarios 
-                                        SET nombre = ?, telefono = ?, correo = ?, direccion = ?, contacto = ?
-                                        WHERE id_usuario = ?";
-                OdbcCommand cmd = new OdbcCommand(query_editar_usuario, connection);
-                cmd.Parameters.AddWithValue("@nombre", nombre);
-                cmd.Parameters.AddWithValue("@telefono", telefono);
-                cmd.Parameters.AddWithValue("@correo", correo);
-                cmd.Parameters.AddWithValue("@direccion", direccion);
-                cmd.Parameters.AddWithValue("@contacto", contacto);
-                cmd.Parameters.AddWithValue("@id_usuario", id_usuario);
-
-                int filas = cmd.ExecuteNonQuery();
-                if (filas > 0)
-                {
-                    MessageBox.Show("Usuario actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("No se encontró el usuario con el ID especificado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Hubo un error al intentar actualizar el usuario: " + e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
-        public void eliminar_usuario(int id_usuario)
+        // Editar usuario existente
+        public void editarUsuario(int id_usuario, string nombre_completo, string usuario_login, string contrasena, string correo, string telefono, string puesto, string departamento)
         {
             using (OdbcConnection connection = cn.Conexion())
             {
-                string query = "DELETE FROM tbl_usuarios WHERE id_usuario = ?";
-                using (OdbcCommand cmd = new OdbcCommand(query, connection))
+                try
                 {
-                    cmd.Parameters.AddWithValue("@id_usuario", id_usuario);
-                    int filas = cmd.ExecuteNonQuery();
+                    string query = @"UPDATE Usuarios
+                                 SET nombre_completo = ?, usuario_login = ?, contrasena = ?, correo = ?, telefono = ?, puesto = ?, departamento = ?
+                                 WHERE id_usuario = ?";
 
+                    OdbcCommand cmd = new OdbcCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@nombre_completo", nombre_completo);
+                    cmd.Parameters.AddWithValue("@usuario_login", usuario_login);
+                    cmd.Parameters.AddWithValue("@contrasena", contrasena);
+                    cmd.Parameters.AddWithValue("@correo", correo);
+                    cmd.Parameters.AddWithValue("@telefono", telefono ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@puesto", puesto ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@departamento", departamento ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@id_usuario", id_usuario);
+
+                    int filas = cmd.ExecuteNonQuery();
                     if (filas > 0)
-                    {
-                        MessageBox.Show("Usuario eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                        MessageBox.Show("Usuario actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
-                    {
                         MessageBox.Show("No se encontró el usuario con el ID especificado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al actualizar usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
+        // Eliminar usuario
+        public void eliminarUsuario(int id_usuario)
+        {
+            using (OdbcConnection connection = cn.Conexion())
+            {
+                try
+                {
+                    string query = "DELETE FROM Usuarios WHERE id_usuario = ?";
+                    OdbcCommand cmd = new OdbcCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@id_usuario", id_usuario);
 
+                    int filas = cmd.ExecuteNonQuery();
+
+                    if (filas > 0)
+                        MessageBox.Show("Usuario eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("No se encontró el usuario con el ID especificado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

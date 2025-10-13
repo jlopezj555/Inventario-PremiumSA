@@ -24,7 +24,7 @@ CREATE TABLE Usuarios (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     nombre_completo VARCHAR(150) NOT NULL,
     usuario_login VARCHAR(50) UNIQUE NOT NULL,
-    contraseña VARCHAR(255) NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,
     puesto VARCHAR(100),
     departamento VARCHAR(100),
     telefono VARCHAR(20),

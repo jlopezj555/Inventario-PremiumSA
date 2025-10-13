@@ -200,5 +200,14 @@
   <ItemGroup>
     <None Include="Resources\instrumentos %281%29.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images-convertido-a-50x50.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images-convertido-a-25x25.jpeg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
