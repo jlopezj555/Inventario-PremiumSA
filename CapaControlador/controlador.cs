@@ -137,6 +137,41 @@ namespace CapaControlador
         public void eliminar_usuario(int id_usuario)
         {
             c_Sentencias.eliminar_usuario(id_usuario);
-        } 
+        }
+
+        //Categorías
+        public void guardar_movimientoCategoria(string nombre_categoria, string descripcion_categoria)
+        {
+            c_Sentencias.guardar_Movimientocategoria(nombre_categoria, descripcion_categoria);
+        }
+        public DataTable obtenerCategorias()
+        {
+            return c_Sentencias.obtenerCategorias();
+        }
+        public void editar_movimientoCategoria(int idCategoria, string nombre_categoria, string descripcion_categoria)
+        {
+            c_Sentencias.editar_movimientoCategoria(idCategoria, nombre_categoria, descripcion_categoria);
+        }
+        public void eliminarCategoria(int idCategoria)
+        {
+            c_Sentencias.eliminarCategoria(idCategoria);
+        }
+        //Estados
+        public void guardar_movimientoEstado(string nombre_estado, string descripcion_estado)
+        {
+            c_Sentencias.guardar_Movimientoestado(nombre_estado, descripcion_estado);
+        }
+        public DataTable obtenerEstados()
+        {
+            return c_Sentencias.obtenerEstado();
+        }
+        public void editar_movimientoEstado(int idEstado, string nombre_estado, string descripcion_estado)
+        {
+            c_Sentencias.editar_movimientoEstado(idEstado, nombre_estado, descripcion_estado);
+        }
+        public void eliminarEstado(int idCategoria)
+        {
+            c_Sentencias.eliminarEstado(idCategoria);
+        }
     }
 }

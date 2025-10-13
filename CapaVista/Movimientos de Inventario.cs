@@ -26,5 +26,10 @@ namespace CapaVista
             menu.ShowDialog();
             this.Close();
         }
+
+        private void btn_registrousuario_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

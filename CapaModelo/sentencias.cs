@@ -598,6 +598,145 @@ namespace CapaModelo
                 }
             }
         }
+        //CRUD Categorias
+        public void guardar_Movimientocategoria(string nombre_categoria, string descripcion)
+        {
+            OdbcConnection connection = cn.Conexion();
+            if (connection == null)
+            {
+                MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                string query_guardar_movimientoCategoria = "INSERT INTO Categorias (nombre_categoria, descripcion) VALUES (?, ?)";
+                OdbcCommand cmd = new OdbcCommand(query_guardar_movimientoCategoria, connection);
+                cmd.Parameters.AddWithValue("@nombre_categoria", nombre_categoria);
+                cmd.Parameters.AddWithValue("@descripcion", descripcion);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hubo un error al intentar registrar el movimiento" + ex.Message, "Error: ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally { cn.Conexion(); }
+        }
 
+        public void editar_movimientoCategoria(int idCategoria, string nombre_categoria, string descripcion)
+        {
+            OdbcConnection connection = cn.Conexion();
+            if (connection == null)
+            {
+                MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                string query_editar_MovimientoCategoria = @"UPDATE Categorias 
+                             SET nombre_categoria = ?, descripcion = ?
+                             WHERE id_categoria = ?";
+                OdbcCommand cmd2 = new OdbcCommand(query_editar_MovimientoCategoria, connection);
+                cmd2.Parameters.AddWithValue("nombre_categoria", nombre_categoria);
+                cmd2.Parameters.AddWithValue("descripcion", descripcion);
+                cmd2.Parameters.AddWithValue("id_categoria", idCategoria);
+
+                int filas = cmd2.ExecuteNonQuery();
+                if (filas > 0)
+                {
+                    MessageBox.Show("Empleado actualizado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el empleado con el ID especificado");
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Hubo un error al intentar registrar el movimiento" + e.Message, "Error: ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void eliminarCategoria(int idCategoria)
+        {
+            using (OdbcConnection connection = cn.Conexion())
+            {
+                string query = "DELETE FROM Categorias WHERE id_categoria = ?";
+                using (OdbcCommand cmd = new OdbcCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@id_categoria", idCategoria);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        //CRUD Estados
+        public void guardar_Movimientoestado(string nombre_estado, string descripcion)
+        {
+            OdbcConnection connection = cn.Conexion();
+            if (connection == null)
+            {
+                MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                string query_guardar_movimientoEstado = "INSERT INTO Estados_Equipos (nombre_estado, descripcion) VALUES (?, ?)";
+                OdbcCommand cmd = new OdbcCommand(query_guardar_movimientoEstado, connection);
+                cmd.Parameters.AddWithValue("@nombre_estado", nombre_estado);
+                cmd.Parameters.AddWithValue("@descripcion", descripcion);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hubo un error al intentar registrar el movimiento" + ex.Message, "Error: ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally { cn.Conexion(); }
+        }
+
+        public void editar_movimientoEstado(int idEstado, string nombre_estado, string descripcion)
+        {
+            OdbcConnection connection = cn.Conexion();
+            if (connection == null)
+            {
+                MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                string query_editar_MovimientoEstado = @"UPDATE Estados_Equipos 
+                             SET nombre_estado = ?, descripcion = ?
+                             WHERE id_estado = ?";
+                OdbcCommand cmd2 = new OdbcCommand(query_editar_MovimientoEstado, connection);
+                cmd2.Parameters.AddWithValue("nombre_estado", nombre_estado);
+                cmd2.Parameters.AddWithValue("descripcion", descripcion);
+                cmd2.Parameters.AddWithValue("id_estado", idEstado);
+
+                int filas = cmd2.ExecuteNonQuery();
+                if (filas > 0)
+                {
+                    MessageBox.Show("Empleado actualizado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el empleado con el ID especificado");
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Hubo un error al intentar registrar el movimiento" + e.Message, "Error: ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void eliminarEstado(int idEstado)
+        {
+            using (OdbcConnection connection = cn.Conexion())
+            {
+                string query = "DELETE FROM Estados_Equipos WHERE id_estado = ?";
+                using (OdbcCommand cmd = new OdbcCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@id_categoria", idEstado);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
