@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_menumantenimientou = new System.Windows.Forms.Panel();
             this.cmb_idCategoria = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -135,7 +136,17 @@
             // 
             // dgv_inventario
             // 
+            this.dgv_inventario.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgv_inventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_inventario.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_inventario.GridColor = System.Drawing.SystemColors.ButtonShadow;
             this.dgv_inventario.Location = new System.Drawing.Point(16, 352);
             this.dgv_inventario.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_inventario.Name = "dgv_inventario";
