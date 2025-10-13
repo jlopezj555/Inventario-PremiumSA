@@ -18,22 +18,22 @@ namespace CapaControlador
         {
             c_Sentencias = new Cls_sentencias();
         }
-        public void registrarUsuario(string nombre_usuario, string usuario_login, string contraseña, string correo, string telefono, string puesto, string departamento)
+        // Registrar nuevo usuario
+        public void registrarUsuario(string nombre_completo, string usuario_login, string contrasena, string correo, string telefono, string puesto, string departamento)
         {
-            // Llamamos a la función adaptada de c_Sentencias
             c_Sentencias.registrarUsuario(
-                nombre_completo: nombre_usuario,
+                nombre_completo: nombre_completo,
                 usuario_login: usuario_login,
-                contraseña: contraseña,
+                contrasena: contrasena,
                 correo: correo,
                 telefono: telefono,
                 puesto: puesto,
                 departamento: departamento
             );
         }
-        public bool iniciarSesion(string nombre_usuario, string contraseña)
+        public bool iniciarSesion(string nombre_usuario, string contrasena)
         {
-            return c_Sentencias.iniciarSesion(nombre_usuario, contraseña);
+            return c_Sentencias.iniciarSesion(nombre_usuario, contrasena);
         }
 
         //Movimiento de bodegas
@@ -121,22 +121,29 @@ namespace CapaControlador
             box.ValueMember = "id_bodega";
             box.SelectedIndex = -1;
         }
-        //Logica de la tabla usuarios
-        public void guardar_usuario(string nombre, string telefono, string correo, string direccion, string contacto)
+        // Guardar usuario (variante simple)
+        public void guardarUsuario(string nombre_completo, string usuario_login, string contrasena, string correo, string telefono, string puesto, string departamento)
         {
-            c_Sentencias.guardarUsuarios(nombre,  telefono, correo, direccion, contacto);
+            c_Sentencias.guardarUsuario(nombre_completo, usuario_login, contrasena, correo, telefono, puesto, departamento);
         }
+
+
+        // Obtener lista de usuarios
         public DataTable obtenerUsuarios()
         {
             return c_Sentencias.obtenerUsuarios();
         }
-        public void editar_usuario(int id_usuario, string nombre, string telefono, string correo, string direccion, string contacto)
+
+        // Editar usuario existente
+        public void editarUsuario(int id_usuario, string nombre_completo, string usuario_login, string contrasena, string correo, string telefono, string puesto, string departamento)
         {
-            c_Sentencias.editar_usuario(id_usuario, nombre, telefono, correo, direccion, contacto);
+            c_Sentencias.editarUsuario(id_usuario, nombre_completo, usuario_login, contrasena, correo, telefono, puesto, departamento);
         }
-        public void eliminar_usuario(int id_usuario)
+
+        // Eliminar usuario
+        public void eliminarUsuario(int id_usuario)
         {
-            c_Sentencias.eliminar_usuario(id_usuario);
+            c_Sentencias.eliminarUsuario(id_usuario);
         }
 
         //Categorías

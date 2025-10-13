@@ -29,19 +29,30 @@ namespace CapaVista
             this.Close();
         }
 
-        private void btn_guardarregistrousuario_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                capaControlador_usuarios.guardar_usuario(txt_nombreUsuario.Text, txt_telefonoUsuario.Text, txt_correoUsuario.Text, txt_direccionUsuario.Text, txt_Contacto.Text);
-                CargarUsuarios();
-                LimpiarCampos();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocurrio un error: " + ex);
-            }
-        }
+        //private void btn_guardarregistrousuario_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        capaControlador_usuarios.guardarUsuario(
+        //            txt_nombreUsuario.Text,
+        //            txt_usuarioLogin.Text,
+        //            txtContra.Text,
+        //            txt_correoUsuario.Text,
+        //            txt_telefonoUsuario.Text,
+        //            txt_puestoUsuario.Text,
+        //            txt_Departamento.Text,
+
+
+        //            null // departamento (ajustar si corresponde)
+        //        );
+        //        CargarUsuarios();
+        //        LimpiarCampos();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Ocurrio un error: " + ex);
+        //    }
+        //}
         public void CargarUsuarios()
         {
             DataTable dt = capaControlador_usuarios.obtenerUsuarios();
@@ -53,23 +64,25 @@ namespace CapaVista
             txt_nombreUsuario.Clear();
             txt_telefonoUsuario.Clear();
             txt_correoUsuario.Clear();
-            txt_direccionUsuario.Clear();
-            txt_Contacto.Clear();
+            txt_puestoUsuario.Clear();
+            txt_Departamento.Clear();
         }
         private void btn_modregistrousuario_Click(object sender, EventArgs e)
         {
             try
             {
                 int idUsuario = Convert.ToInt32(txt_idUsuario.Text);
-                capaControlador_usuarios.editar_usuario(
+                capaControlador_usuarios.editarUsuario(
                     idUsuario,
-                    txt_nombreUsuario.Text,
-                    txt_telefonoUsuario.Text,
-                    txt_correoUsuario.Text,
-                    txt_direccionUsuario.Text,
-                    txt_Contacto.Text
-
+                    txt_nombreUsuario.Text,       // nombre_completo
+                    txt_usuarioLogin.Text,        // usuario_login (deberías tener un TextBox para esto)
+                    txtContra.Text,   // contraseña (deberías tener un TextBox para esto)
+                    txt_correoUsuario.Text,       // correo
+                    txt_telefonoUsuario.Text,     // telefono
+                    txt_puestoUsuario.Text,       // puesto
+                    txt_Departamento.Text         // departamento
                 );
+
                 CargarUsuarios();
                 LimpiarCampos();
             }
@@ -86,11 +99,13 @@ namespace CapaVista
                 DataGridViewRow fila = dgv_usuarios.Rows[e.RowIndex];
 
                 txt_idUsuario.Text = fila.Cells["id_usuario"].Value.ToString();
-                txt_nombreUsuario.Text = fila.Cells["nombre"].Value.ToString();
+                txt_nombreUsuario.Text = fila.Cells["nombre_completo"].Value.ToString();
+                txt_usuarioLogin.Text = fila.Cells["usuario_login"].Value.ToString();
+                txtContra.Text = fila.Cells["contrasena"].Value.ToString();
+                txt_puestoUsuario.Text = fila.Cells["puesto"].Value.ToString();
+                txt_Departamento.Text = fila.Cells["departamento"].Value.ToString();
                 txt_telefonoUsuario.Text = fila.Cells["telefono"].Value.ToString();
                 txt_correoUsuario.Text = fila.Cells["correo"].Value.ToString();
-                txt_direccionUsuario.Text = fila.Cells["direccion"].Value.ToString();
-                txt_Contacto.Text = fila.Cells["contacto"].Value.ToString();
             }
         }
 
@@ -115,7 +130,7 @@ namespace CapaVista
             {
                 try
                 {
-                    capaControlador_usuarios.eliminar_usuario(id_usuario);
+                    capaControlador_usuarios.eliminarUsuario(id_usuario);
                     CargarUsuarios(); // refrescar DataGridView
                     LimpiarCampos();   // limpiar los textbox
                 }
@@ -137,6 +152,24 @@ namespace CapaVista
             {
                 MessageBox.Show("Error al actualizar el equipo: " + ex.Message);
             }
+        }
+
+        private void Mantenimiento_de_Usuarios_Load(object sender, EventArgs e)
+        {
+            txtContra.UseSystemPasswordChar = true;
+
+        }
+
+        private void btn_cambiarContrasena_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtContra.UseSystemPasswordChar = false; // Mostrar contraseña
+
+        }
+
+        private void btn_cambiarContrasena_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtContra.UseSystemPasswordChar = true; // Ocultar contraseña
+
         }
     }
 }

@@ -20,12 +20,12 @@ namespace CapaVista
         private void btn_iniciarSesion_Click(object sender, EventArgs e)
         {
             string usuario = txt_Usuario.Text;
-            string contraseña = txt_Contraseña.Text;
+            string contrasena = txt_Contraseña.Text;
 
             try
             {
                 controlador capaControlador_Login = new controlador();
-                bool sesionValida = capaControlador_Login.iniciarSesion(usuario, contraseña);
+                bool sesionValida = capaControlador_Login.iniciarSesion(usuario, contrasena);
 
                 if (sesionValida)
                 {
