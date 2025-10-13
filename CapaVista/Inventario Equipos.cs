@@ -58,52 +58,48 @@ namespace CapaVista
             cmb_idCategoria.SelectedIndex = -1;
         }
 
-        // Cargar inventario en DataGridView
         private void CargarInventario()
         {
             DataTable dt = capaControlador_inventario.obtenerInventario();
             dgv_inventario.DataSource = dt;
 
-            // Ocultar columna id_categoria
-            if (dgv_inventario.Columns.Contains("id_categoria"))
-                dgv_inventario.Columns["id_categoria"].Visible = false;
-
-            // Cambiar encabezado de la columna de nombre de categoría
+            // Cambiar solo encabezados visibles
             if (dgv_inventario.Columns.Contains("nombre_categoria"))
                 dgv_inventario.Columns["nombre_categoria"].HeaderText = "Categoría";
+
+            // Ocultar columna id_categoria si no quieres mostrarla
+            if (dgv_inventario.Columns.Contains("id_categoria"))
+                dgv_inventario.Columns["id_categoria"].Visible = false;
 
             dgv_inventario.AutoResizeColumns();
         }
 
-
-        // Selección de fila en DataGridView
         private void dgv_inventario_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow fila = dgv_inventario.Rows[e.RowIndex];
 
-                txt_codigoInventario.Text = fila.Cells["id_inventario"].Value.ToString();
-                txt_nombreEquipo.Text = fila.Cells["nombre_equipo"].Value.ToString();
-                txt_marcaEquipo.Text = fila.Cells["marca"].Value.ToString();
-                txt_modeloEquipo.Text = fila.Cells["modelo"].Value.ToString();
-                txtStockActual.Text = fila.Cells["stock_actual"].Value.ToString();
-                txtStockMinimo.Text = fila.Cells["stock_minimo"].Value.ToString();
+                txt_codigoInventario.Text = fila.Cells["id_inventario"].Value?.ToString();
+                txt_nombreEquipo.Text = fila.Cells["nombre_equipo"].Value?.ToString();
+                txt_marcaEquipo.Text = fila.Cells["marca"].Value?.ToString();
+                txt_modeloEquipo.Text = fila.Cells["modelo"].Value?.ToString();
+                txtStockActual.Text = fila.Cells["stock_actual"].Value?.ToString();
+                txtStockMinimo.Text = fila.Cells["stock_minimo"].Value?.ToString();
 
-                // Asignar SelectedValue con retraso para asegurarnos que el ComboBox está cargado
+                // Asignar SelectedValue al ComboBox con retraso
                 this.BeginInvoke((Action)(() =>
                 {
                     if (fila.Cells["id_categoria"].Value != DBNull.Value)
-                    {
                         cmb_idCategoria.SelectedValue = Convert.ToInt32(fila.Cells["id_categoria"].Value);
-                    }
                     else
-                    {
                         cmb_idCategoria.SelectedIndex = -1;
-                    }
                 }));
             }
         }
+
+
+
 
 
 
@@ -138,8 +134,9 @@ namespace CapaVista
                 string marca = txt_marcaEquipo.Text;
                 string modelo = txt_modeloEquipo.Text;
                 int stockMinimo = Convert.ToInt32(txtStockMinimo.Text);
+                int stockActual = Convert.ToInt32(txtStockActual.Text); // <-- nuevo
 
-                capaControlador_inventario.guardarInventario(nombreEquipo, idCategoria, marca, modelo, stockMinimo);
+                capaControlador_inventario.guardarInventario(nombreEquipo, idCategoria, marca, modelo, stockMinimo, stockActual);
 
                 MessageBox.Show("Inventario registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarInventario();
@@ -153,7 +150,6 @@ namespace CapaVista
 
         private void btn_modregistroequipo_Click(object sender, EventArgs e)
         {
-
             try
             {
                 if (string.IsNullOrWhiteSpace(txt_codigoInventario.Text))
@@ -169,7 +165,14 @@ namespace CapaVista
                 string modelo = txt_modeloEquipo.Text;
                 int stockMinimo = Convert.ToInt32(txtStockMinimo.Text);
 
-                capaControlador_inventario.editarInventario(idInventario, nombreEquipo, idCategoria, marca, modelo, stockMinimo);
+                int stockActual;
+                if (!int.TryParse(txtStockActual.Text, out stockActual))
+                {
+                    MessageBox.Show("Stock actual inválido.");
+                    return;
+                }
+
+                capaControlador_inventario.editarInventario(idInventario, nombreEquipo, idCategoria, marca, modelo, stockMinimo, stockActual);
 
                 MessageBox.Show("Inventario modificado correctamente.");
                 CargarInventario();
@@ -180,6 +183,7 @@ namespace CapaVista
                 MessageBox.Show("Error al modificar inventario: " + ex.Message);
             }
         }
+
 
         private void btn_actualizarequipo_Click(object sender, EventArgs e)
         {

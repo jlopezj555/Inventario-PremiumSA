@@ -725,40 +725,48 @@ namespace CapaModelo
 
 
         // Guardar registro de inventario
-        public void guardarInventario(string nombre_equipo, int id_categoria, string marca, string modelo, int stock_minimo)
+
+        public void guardarInventario(string nombre_equipo, int id_categoria, string marca, string modelo, int stock_minimo, int stock_actual)
         {
             using (OdbcConnection connection = cn.Conexion())
             {
                 try
                 {
-                    string query = @"INSERT INTO Inventario_Equipos (nombre_equipo, id_categoria, marca, modelo, stock_minimo)
-                             VALUES (?, ?, ?, ?, ?)";
+                    string query = @"INSERT INTO Inventario_Equipos (nombre_equipo, id_categoria, marca, modelo, stock_minimo, stock_actual)
+                             VALUES (?, ?, ?, ?, ?, ?)";
                     OdbcCommand cmd = new OdbcCommand(query, connection);
                     cmd.Parameters.AddWithValue("@nombre_equipo", nombre_equipo);
                     cmd.Parameters.AddWithValue("@id_categoria", id_categoria);
                     cmd.Parameters.AddWithValue("@marca", marca ?? (object)DBNull.Value);
                     cmd.Parameters.AddWithValue("@modelo", modelo ?? (object)DBNull.Value);
                     cmd.Parameters.AddWithValue("@stock_minimo", stock_minimo);
+                    cmd.Parameters.AddWithValue("@stock_actual", stock_actual);
 
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Inventario registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al registrar inventario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al registrar inventario: " + ex.Message);
                 }
             }
         }
 
+
+
         // Editar registro de inventario
-        public void editarInventario(int id_inventario, string nombre_equipo, int id_categoria, string marca, string modelo, int stock_minimo)
+        public void editarInventario(int id_inventario, string nombre_equipo, int id_categoria, string marca, string modelo, int stock_minimo, int stock_actual)
         {
             using (OdbcConnection connection = cn.Conexion())
             {
                 try
                 {
                     string query = @"UPDATE Inventario_Equipos
-                             SET nombre_equipo = ?, id_categoria = ?, marca = ?, modelo = ?, stock_minimo = ?
+                             SET nombre_equipo = ?, 
+                                 id_categoria = ?, 
+                                 marca = ?, 
+                                 modelo = ?, 
+                                 stock_minimo = ?, 
+                                 stock_actual = ?
                              WHERE id_inventario = ?";
                     OdbcCommand cmd = new OdbcCommand(query, connection);
                     cmd.Parameters.AddWithValue("@nombre_equipo", nombre_equipo);
@@ -766,6 +774,7 @@ namespace CapaModelo
                     cmd.Parameters.AddWithValue("@marca", marca ?? (object)DBNull.Value);
                     cmd.Parameters.AddWithValue("@modelo", modelo ?? (object)DBNull.Value);
                     cmd.Parameters.AddWithValue("@stock_minimo", stock_minimo);
+                    cmd.Parameters.AddWithValue("@stock_actual", stock_actual);
                     cmd.Parameters.AddWithValue("@id_inventario", id_inventario);
 
                     int filas = cmd.ExecuteNonQuery();
@@ -780,6 +789,7 @@ namespace CapaModelo
                 }
             }
         }
+
 
         // Eliminar registro de inventario
         public void eliminarInventario(int id_inventario)

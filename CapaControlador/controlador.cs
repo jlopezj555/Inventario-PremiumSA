@@ -182,10 +182,11 @@ namespace CapaControlador
         }
 
         // Inventario de equipos
-        public void guardarInventario(string nombre_equipo, int id_categoria, string marca, string modelo, int stock_minimo)
+        public void guardarInventario(string nombre_equipo, int id_categoria, string marca, string modelo, int stock_minimo, int stock_actual)
         {
-            c_Sentencias.guardarInventario(nombre_equipo, id_categoria, marca, modelo, stock_minimo);
+            c_Sentencias.guardarInventario(nombre_equipo, id_categoria, marca, modelo, stock_minimo, stock_actual);
         }
+
 
         public DataTable obtenerInventario()
         {
@@ -194,10 +195,11 @@ namespace CapaControlador
 
 
 
-        public void editarInventario(int id_inventario, string nombre_equipo, int id_categoria, string marca, string modelo, int stock_minimo)
+        public void editarInventario(int id_inventario, string nombre_equipo, int id_categoria, string marca, string modelo, int stock_minimo, int stock_actual)
         {
-            c_Sentencias.editarInventario(id_inventario, nombre_equipo, id_categoria, marca, modelo, stock_minimo);
+            c_Sentencias.editarInventario(id_inventario, nombre_equipo, id_categoria, marca, modelo, stock_minimo, stock_actual);
         }
+
 
         public void eliminarInventario(int id_inventario)
         {
