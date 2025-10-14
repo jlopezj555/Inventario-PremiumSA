@@ -61,6 +61,18 @@ CREATE TABLE Equipos (
 );
 
 -- ===========================================================
+-- TABLA DE CONTROL DE INVENTARIO (NORMALIZADA)
+-- ===========================================================
+CREATE TABLE Inventario_Equipos (
+    id_inventario INT AUTO_INCREMENT PRIMARY KEY,
+    id_equipo INT NOT NULL,
+    stock_actual INT DEFAULT 0,
+    stock_minimo INT DEFAULT 1,
+    CONSTRAINT fk_inventario_equipo FOREIGN KEY (id_equipo) REFERENCES Equipos(id_equipo),
+    UNIQUE (id_equipo)
+);
+
+-- ===========================================================
 -- TABLA DE MOVIMIENTOS
 -- ===========================================================
 CREATE TABLE Movimientos (
@@ -94,22 +106,7 @@ CREATE TABLE AuthCodes (
 );
 
 -- ===========================================================
--- TABLA DE CONTROL DE STOCK
--- ===========================================================
-CREATE TABLE Inventario_Equipos (
-    id_inventario INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_equipo VARCHAR(150) NOT NULL,
-    id_categoria INT,
-    marca VARCHAR(100),
-    modelo VARCHAR(100),
-    stock_actual INT DEFAULT 0,
-    stock_minimo INT DEFAULT 1,
-    FOREIGN KEY (id_categoria) REFERENCES Categorias(id_categoria),
-    UNIQUE (nombre_equipo, marca, modelo)
-);
-
--- ===========================================================
--- TRIGGERS PARA CONTROL DE STOCK
+-- TRIGGERS PARA CONTROL DE STOCK (ACTUALIZADOS)
 -- ===========================================================
 DELIMITER $$
 
@@ -118,16 +115,8 @@ CREATE TRIGGER trg_inventario_after_insert
 AFTER INSERT ON Equipos
 FOR EACH ROW
 BEGIN
-    UPDATE Inventario_Equipos
-    SET stock_actual = stock_actual + 1
-    WHERE nombre_equipo = NEW.nombre_equipo
-      AND (marca = NEW.marca OR (marca IS NULL AND NEW.marca IS NULL))
-      AND (modelo = NEW.modelo OR (modelo IS NULL AND NEW.modelo IS NULL));
-
-    IF ROW_COUNT() = 0 THEN
-        INSERT INTO Inventario_Equipos (nombre_equipo, id_categoria, marca, modelo, stock_actual)
-        VALUES (NEW.nombre_equipo, NEW.id_categoria, NEW.marca, NEW.modelo, 1);
-    END IF;
+    INSERT INTO Inventario_Equipos (id_equipo, stock_actual, stock_minimo)
+    VALUES (NEW.id_equipo, 1, 1);
 END $$
 
 -- Trigger después de DELETE en Equipos
@@ -135,11 +124,7 @@ CREATE TRIGGER trg_inventario_after_delete
 AFTER DELETE ON Equipos
 FOR EACH ROW
 BEGIN
-    UPDATE Inventario_Equipos
-    SET stock_actual = stock_actual - 1
-    WHERE nombre_equipo = OLD.nombre_equipo
-      AND (marca = OLD.marca OR (marca IS NULL AND OLD.marca IS NULL))
-      AND (modelo = OLD.modelo OR (modelo IS NULL AND OLD.modelo IS NULL));
+    DELETE FROM Inventario_Equipos WHERE id_equipo = OLD.id_equipo;
 END $$
 
 -- Trigger después de UPDATE en Equipos (según id_estado)
@@ -147,29 +132,27 @@ CREATE TRIGGER trg_inventario_after_update
 AFTER UPDATE ON Equipos
 FOR EACH ROW
 BEGIN
+    DECLARE v_stock INT;
+
     -- De Disponible a Retirado
     IF OLD.id_estado = 1 AND NEW.id_estado = 2 THEN
         UPDATE Inventario_Equipos
-        SET stock_actual = stock_actual - 1
-        WHERE nombre_equipo = NEW.nombre_equipo
-          AND (marca = NEW.marca OR (marca IS NULL AND NEW.marca IS NULL))
-          AND (modelo = NEW.modelo OR (modelo IS NULL AND NEW.modelo IS NULL));
+        SET stock_actual = GREATEST(stock_actual - 1, 0)
+        WHERE id_equipo = NEW.id_equipo;
     END IF;
 
     -- De Retirado a Disponible
     IF OLD.id_estado = 2 AND NEW.id_estado = 1 THEN
         UPDATE Inventario_Equipos
         SET stock_actual = stock_actual + 1
-        WHERE nombre_equipo = NEW.nombre_equipo
-          AND (marca = NEW.marca OR (marca IS NULL AND NEW.marca IS NULL))
-          AND (modelo = NEW.modelo OR (modelo IS NULL AND NEW.modelo IS NULL));
+        WHERE id_equipo = NEW.id_equipo;
     END IF;
 END $$
 
 DELIMITER ;
 
 -- ===========================================================
--- PROCEDIMIENTO PARA REGISTRAR MOVIMIENTOS
+-- PROCEDIMIENTO PARA REGISTRAR MOVIMIENTOS (AJUSTADO)
 -- ===========================================================
 DELIMITER $$
 
@@ -194,3 +177,22 @@ BEGIN
         UPDATE Equipos SET id_estado = 1 WHERE id_equipo = p_id_equipo;
     END IF;
 END $$
+
+DELIMITER ;
+
+-- ===========================================================
+-- VISTA DE ALERTAS DE STOCK BAJO
+-- ===========================================================
+CREATE VIEW v_alertas_stock_bajo AS
+SELECT 
+    e.id_equipo,
+    e.nombre_equipo,
+    e.marca,
+    e.modelo,
+    c.nombre_categoria,
+    i.stock_actual,
+    i.stock_minimo
+FROM Inventario_Equipos i
+JOIN Equipos e ON i.id_equipo = e.id_equipo
+JOIN Categorias c ON e.id_categoria = c.id_categoria
+WHERE i.stock_actual <= i.stock_minimo;
