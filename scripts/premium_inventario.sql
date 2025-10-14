@@ -43,11 +43,10 @@ CREATE TABLE Bodegas (
 -- ===========================================================
 CREATE TABLE Equipos (
     id_equipo INT AUTO_INCREMENT PRIMARY KEY,
-    codigo_inventario VARCHAR(50) UNIQUE NOT NULL,
     nombre_equipo VARCHAR(150) NOT NULL,
     marca VARCHAR(100),
     modelo VARCHAR(100),
-    numero_serie VARCHAR(100),
+    numero_serie VARCHAR(100) UNIQUE,
     descripcion TEXT,
     id_categoria INT,
     id_estado INT,
@@ -106,11 +105,10 @@ CREATE TABLE AuthCodes (
 );
 
 -- ===========================================================
--- TRIGGERS PARA CONTROL DE STOCK (ACTUALIZADOS)
+-- TRIGGERS PARA CONTROL DE STOCK
 -- ===========================================================
 DELIMITER $$
 
--- Trigger después de INSERT en Equipos
 CREATE TRIGGER trg_inventario_after_insert
 AFTER INSERT ON Equipos
 FOR EACH ROW
@@ -119,7 +117,6 @@ BEGIN
     VALUES (NEW.id_equipo, 1, 1);
 END $$
 
--- Trigger después de DELETE en Equipos
 CREATE TRIGGER trg_inventario_after_delete
 AFTER DELETE ON Equipos
 FOR EACH ROW
@@ -127,13 +124,10 @@ BEGIN
     DELETE FROM Inventario_Equipos WHERE id_equipo = OLD.id_equipo;
 END $$
 
--- Trigger después de UPDATE en Equipos (según id_estado)
 CREATE TRIGGER trg_inventario_after_update
 AFTER UPDATE ON Equipos
 FOR EACH ROW
 BEGIN
-    DECLARE v_stock INT;
-
     -- De Disponible a Retirado
     IF OLD.id_estado = 1 AND NEW.id_estado = 2 THEN
         UPDATE Inventario_Equipos
@@ -152,7 +146,7 @@ END $$
 DELIMITER ;
 
 -- ===========================================================
--- PROCEDIMIENTO PARA REGISTRAR MOVIMIENTOS (AJUSTADO)
+-- PROCEDIMIENTO PARA REGISTRAR MOVIMIENTOS
 -- ===========================================================
 DELIMITER $$
 

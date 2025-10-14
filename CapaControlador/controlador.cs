@@ -181,10 +181,11 @@ namespace CapaControlador
             c_Sentencias.eliminarEstado(idCategoria);
         }
 
+
         // Inventario de equipos
-        public void guardarInventario(string nombre_equipo, int id_categoria, string marca, string modelo, int stock_minimo, int stock_actual)
+        public void guardarInventario(int id_equipo, int stock_minimo, int stock_actual = 0)
         {
-            c_Sentencias.guardarInventario(nombre_equipo, id_categoria, marca, modelo, stock_minimo, stock_actual);
+            c_Sentencias.guardarInventario(id_equipo, stock_minimo, stock_actual);
         }
 
 
@@ -193,18 +194,16 @@ namespace CapaControlador
             return c_Sentencias.obtenerInventario();
         }
 
-
-
-        public void editarInventario(int id_inventario, string nombre_equipo, int id_categoria, string marca, string modelo, int stock_minimo, int stock_actual)
+        public void editarInventario(int id_inventario, int stock_minimo, int stock_actual)
         {
-            c_Sentencias.editarInventario(id_inventario, nombre_equipo, id_categoria, marca, modelo, stock_minimo, stock_actual);
+            c_Sentencias.editarInventario(id_inventario, stock_minimo, stock_actual);
         }
-
 
         public void eliminarInventario(int id_inventario)
         {
             c_Sentencias.eliminarInventario(id_inventario);
         }
+
 
     }
 }

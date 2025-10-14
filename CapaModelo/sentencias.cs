@@ -701,18 +701,18 @@ namespace CapaModelo
             using (OdbcConnection connection = cn.Conexion())
             {
                 string query = @"
-
             SELECT 
                 i.id_inventario,
-                i.nombre_equipo,
-                i.id_categoria,
-                c.nombre_categoria AS nombre_categoria,
-                i.marca,
-                i.modelo,
+                i.id_equipo,
+                e.nombre_equipo,
+                e.marca,
+                e.modelo,
+                c.nombre_categoria,
                 i.stock_actual,
                 i.stock_minimo
             FROM Inventario_Equipos i
-            LEFT JOIN Categorias c ON i.id_categoria = c.id_categoria";
+            JOIN Equipos e ON i.id_equipo = e.id_equipo
+            LEFT JOIN Categorias c ON e.id_categoria = c.id_categoria";
 
                 using (OdbcDataAdapter da = new OdbcDataAdapter(query, connection))
                 {
@@ -724,21 +724,19 @@ namespace CapaModelo
 
 
 
+
         // Guardar registro de inventario
 
-        public void guardarInventario(string nombre_equipo, int id_categoria, string marca, string modelo, int stock_minimo, int stock_actual)
+        public void guardarInventario(int id_equipo, int stock_minimo, int stock_actual = 0)
         {
             using (OdbcConnection connection = cn.Conexion())
             {
                 try
                 {
-                    string query = @"INSERT INTO Inventario_Equipos (nombre_equipo, id_categoria, marca, modelo, stock_minimo, stock_actual)
-                             VALUES (?, ?, ?, ?, ?, ?)";
+                    string query = @"INSERT INTO Inventario_Equipos (id_equipo, stock_minimo, stock_actual) 
+                             VALUES (?, ?, ?)";
                     OdbcCommand cmd = new OdbcCommand(query, connection);
-                    cmd.Parameters.AddWithValue("@nombre_equipo", nombre_equipo);
-                    cmd.Parameters.AddWithValue("@id_categoria", id_categoria);
-                    cmd.Parameters.AddWithValue("@marca", marca ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@modelo", modelo ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@id_equipo", id_equipo);
                     cmd.Parameters.AddWithValue("@stock_minimo", stock_minimo);
                     cmd.Parameters.AddWithValue("@stock_actual", stock_actual);
 
@@ -753,26 +751,20 @@ namespace CapaModelo
 
 
 
+
+
         // Editar registro de inventario
-        public void editarInventario(int id_inventario, string nombre_equipo, int id_categoria, string marca, string modelo, int stock_minimo, int stock_actual)
+        public void editarInventario(int id_inventario, int stock_minimo, int stock_actual)
         {
             using (OdbcConnection connection = cn.Conexion())
             {
                 try
                 {
                     string query = @"UPDATE Inventario_Equipos
-                             SET nombre_equipo = ?, 
-                                 id_categoria = ?, 
-                                 marca = ?, 
-                                 modelo = ?, 
-                                 stock_minimo = ?, 
+                             SET stock_minimo = ?, 
                                  stock_actual = ?
                              WHERE id_inventario = ?";
                     OdbcCommand cmd = new OdbcCommand(query, connection);
-                    cmd.Parameters.AddWithValue("@nombre_equipo", nombre_equipo);
-                    cmd.Parameters.AddWithValue("@id_categoria", id_categoria);
-                    cmd.Parameters.AddWithValue("@marca", marca ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@modelo", modelo ?? (object)DBNull.Value);
                     cmd.Parameters.AddWithValue("@stock_minimo", stock_minimo);
                     cmd.Parameters.AddWithValue("@stock_actual", stock_actual);
                     cmd.Parameters.AddWithValue("@id_inventario", id_inventario);
@@ -789,9 +781,8 @@ namespace CapaModelo
                 }
             }
         }
-
-
         // Eliminar registro de inventario
+
         public void eliminarInventario(int id_inventario)
         {
             using (OdbcConnection connection = cn.Conexion())
@@ -814,6 +805,7 @@ namespace CapaModelo
                 }
             }
         }
+
 
 
     }

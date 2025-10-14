@@ -28,10 +28,10 @@ namespace CapaVista
         private void InicializarFormulario()
         {
             // Cargar categorías en ComboBox
-            cmb_idCategoria.DataSource = capaControlador_inventario.obtenerCategorias();
-            cmb_idCategoria.ValueMember = "id_categoria";       // valor interno
-            cmb_idCategoria.DisplayMember = "nombre_categoria"; // lo que ve el usuario
-            cmb_idCategoria.SelectedIndex = -1;                 // sin selección inicial
+            cmb_idEquipo.DataSource = capaControlador_inventario.obtenerCategorias();
+            cmb_idEquipo.ValueMember = "id_categoria";       // valor interno
+            cmb_idEquipo.DisplayMember = "nombre_categoria"; // lo que ve el usuario
+            cmb_idEquipo.SelectedIndex = -1;                 // sin selección inicial
 
             // Cargar inventario en DataGridView
             CargarInventario();
@@ -50,12 +50,9 @@ namespace CapaVista
         private void LimpiarCampos()
         {
             txt_codigoInventario.Clear();
-            txt_nombreEquipo.Clear();
-            txt_marcaEquipo.Clear();
-            txt_modeloEquipo.Clear();
+            cmb_idEquipo.SelectedIndex = -1;
             txtStockActual.Clear();
             txtStockMinimo.Clear();
-            cmb_idCategoria.SelectedIndex = -1;
         }
 
         private void CargarInventario()
@@ -81,19 +78,16 @@ namespace CapaVista
                 DataGridViewRow fila = dgv_inventario.Rows[e.RowIndex];
 
                 txt_codigoInventario.Text = fila.Cells["id_inventario"].Value?.ToString();
-                txt_nombreEquipo.Text = fila.Cells["nombre_equipo"].Value?.ToString();
-                txt_marcaEquipo.Text = fila.Cells["marca"].Value?.ToString();
-                txt_modeloEquipo.Text = fila.Cells["modelo"].Value?.ToString();
                 txtStockActual.Text = fila.Cells["stock_actual"].Value?.ToString();
                 txtStockMinimo.Text = fila.Cells["stock_minimo"].Value?.ToString();
 
-                // Asignar SelectedValue al ComboBox con retraso
+                // Seleccionar el equipo correspondiente
                 this.BeginInvoke((Action)(() =>
                 {
-                    if (fila.Cells["id_categoria"].Value != DBNull.Value)
-                        cmb_idCategoria.SelectedValue = Convert.ToInt32(fila.Cells["id_categoria"].Value);
+                    if (fila.Cells["id_equipo"].Value != DBNull.Value)
+                        cmb_idEquipo.SelectedValue = Convert.ToInt32(fila.Cells["id_equipo"].Value);
                     else
-                        cmb_idCategoria.SelectedIndex = -1;
+                        cmb_idEquipo.SelectedIndex = -1;
                 }));
             }
         }
@@ -123,20 +117,17 @@ namespace CapaVista
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(txt_nombreEquipo.Text))
+                if (cmb_idEquipo.SelectedIndex == -1)
                 {
-                    MessageBox.Show("El nombre del equipo es obligatorio.");
+                    MessageBox.Show("Selecciona un equipo.");
                     return;
                 }
 
-                int idCategoria = Convert.ToInt32(cmb_idCategoria.SelectedValue);
-                string nombreEquipo = txt_nombreEquipo.Text;
-                string marca = txt_marcaEquipo.Text;
-                string modelo = txt_modeloEquipo.Text;
+                int idEquipo = Convert.ToInt32(cmb_idEquipo.SelectedValue);
                 int stockMinimo = Convert.ToInt32(txtStockMinimo.Text);
-                int stockActual = Convert.ToInt32(txtStockActual.Text); // <-- nuevo
+                int stockActual = string.IsNullOrWhiteSpace(txtStockActual.Text) ? 0 : Convert.ToInt32(txtStockActual.Text);
 
-                capaControlador_inventario.guardarInventario(nombreEquipo, idCategoria, marca, modelo, stockMinimo, stockActual);
+                capaControlador_inventario.guardarInventario(idEquipo, stockMinimo, stockActual);
 
                 MessageBox.Show("Inventario registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarInventario();
@@ -159,22 +150,12 @@ namespace CapaVista
                 }
 
                 int idInventario = Convert.ToInt32(txt_codigoInventario.Text);
-                int idCategoria = Convert.ToInt32(cmb_idCategoria.SelectedValue);
-                string nombreEquipo = txt_nombreEquipo.Text;
-                string marca = txt_marcaEquipo.Text;
-                string modelo = txt_modeloEquipo.Text;
                 int stockMinimo = Convert.ToInt32(txtStockMinimo.Text);
+                int stockActual = Convert.ToInt32(txtStockActual.Text);
 
-                int stockActual;
-                if (!int.TryParse(txtStockActual.Text, out stockActual))
-                {
-                    MessageBox.Show("Stock actual inválido.");
-                    return;
-                }
+                capaControlador_inventario.editarInventario(idInventario, stockMinimo, stockActual);
 
-                capaControlador_inventario.editarInventario(idInventario, nombreEquipo, idCategoria, marca, modelo, stockMinimo, stockActual);
-
-                MessageBox.Show("Inventario modificado correctamente.");
+                MessageBox.Show("Inventario modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarInventario();
                 LimpiarCampos();
             }
@@ -187,7 +168,7 @@ namespace CapaVista
 
         private void btn_actualizarequipo_Click(object sender, EventArgs e)
         {
-
+            CargarInventario();
         }
 
         private void btn_eliminarequipo_Click(object sender, EventArgs e)
