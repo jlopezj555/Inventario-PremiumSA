@@ -71,26 +71,7 @@ namespace CapaVista
             dgv_inventario.AutoResizeColumns();
         }
 
-        private void dgv_inventario_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow fila = dgv_inventario.Rows[e.RowIndex];
-
-                txt_codigoInventario.Text = fila.Cells["id_inventario"].Value?.ToString();
-                txtStockActual.Text = fila.Cells["stock_actual"].Value?.ToString();
-                txtStockMinimo.Text = fila.Cells["stock_minimo"].Value?.ToString();
-
-                // Seleccionar el equipo correspondiente
-                this.BeginInvoke((Action)(() =>
-                {
-                    if (fila.Cells["id_equipo"].Value != DBNull.Value)
-                        cmb_idEquipo.SelectedValue = Convert.ToInt32(fila.Cells["id_equipo"].Value);
-                    else
-                        cmb_idEquipo.SelectedIndex = -1;
-                }));
-            }
-        }
+      
 
 
 
@@ -200,6 +181,27 @@ namespace CapaVista
         private void btn_ayudaequipo_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgv_inventario_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow fila = dgv_inventario.Rows[e.RowIndex];
+
+                txt_codigoInventario.Text = fila.Cells["id_inventario"].Value?.ToString();
+                txtStockActual.Text = fila.Cells["stock_actual"].Value?.ToString();
+                txtStockMinimo.Text = fila.Cells["stock_minimo"].Value?.ToString();
+
+                // Seleccionar el equipo correspondiente
+                this.BeginInvoke((Action)(() =>
+                {
+                    if (fila.Cells["id_equipo"].Value != DBNull.Value)
+                        cmb_idEquipo.SelectedValue = Convert.ToInt32(fila.Cells["id_equipo"].Value);
+                    else
+                        cmb_idEquipo.SelectedIndex = -1;
+                }));
+            }
         }
     }
 }

@@ -132,6 +132,7 @@
             this.dgv_inventario.RowHeadersWidth = 62;
             this.dgv_inventario.Size = new System.Drawing.Size(1060, 335);
             this.dgv_inventario.TabIndex = 23;
+            this.dgv_inventario.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_inventario_CellClick_1);
             // 
             // txtStockMinimo
             // 
