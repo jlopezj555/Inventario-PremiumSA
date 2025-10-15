@@ -52,12 +52,13 @@ namespace CapaControlador
         public void eliminarBodega(int idBodega)
         {
             c_Sentencias.eliminarBodega(idBodega);
-        } 
+        }
         //Equipos
-        public void guardar_equipo(string codigoInventario, string nombreEquipo, string marca, string modelo, string numeroSerie, string descripcion, int idCategoria, int idEstado, int idBodega, DateTime fechaIngreso, DateTime fechaGarantia, string observaciones)
+        // Guardar equipo
+        public void guardar_equipo(string nombreEquipo, string marca, string modelo, string numeroSerie, string descripcion,
+            int idCategoria, int idEstado, int idBodega, DateTime fechaIngreso, DateTime fechaGarantia, string observaciones)
         {
             c_Sentencias.guardarEquipo(
-                codigoInventario,
                 nombreEquipo,
                 marca,
                 modelo,
@@ -75,11 +76,11 @@ namespace CapaControlador
         {
             return c_Sentencias.obtenerEquipos();
         }
-        public void editar_equipo(int id_equipo, string codigoInventario, string nombreEquipo, string marca, string modelo, string numeroSerie, string descripcion, int idCategoria, int idEstado, int idBodega, DateTime fechaIngreso, DateTime fechaGarantia, string observaciones)
+        public void editar_equipo(int id_equipo, string nombreEquipo, string marca, string modelo, string numeroSerie, string descripcion,
+            int idCategoria, int idEstado, int idBodega, DateTime fechaIngreso, DateTime fechaGarantia, string observaciones)
         {
             c_Sentencias.editar_equipos(
                 id_equipo,
-                codigoInventario,
                 nombreEquipo,
                 marca,
                 modelo,
@@ -93,9 +94,10 @@ namespace CapaControlador
                 observaciones
             );
         }
-        public void eliminar_equipo (int id_equipo)
+        // Eliminar equipo
+        public void eliminar_equipo(int id_equipo)
         {
-            c_Sentencias.eliminar_equipo(id_equipo); 
+            c_Sentencias.eliminar_equipo(id_equipo);
         }
         public void cargarCategorias (ComboBox box)
         {

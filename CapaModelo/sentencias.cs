@@ -164,7 +164,6 @@ namespace CapaModelo
         }
         //Logica de movimiento de equipos
         public void guardarEquipo(
-            string codigoInventario,
             string nombreEquipo,
             string marca,
             string modelo,
@@ -188,12 +187,11 @@ namespace CapaModelo
             try
             {
                 string query_guardar_equipo = @"INSERT INTO Equipos 
-            (codigo_inventario, nombre_equipo, marca, modelo, numero_serie, descripcion, 
-             id_categoria, id_estado, id_bodega, fecha_ingreso, fecha_garantia, observaciones)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        (nombre_equipo, marca, modelo, numero_serie, descripcion, 
+         id_categoria, id_estado, id_bodega, fecha_ingreso, fecha_garantia, observaciones)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
                 OdbcCommand cmd = new OdbcCommand(query_guardar_equipo, connection);
-                cmd.Parameters.AddWithValue("@codigo_inventario", codigoInventario);
                 cmd.Parameters.AddWithValue("@nombre_equipo", nombreEquipo);
                 cmd.Parameters.AddWithValue("@marca", marca);
                 cmd.Parameters.AddWithValue("@modelo", modelo);
@@ -253,22 +251,20 @@ namespace CapaModelo
 
             return dt;
         }
-
         public void editar_equipos(
-            int id_equipo,
-            string codigoInventario,
-            string nombre,
-            string marca,
-            string modelo,
-            string numeroSerie,
-            string descripcion,
-            int idCategoria,
-            int idEstado,
-            int idBodega,
-            DateTime fechaIngreso,
-            DateTime fechaGarantia,
-            string observaciones
-        )
+    int id_equipo,
+    string nombre,
+    string marca,
+    string modelo,
+    string numeroSerie,
+    string descripcion,
+    int idCategoria,
+    int idEstado,
+    int idBodega,
+    DateTime fechaIngreso,
+    DateTime fechaGarantia,
+    string observaciones
+)
         {
             OdbcConnection connection = cn.Conexion();
             if (connection == null)
@@ -280,22 +276,20 @@ namespace CapaModelo
             try
             {
                 string query_editar = @"UPDATE Equipos 
-                                SET codigo_inventario = ?,
-                                    nombre_equipo = ?,
-                                    marca = ?,
-                                    modelo = ?,
-                                    numero_serie = ?,
-                                    descripcion = ?,
-                                    id_categoria = ?,
-                                    id_estado = ?,
-                                    id_bodega = ?,
-                                    fecha_ingreso = ?,
-                                    fecha_garantia = ?,
-                                    observaciones = ?
-                                WHERE id_equipo = ?";
+                            SET nombre_equipo = ?,
+                                marca = ?,
+                                modelo = ?,
+                                numero_serie = ?,
+                                descripcion = ?,
+                                id_categoria = ?,
+                                id_estado = ?,
+                                id_bodega = ?,
+                                fecha_ingreso = ?,
+                                fecha_garantia = ?,
+                                observaciones = ?
+                            WHERE id_equipo = ?";
 
                 OdbcCommand cmd = new OdbcCommand(query_editar, connection);
-                cmd.Parameters.AddWithValue("@codigo_inventario", codigoInventario);
                 cmd.Parameters.AddWithValue("@nombre_equipo", nombre);
                 cmd.Parameters.AddWithValue("@marca", marca);
                 cmd.Parameters.AddWithValue("@modelo", modelo);
@@ -329,6 +323,7 @@ namespace CapaModelo
                 connection.Close();
             }
         }
+
         public void eliminar_equipo(int id_equipo)
         {
             OdbcConnection connection = cn.Conexion();
@@ -363,6 +358,7 @@ namespace CapaModelo
                 connection.Close();
             }
         }
+
         //Logica combo box
         public DataTable obtenerCategorias()
         {

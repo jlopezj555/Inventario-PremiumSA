@@ -36,10 +36,9 @@ namespace CapaVista
             try
             {
                 // Validaciones básicas
-                if (string.IsNullOrWhiteSpace(txt_codigoInventario.Text) ||
-                    string.IsNullOrWhiteSpace(txt_nombreEquipo.Text))
+                if (string.IsNullOrWhiteSpace(txt_nombreEquipo.Text))
                 {
-                    MessageBox.Show("El código de inventario y el nombre del equipo son obligatorios.");
+                    MessageBox.Show("El nombre del equipo es obligatorio.");
                     return;
                 }
 
@@ -52,9 +51,8 @@ namespace CapaVista
                 DateTime fechaIngreso = fecha_ingreso.Value;
                 DateTime fechaGarantia = fecha_garantia.Value;
 
-                // Llamar al controlador para guardar
+                // Llamar al controlador para guardar (AQUÍ YA ESTÁ CORRECTO)
                 capaControlador_equipo.guardar_equipo(
-                    txt_codigoInventario.Text,
                     txt_nombreEquipo.Text,
                     txt_marcaEquipo.Text,
                     txt_modeloEquipo.Text,
@@ -82,6 +80,7 @@ namespace CapaVista
             }
         }
 
+
         private void CargarEquipos()
         {
             DataTable dt = capaControlador_equipo.obtenerEquipos();
@@ -99,7 +98,6 @@ namespace CapaVista
                 }
 
                 int idEquipo = Convert.ToInt32(txt_idEquipo.Text);
-                string codigoInventario = txt_codigoInventario.Text;
                 string nombre = txt_nombreEquipo.Text;
                 string marca = txt_marcaEquipo.Text;
                 string modelo = txt_modeloEquipo.Text;
@@ -110,14 +108,12 @@ namespace CapaVista
                 int idEstado = Convert.ToInt32(cmb_estado.SelectedValue);
                 int idBodega = Convert.ToInt32(cmb_bodega.SelectedValue);
 
-                DateTime FechaIngreso = fecha_ingreso.Value;
-                DateTime FechaGarantia = fecha_garantia.Value;
+                DateTime fechaIngreso = fecha_ingreso.Value;
+                DateTime fechaGarantia = fecha_garantia.Value;
                 string observaciones = txt_observaciones.Text;
 
-                // Llamar al método del controlador
                 capaControlador_equipo.editar_equipo(
                     idEquipo,
-                    codigoInventario,
                     nombre,
                     marca,
                     modelo,
@@ -126,8 +122,8 @@ namespace CapaVista
                     idCategoria,
                     idEstado,
                     idBodega,
-                    FechaIngreso,
-                    FechaGarantia,
+                    fechaIngreso,
+                    fechaGarantia,
                     observaciones
                 );
 
@@ -139,7 +135,6 @@ namespace CapaVista
                 MessageBox.Show("Error al modificar el equipo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void dgv_equipos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0) // validar que no sea header
@@ -148,21 +143,23 @@ namespace CapaVista
 
                 txt_idEquipo.Text = fila.Cells["id_equipo"].Value.ToString();
                 txt_nombreEquipo.Text = fila.Cells["nombre_equipo"].Value.ToString();
-                txt_codigoInventario.Text = fila.Cells["codigo_inventario"].Value.ToString();
                 txt_marcaEquipo.Text = fila.Cells["marca"].Value.ToString();
                 txt_modeloEquipo.Text = fila.Cells["modelo"].Value.ToString();
                 txt_NumeroSerie.Text = fila.Cells["numero_serie"].Value.ToString();
                 txt_descripcionEquipo.Text = fila.Cells["descripcion"].Value.ToString();
-                cmb_idCategoria.Text = fila.Cells["categoria"].Value?.ToString() ?? "";
-                cmb_estado.Text = fila.Cells["estado"].Value?.ToString() ?? "";
-                cmb_bodega.Text = fila.Cells["bodega"].Value?.ToString() ?? "";
+
+                cmb_idCategoria.Text = fila.Cells["categoria"].Value.ToString();
+                cmb_estado.Text = fila.Cells["estado"].Value.ToString();
+                cmb_bodega.Text = fila.Cells["bodega"].Value.ToString();
+
+
                 txt_observaciones.Text = fila.Cells["observaciones"].Value.ToString();
             }
         }
+
         private void LimpiarCampos()
         {
             txt_idEquipo.Clear();
-            txt_codigoInventario.Clear();
             txt_nombreEquipo.Clear();
             txt_marcaEquipo.Clear();
             txt_modeloEquipo.Clear();
@@ -183,17 +180,20 @@ namespace CapaVista
                 int idEquipo = Convert.ToInt32(txt_idEquipo.Text);
 
                 DialogResult confirm = MessageBox.Show(
-                    "¿Seguro que deseas eliminar este equipo?",
+                    $"¿Seguro que deseas eliminar el equipo con ID {idEquipo}?",
                     "Confirmar eliminación",
                     MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question
+                    MessageBoxIcon.Warning
                 );
 
                 if (confirm == DialogResult.Yes)
                 {
                     capaControlador_equipo.eliminar_equipo(idEquipo);
-                    CargarEquipos();
-                    LimpiarCampos();
+
+                    MessageBox.Show("Equipo eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    CargarEquipos();    // Refrescar tabla
+                    LimpiarCampos();    // Limpiar inputs
                 }
             }
             catch (Exception ex)
@@ -201,6 +201,7 @@ namespace CapaVista
                 MessageBox.Show("Error al eliminar el equipo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void btn_actualizarequipo_Click(object sender, EventArgs e)
         {
             try
