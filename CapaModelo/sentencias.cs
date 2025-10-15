@@ -369,15 +369,15 @@ namespace CapaModelo
             DataTable dt = new DataTable();
             using (OdbcConnection connection = cn.Conexion())
             {
-                string query = "SELECT id_categoria, nombre_categoria FROM Categorias";
+                string query = "SELECT id_categoria, nombre_categoria, descripcion FROM Categorias";
                 using (OdbcDataAdapter da = new OdbcDataAdapter(query, connection))
                 {
                     da.Fill(dt);
                 }
             }
-
             return dt;
         }
+
         public DataTable obtenerEstado()
         {
             DataTable dt = new DataTable();

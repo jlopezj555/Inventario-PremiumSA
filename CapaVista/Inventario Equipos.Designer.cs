@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_menumantenimientou = new System.Windows.Forms.Panel();
+            this.cmb_idEquipo = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtStockActual = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,6 +38,7 @@
             this.dgv_inventario = new System.Windows.Forms.DataGridView();
             this.txtStockMinimo = new System.Windows.Forms.TextBox();
             this.lbl_descripcionequipo = new System.Windows.Forms.Label();
+            this.Id_Equipo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_reporteequipo = new System.Windows.Forms.Button();
             this.btn_ayudaequipo = new System.Windows.Forms.Button();
@@ -47,8 +49,6 @@
             this.panel_mantenimientou = new System.Windows.Forms.Panel();
             this.salir_equipo = new System.Windows.Forms.Button();
             this.lbl_mantenimientoequipos = new System.Windows.Forms.Label();
-            this.cmb_idEquipo = new System.Windows.Forms.ComboBox();
-            this.Id_Equipo = new System.Windows.Forms.Label();
             this.panel_menumantenimientou.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_inventario)).BeginInit();
             this.panel1.SuspendLayout();
@@ -74,6 +74,15 @@
             this.panel_menumantenimientou.Name = "panel_menumantenimientou";
             this.panel_menumantenimientou.Size = new System.Drawing.Size(1133, 722);
             this.panel_menumantenimientou.TabIndex = 6;
+            // 
+            // cmb_idEquipo
+            // 
+            this.cmb_idEquipo.FormattingEnabled = true;
+            this.cmb_idEquipo.Location = new System.Drawing.Point(347, 230);
+            this.cmb_idEquipo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmb_idEquipo.Name = "cmb_idEquipo";
+            this.cmb_idEquipo.Size = new System.Drawing.Size(246, 24);
+            this.cmb_idEquipo.TabIndex = 31;
             // 
             // label3
             // 
@@ -120,7 +129,7 @@
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -152,6 +161,17 @@
             this.lbl_descripcionequipo.Size = new System.Drawing.Size(167, 28);
             this.lbl_descripcionequipo.TabIndex = 15;
             this.lbl_descripcionequipo.Text = "Stock Mínimo";
+            // 
+            // Id_Equipo
+            // 
+            this.Id_Equipo.AutoSize = true;
+            this.Id_Equipo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Id_Equipo.ForeColor = System.Drawing.Color.White;
+            this.Id_Equipo.Location = new System.Drawing.Point(204, 226);
+            this.Id_Equipo.Name = "Id_Equipo";
+            this.Id_Equipo.Size = new System.Drawing.Size(125, 28);
+            this.Id_Equipo.TabIndex = 9;
+            this.Id_Equipo.Text = "ID Equipo";
             // 
             // panel1
             // 
@@ -274,26 +294,6 @@
             this.lbl_mantenimientoequipos.Size = new System.Drawing.Size(459, 39);
             this.lbl_mantenimientoequipos.TabIndex = 2;
             this.lbl_mantenimientoequipos.Text = "INVENTARIO DE EQUIPOS";
-            // 
-            // cmb_idEquipo
-            // 
-            this.cmb_idEquipo.FormattingEnabled = true;
-            this.cmb_idEquipo.Location = new System.Drawing.Point(347, 230);
-            this.cmb_idEquipo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cmb_idEquipo.Name = "cmb_idEquipo";
-            this.cmb_idEquipo.Size = new System.Drawing.Size(246, 24);
-            this.cmb_idEquipo.TabIndex = 31;
-            // 
-            // Id_Equipo
-            // 
-            this.Id_Equipo.AutoSize = true;
-            this.Id_Equipo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Id_Equipo.ForeColor = System.Drawing.Color.White;
-            this.Id_Equipo.Location = new System.Drawing.Point(204, 226);
-            this.Id_Equipo.Name = "Id_Equipo";
-            this.Id_Equipo.Size = new System.Drawing.Size(125, 28);
-            this.Id_Equipo.TabIndex = 9;
-            this.Id_Equipo.Text = "ID Equipo";
             // 
             // Inventario_Equipos
             // 

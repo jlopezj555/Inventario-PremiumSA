@@ -49,6 +49,16 @@ namespace CapaVista
         {
             DataTable dt = capaControlador_movimiento.obtenerCategorias();
             dgv_categorias.DataSource = dt;
+
+            // Configurar encabezados legibles (opcional)
+            if (dgv_categorias.Columns.Contains("id_categoria"))
+                dgv_categorias.Columns["id_categoria"].HeaderText = "ID";
+
+            if (dgv_categorias.Columns.Contains("nombre_categoria"))
+                dgv_categorias.Columns["nombre_categoria"].HeaderText = "Categoría";
+
+            if (dgv_categorias.Columns.Contains("descripcion"))
+                dgv_categorias.Columns["descripcion"].HeaderText = "Descripción";
         }
 
         private void btn_modregistrocategoria_Click(object sender, EventArgs e)
@@ -105,13 +115,13 @@ namespace CapaVista
 
         private void dgv_categorias_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) // validar que no sea header
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow fila = dgv_categorias.Rows[e.RowIndex];
 
-                txt_idCategoria.Text = fila.Cells["ID_categoria"].Value.ToString();
-                txt_nombre.Text = fila.Cells["nombre_categoria"].Value.ToString();
-                txt_descripcion.Text = fila.Cells["descripcion"].Value.ToString();
+                txt_idCategoria.Text = fila.Cells["id_categoria"].Value?.ToString();
+                txt_nombre.Text = fila.Cells["nombre_categoria"].Value?.ToString();
+                txt_descripcion.Text = fila.Cells["descripcion"].Value?.ToString();
             }
         }
         private void LimpiarCampos()
