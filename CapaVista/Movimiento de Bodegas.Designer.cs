@@ -41,7 +41,6 @@ namespace CapaVista
             this.lbl_contacto = new System.Windows.Forms.Label();
             this.dgv_bodegas = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_reportebodega = new System.Windows.Forms.Button();
             this.btn_ayudabodega = new System.Windows.Forms.Button();
             this.btn_eliminarbodega = new System.Windows.Forms.Button();
             this.btn_actualizarbodega = new System.Windows.Forms.Button();
@@ -68,7 +67,7 @@ namespace CapaVista
             this.panel_menumantenimientou.Controls.Add(this.panel1);
             this.panel_menumantenimientou.ForeColor = System.Drawing.SystemColors.Control;
             this.panel_menumantenimientou.Location = new System.Drawing.Point(66, 102);
-            this.panel_menumantenimientou.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel_menumantenimientou.Margin = new System.Windows.Forms.Padding(4);
             this.panel_menumantenimientou.Name = "panel_menumantenimientou";
             this.panel_menumantenimientou.Size = new System.Drawing.Size(1076, 500);
             this.panel_menumantenimientou.TabIndex = 3;
@@ -84,7 +83,7 @@ namespace CapaVista
             this.panel2.Controls.Add(this.lbl_capacidadbodega);
             this.panel2.ForeColor = System.Drawing.SystemColors.Control;
             this.panel2.Location = new System.Drawing.Point(29, 260);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(463, 216);
             this.panel2.TabIndex = 15;
@@ -171,7 +170,7 @@ namespace CapaVista
             // 
             this.dgv_bodegas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_bodegas.Location = new System.Drawing.Point(520, 201);
-            this.dgv_bodegas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgv_bodegas.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_bodegas.Name = "dgv_bodegas";
             this.dgv_bodegas.RowHeadersWidth = 62;
             this.dgv_bodegas.Size = new System.Drawing.Size(519, 278);
@@ -182,7 +181,6 @@ namespace CapaVista
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.btn_reportebodega);
             this.panel1.Controls.Add(this.btn_ayudabodega);
             this.panel1.Controls.Add(this.btn_eliminarbodega);
             this.panel1.Controls.Add(this.btn_actualizarbodega);
@@ -190,28 +188,17 @@ namespace CapaVista
             this.panel1.Controls.Add(this.btn_modregistrobodega);
             this.panel1.ForeColor = System.Drawing.SystemColors.Control;
             this.panel1.Location = new System.Drawing.Point(86, 22);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(917, 148);
+            this.panel1.Size = new System.Drawing.Size(781, 148);
             this.panel1.TabIndex = 2;
-            // 
-            // btn_reportebodega
-            // 
-            this.btn_reportebodega.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_reportebodega.Image = global::CapaVista.Properties.Resources.reporte_registro;
-            this.btn_reportebodega.Location = new System.Drawing.Point(782, 4);
-            this.btn_reportebodega.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btn_reportebodega.Name = "btn_reportebodega";
-            this.btn_reportebodega.Size = new System.Drawing.Size(124, 132);
-            this.btn_reportebodega.TabIndex = 9;
-            this.btn_reportebodega.UseVisualStyleBackColor = true;
             // 
             // btn_ayudabodega
             // 
             this.btn_ayudabodega.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_ayudabodega.Image = global::CapaVista.Properties.Resources.ayuda_registro;
             this.btn_ayudabodega.Location = new System.Drawing.Point(639, 4);
-            this.btn_ayudabodega.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_ayudabodega.Margin = new System.Windows.Forms.Padding(4);
             this.btn_ayudabodega.Name = "btn_ayudabodega";
             this.btn_ayudabodega.Size = new System.Drawing.Size(124, 132);
             this.btn_ayudabodega.TabIndex = 8;
@@ -222,7 +209,7 @@ namespace CapaVista
             this.btn_eliminarbodega.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_eliminarbodega.Image = global::CapaVista.Properties.Resources.eliminar_usuario;
             this.btn_eliminarbodega.Location = new System.Drawing.Point(482, 4);
-            this.btn_eliminarbodega.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_eliminarbodega.Margin = new System.Windows.Forms.Padding(4);
             this.btn_eliminarbodega.Name = "btn_eliminarbodega";
             this.btn_eliminarbodega.Size = new System.Drawing.Size(142, 132);
             this.btn_eliminarbodega.TabIndex = 7;
@@ -234,7 +221,7 @@ namespace CapaVista
             this.btn_actualizarbodega.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_actualizarbodega.Image = global::CapaVista.Properties.Resources.actualizar_registro;
             this.btn_actualizarbodega.Location = new System.Drawing.Point(324, 4);
-            this.btn_actualizarbodega.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_actualizarbodega.Margin = new System.Windows.Forms.Padding(4);
             this.btn_actualizarbodega.Name = "btn_actualizarbodega";
             this.btn_actualizarbodega.Size = new System.Drawing.Size(140, 132);
             this.btn_actualizarbodega.TabIndex = 6;
@@ -245,7 +232,7 @@ namespace CapaVista
             this.btn_guardarregistrobodega.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_guardarregistrobodega.Image = global::CapaVista.Properties.Resources.guardar_registro1;
             this.btn_guardarregistrobodega.Location = new System.Drawing.Point(10, 4);
-            this.btn_guardarregistrobodega.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_guardarregistrobodega.Margin = new System.Windows.Forms.Padding(4);
             this.btn_guardarregistrobodega.Name = "btn_guardarregistrobodega";
             this.btn_guardarregistrobodega.Size = new System.Drawing.Size(124, 132);
             this.btn_guardarregistrobodega.TabIndex = 5;
@@ -257,7 +244,7 @@ namespace CapaVista
             this.btn_modregistrobodega.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_modregistrobodega.Image = global::CapaVista.Properties.Resources.modificar_registro;
             this.btn_modregistrobodega.Location = new System.Drawing.Point(157, 4);
-            this.btn_modregistrobodega.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_modregistrobodega.Margin = new System.Windows.Forms.Padding(4);
             this.btn_modregistrobodega.Name = "btn_modregistrobodega";
             this.btn_modregistrobodega.Size = new System.Drawing.Size(144, 132);
             this.btn_modregistrobodega.TabIndex = 4;
@@ -272,7 +259,7 @@ namespace CapaVista
             this.panel_mantenimientou.Controls.Add(this.lbl_mantenimientousuarios);
             this.panel_mantenimientou.ForeColor = System.Drawing.SystemColors.Control;
             this.panel_mantenimientou.Location = new System.Drawing.Point(66, 14);
-            this.panel_mantenimientou.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel_mantenimientou.Margin = new System.Windows.Forms.Padding(4);
             this.panel_mantenimientou.Name = "panel_mantenimientou";
             this.panel_mantenimientou.Size = new System.Drawing.Size(1076, 91);
             this.panel_mantenimientou.TabIndex = 2;
@@ -291,7 +278,7 @@ namespace CapaVista
             this.salir_movbodegas.ForeColor = System.Drawing.SystemColors.ControlText;
             this.salir_movbodegas.Image = global::CapaVista.Properties.Resources.salir_registro;
             this.salir_movbodegas.Location = new System.Drawing.Point(4, 4);
-            this.salir_movbodegas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.salir_movbodegas.Margin = new System.Windows.Forms.Padding(4);
             this.salir_movbodegas.Name = "salir_movbodegas";
             this.salir_movbodegas.Size = new System.Drawing.Size(94, 78);
             this.salir_movbodegas.TabIndex = 10;
@@ -317,7 +304,7 @@ namespace CapaVista
             this.ClientSize = new System.Drawing.Size(1204, 630);
             this.Controls.Add(this.panel_menumantenimientou);
             this.Controls.Add(this.panel_mantenimientou);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Movimiento_de_Bodegas";
             this.Text = "Bodegas";
             this.panel_menumantenimientou.ResumeLayout(false);
@@ -344,7 +331,6 @@ namespace CapaVista
         private System.Windows.Forms.TextBox txt_nombreBodega;
         private System.Windows.Forms.Label lbl_nombrebodega;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btn_reportebodega;
         private System.Windows.Forms.Button btn_ayudabodega;
         private System.Windows.Forms.Button btn_eliminarbodega;
         private System.Windows.Forms.Button btn_actualizarbodega;

@@ -218,5 +218,8 @@
   <ItemGroup>
     <None Include="Resources\images-convertido-a-25x25.jpeg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\simplificado.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -40,7 +40,6 @@
             this.lbl_descripcionequipo = new System.Windows.Forms.Label();
             this.Id_Equipo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_reporteequipo = new System.Windows.Forms.Button();
             this.btn_ayudaequipo = new System.Windows.Forms.Button();
             this.btn_eliminarinventario = new System.Windows.Forms.Button();
             this.btn_actualizarinventario = new System.Windows.Forms.Button();
@@ -129,7 +128,7 @@
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -176,29 +175,17 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.btn_reporteequipo);
             this.panel1.Controls.Add(this.btn_ayudaequipo);
             this.panel1.Controls.Add(this.btn_eliminarinventario);
             this.panel1.Controls.Add(this.btn_actualizarinventario);
             this.panel1.Controls.Add(this.btn_guardarinventario);
             this.panel1.Controls.Add(this.btn_modificarinventario);
             this.panel1.ForeColor = System.Drawing.SystemColors.Control;
-            this.panel1.Location = new System.Drawing.Point(110, 19);
+            this.panel1.Location = new System.Drawing.Point(162, 20);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(873, 148);
+            this.panel1.Size = new System.Drawing.Size(737, 148);
             this.panel1.TabIndex = 2;
-            // 
-            // btn_reporteequipo
-            // 
-            this.btn_reporteequipo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_reporteequipo.Image = global::CapaVista.Properties.Resources.reporte_registro;
-            this.btn_reporteequipo.Location = new System.Drawing.Point(733, 4);
-            this.btn_reporteequipo.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_reporteequipo.Name = "btn_reporteequipo";
-            this.btn_reporteequipo.Size = new System.Drawing.Size(124, 132);
-            this.btn_reporteequipo.TabIndex = 9;
-            this.btn_reporteequipo.UseVisualStyleBackColor = true;
             // 
             // btn_ayudaequipo
             // 
@@ -289,7 +276,7 @@
             this.lbl_mantenimientoequipos.AutoSize = true;
             this.lbl_mantenimientoequipos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_mantenimientoequipos.ForeColor = System.Drawing.Color.White;
-            this.lbl_mantenimientoequipos.Location = new System.Drawing.Point(272, 20);
+            this.lbl_mantenimientoequipos.Location = new System.Drawing.Point(322, 28);
             this.lbl_mantenimientoequipos.Name = "lbl_mantenimientoequipos";
             this.lbl_mantenimientoequipos.Size = new System.Drawing.Size(459, 39);
             this.lbl_mantenimientoequipos.TabIndex = 2;
@@ -326,7 +313,6 @@
         private System.Windows.Forms.TextBox txtStockMinimo;
         private System.Windows.Forms.Label lbl_descripcionequipo;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btn_reporteequipo;
         private System.Windows.Forms.Button btn_ayudaequipo;
         private System.Windows.Forms.Button btn_eliminarinventario;
         private System.Windows.Forms.Button btn_actualizarinventario;

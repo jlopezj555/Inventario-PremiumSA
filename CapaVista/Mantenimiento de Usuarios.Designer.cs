@@ -52,7 +52,6 @@ namespace CapaVista
             this.txt_nombreUsuario = new System.Windows.Forms.TextBox();
             this.lbl_nombreusuario = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_reporteusuario = new System.Windows.Forms.Button();
             this.btn_ayudausuario = new System.Windows.Forms.Button();
             this.btn_eliminarusuario = new System.Windows.Forms.Button();
             this.btn_actualizarusuario = new System.Windows.Forms.Button();
@@ -70,7 +69,7 @@ namespace CapaVista
             this.panel_mantenimientou.Controls.Add(this.lbl_mantenimientousuarios);
             this.panel_mantenimientou.ForeColor = System.Drawing.SystemColors.Control;
             this.panel_mantenimientou.Location = new System.Drawing.Point(65, 15);
-            this.panel_mantenimientou.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel_mantenimientou.Margin = new System.Windows.Forms.Padding(4);
             this.panel_mantenimientou.Name = "panel_mantenimientou";
             this.panel_mantenimientou.Size = new System.Drawing.Size(1075, 91);
             this.panel_mantenimientou.TabIndex = 0;
@@ -80,7 +79,7 @@ namespace CapaVista
             this.salir_usuario.ForeColor = System.Drawing.SystemColors.ControlText;
             this.salir_usuario.Image = global::CapaVista.Properties.Resources.salir_registro;
             this.salir_usuario.Location = new System.Drawing.Point(4, 4);
-            this.salir_usuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.salir_usuario.Margin = new System.Windows.Forms.Padding(4);
             this.salir_usuario.Name = "salir_usuario";
             this.salir_usuario.Size = new System.Drawing.Size(95, 78);
             this.salir_usuario.TabIndex = 15;
@@ -122,7 +121,7 @@ namespace CapaVista
             this.panel_menumantenimientou.Controls.Add(this.panel1);
             this.panel_menumantenimientou.ForeColor = System.Drawing.SystemColors.Control;
             this.panel_menumantenimientou.Location = new System.Drawing.Point(56, 102);
-            this.panel_menumantenimientou.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel_menumantenimientou.Margin = new System.Windows.Forms.Padding(4);
             this.panel_menumantenimientou.Name = "panel_menumantenimientou";
             this.panel_menumantenimientou.Size = new System.Drawing.Size(1085, 518);
             this.panel_menumantenimientou.TabIndex = 1;
@@ -131,7 +130,7 @@ namespace CapaVista
             // 
             this.btn_cambiarContrasena.Image = global::CapaVista.Properties.Resources.images_convertido_a_25x25;
             this.btn_cambiarContrasena.Location = new System.Drawing.Point(447, 299);
-            this.btn_cambiarContrasena.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_cambiarContrasena.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cambiarContrasena.Name = "btn_cambiarContrasena";
             this.btn_cambiarContrasena.Size = new System.Drawing.Size(47, 31);
             this.btn_cambiarContrasena.TabIndex = 21;
@@ -276,7 +275,7 @@ namespace CapaVista
             // 
             this.dgv_usuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_usuarios.Location = new System.Drawing.Point(490, 191);
-            this.dgv_usuarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgv_usuarios.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_usuarios.Name = "dgv_usuarios";
             this.dgv_usuarios.RowHeadersWidth = 62;
             this.dgv_usuarios.Size = new System.Drawing.Size(545, 294);
@@ -305,35 +304,23 @@ namespace CapaVista
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.btn_reporteusuario);
             this.panel1.Controls.Add(this.btn_ayudausuario);
             this.panel1.Controls.Add(this.btn_eliminarusuario);
             this.panel1.Controls.Add(this.btn_actualizarusuario);
             this.panel1.Controls.Add(this.btn_modregistrousuario);
             this.panel1.ForeColor = System.Drawing.SystemColors.Control;
             this.panel1.Location = new System.Drawing.Point(145, 26);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(859, 147);
+            this.panel1.Size = new System.Drawing.Size(707, 147);
             this.panel1.TabIndex = 2;
-            // 
-            // btn_reporteusuario
-            // 
-            this.btn_reporteusuario.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_reporteusuario.Image = global::CapaVista.Properties.Resources.reporte_registro;
-            this.btn_reporteusuario.Location = new System.Drawing.Point(721, 4);
-            this.btn_reporteusuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btn_reporteusuario.Name = "btn_reporteusuario";
-            this.btn_reporteusuario.Size = new System.Drawing.Size(124, 132);
-            this.btn_reporteusuario.TabIndex = 9;
-            this.btn_reporteusuario.UseVisualStyleBackColor = true;
             // 
             // btn_ayudausuario
             // 
             this.btn_ayudausuario.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_ayudausuario.Image = global::CapaVista.Properties.Resources.ayuda_registro;
             this.btn_ayudausuario.Location = new System.Drawing.Point(567, 4);
-            this.btn_ayudausuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_ayudausuario.Margin = new System.Windows.Forms.Padding(4);
             this.btn_ayudausuario.Name = "btn_ayudausuario";
             this.btn_ayudausuario.Size = new System.Drawing.Size(124, 132);
             this.btn_ayudausuario.TabIndex = 8;
@@ -344,7 +331,7 @@ namespace CapaVista
             this.btn_eliminarusuario.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_eliminarusuario.Image = global::CapaVista.Properties.Resources.eliminar_usuario;
             this.btn_eliminarusuario.Location = new System.Drawing.Point(392, 4);
-            this.btn_eliminarusuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_eliminarusuario.Margin = new System.Windows.Forms.Padding(4);
             this.btn_eliminarusuario.Name = "btn_eliminarusuario";
             this.btn_eliminarusuario.Size = new System.Drawing.Size(143, 132);
             this.btn_eliminarusuario.TabIndex = 7;
@@ -356,7 +343,7 @@ namespace CapaVista
             this.btn_actualizarusuario.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_actualizarusuario.Image = global::CapaVista.Properties.Resources.actualizar_registro;
             this.btn_actualizarusuario.Location = new System.Drawing.Point(225, 4);
-            this.btn_actualizarusuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_actualizarusuario.Margin = new System.Windows.Forms.Padding(4);
             this.btn_actualizarusuario.Name = "btn_actualizarusuario";
             this.btn_actualizarusuario.Size = new System.Drawing.Size(140, 132);
             this.btn_actualizarusuario.TabIndex = 6;
@@ -368,7 +355,7 @@ namespace CapaVista
             this.btn_modregistrousuario.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_modregistrousuario.Image = global::CapaVista.Properties.Resources.modificar_registro;
             this.btn_modregistrousuario.Location = new System.Drawing.Point(48, 4);
-            this.btn_modregistrousuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_modregistrousuario.Margin = new System.Windows.Forms.Padding(4);
             this.btn_modregistrousuario.Name = "btn_modregistrousuario";
             this.btn_modregistrousuario.Size = new System.Drawing.Size(144, 132);
             this.btn_modregistrousuario.TabIndex = 4;
@@ -383,7 +370,7 @@ namespace CapaVista
             this.ClientSize = new System.Drawing.Size(1204, 599);
             this.Controls.Add(this.panel_menumantenimientou);
             this.Controls.Add(this.panel_mantenimientou);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Mantenimiento_de_Usuarios";
             this.Text = "Mantenimiento de Usuarios";
             this.Load += new System.EventHandler(this.Mantenimiento_de_Usuarios_Load);
@@ -414,7 +401,6 @@ namespace CapaVista
         private System.Windows.Forms.Label lbl_telefono;
         private System.Windows.Forms.DataGridView dgv_usuarios;
         private System.Windows.Forms.TextBox txt_nombreUsuario;
-        private System.Windows.Forms.Button btn_reporteusuario;
         private System.Windows.Forms.Button btn_ayudausuario;
         private System.Windows.Forms.Button btn_eliminarusuario;
         private System.Windows.Forms.Button btn_actualizarusuario;

@@ -33,26 +33,26 @@
             this.lbl_Fechamenu = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.Btn_InventarioEquipos = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_estado = new System.Windows.Forms.Button();
-            this.btn_categorias = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.btn_movimientoinventario = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.btn_mantenimientousuarios = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.btn_movimientobodegas = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.btn_mantenimientoequipos = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Btn_InventarioEquipos = new System.Windows.Forms.Button();
+            this.btn_movimientoinventario = new System.Windows.Forms.Button();
+            this.btn_estado = new System.Windows.Forms.Button();
+            this.btn_mantenimientoequipos = new System.Windows.Forms.Button();
+            this.btn_categorias = new System.Windows.Forms.Button();
+            this.btn_mantenimientousuarios = new System.Windows.Forms.Button();
+            this.btn_movimientobodegas = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_Usuariomenu
@@ -109,18 +109,6 @@
             this.label3.TabIndex = 14;
             this.label3.Text = "Inventario de Equipos";
             // 
-            // Btn_InventarioEquipos
-            // 
-            this.Btn_InventarioEquipos.BackgroundImage = global::CapaVista.Properties.Resources.avatar;
-            this.Btn_InventarioEquipos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Btn_InventarioEquipos.Location = new System.Drawing.Point(75, 33);
-            this.Btn_InventarioEquipos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Btn_InventarioEquipos.Name = "Btn_InventarioEquipos";
-            this.Btn_InventarioEquipos.Size = new System.Drawing.Size(134, 126);
-            this.Btn_InventarioEquipos.TabIndex = 13;
-            this.Btn_InventarioEquipos.UseVisualStyleBackColor = true;
-            this.Btn_InventarioEquipos.Click += new System.EventHandler(this.Btn_InventarioEquipos_Click);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -130,28 +118,6 @@
             this.label2.Size = new System.Drawing.Size(179, 22);
             this.label2.TabIndex = 12;
             this.label2.Text = "Estado de equipos";
-            // 
-            // btn_estado
-            // 
-            this.btn_estado.Image = global::CapaVista.Properties.Resources.instrumentos__1_;
-            this.btn_estado.Location = new System.Drawing.Point(39, 38);
-            this.btn_estado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_estado.Name = "btn_estado";
-            this.btn_estado.Size = new System.Drawing.Size(131, 116);
-            this.btn_estado.TabIndex = 11;
-            this.btn_estado.UseVisualStyleBackColor = true;
-            this.btn_estado.Click += new System.EventHandler(this.btn_estado_Click);
-            // 
-            // btn_categorias
-            // 
-            this.btn_categorias.Image = global::CapaVista.Properties.Resources.categorizacion;
-            this.btn_categorias.Location = new System.Drawing.Point(39, 203);
-            this.btn_categorias.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_categorias.Name = "btn_categorias";
-            this.btn_categorias.Size = new System.Drawing.Size(131, 127);
-            this.btn_categorias.TabIndex = 10;
-            this.btn_categorias.UseVisualStyleBackColor = true;
-            this.btn_categorias.Click += new System.EventHandler(this.btn_categorias_Click);
             // 
             // label8
             // 
@@ -164,18 +130,6 @@
             this.label8.Text = "Movimiento de inventario";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // btn_movimientoinventario
-            // 
-            this.btn_movimientoinventario.BackgroundImage = global::CapaVista.Properties.Resources.inventario;
-            this.btn_movimientoinventario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_movimientoinventario.Location = new System.Drawing.Point(75, 203);
-            this.btn_movimientoinventario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_movimientoinventario.Name = "btn_movimientoinventario";
-            this.btn_movimientoinventario.Size = new System.Drawing.Size(131, 116);
-            this.btn_movimientoinventario.TabIndex = 8;
-            this.btn_movimientoinventario.UseVisualStyleBackColor = true;
-            this.btn_movimientoinventario.Click += new System.EventHandler(this.btn_movimientoinventario_Click);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -185,18 +139,6 @@
             this.label7.Size = new System.Drawing.Size(90, 22);
             this.label7.TabIndex = 7;
             this.label7.Text = "Usuarios";
-            // 
-            // btn_mantenimientousuarios
-            // 
-            this.btn_mantenimientousuarios.BackgroundImage = global::CapaVista.Properties.Resources.avatar;
-            this.btn_mantenimientousuarios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_mantenimientousuarios.Location = new System.Drawing.Point(377, 28);
-            this.btn_mantenimientousuarios.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_mantenimientousuarios.Name = "btn_mantenimientousuarios";
-            this.btn_mantenimientousuarios.Size = new System.Drawing.Size(131, 126);
-            this.btn_mantenimientousuarios.TabIndex = 6;
-            this.btn_mantenimientousuarios.UseVisualStyleBackColor = true;
-            this.btn_mantenimientousuarios.Click += new System.EventHandler(this.btn_mantenimientousuarios_Click);
             // 
             // label6
             // 
@@ -208,18 +150,6 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Bodegas";
             // 
-            // btn_movimientobodegas
-            // 
-            this.btn_movimientobodegas.BackgroundImage = global::CapaVista.Properties.Resources.flecha_circular;
-            this.btn_movimientobodegas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_movimientobodegas.Location = new System.Drawing.Point(214, 38);
-            this.btn_movimientobodegas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_movimientobodegas.Name = "btn_movimientobodegas";
-            this.btn_movimientobodegas.Size = new System.Drawing.Size(131, 126);
-            this.btn_movimientobodegas.TabIndex = 4;
-            this.btn_movimientobodegas.UseVisualStyleBackColor = true;
-            this.btn_movimientobodegas.Click += new System.EventHandler(this.btn_movimientobodegas_Click);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -230,18 +160,6 @@
             this.label5.TabIndex = 3;
             this.label5.Text = "Equipos";
             // 
-            // btn_mantenimientoequipos
-            // 
-            this.btn_mantenimientoequipos.BackgroundImage = global::CapaVista.Properties.Resources.sistema_informatico;
-            this.btn_mantenimientoequipos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_mantenimientoequipos.Location = new System.Drawing.Point(214, 203);
-            this.btn_mantenimientoequipos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_mantenimientoequipos.Name = "btn_mantenimientoequipos";
-            this.btn_mantenimientoequipos.Size = new System.Drawing.Size(131, 126);
-            this.btn_mantenimientoequipos.TabIndex = 2;
-            this.btn_mantenimientoequipos.UseVisualStyleBackColor = true;
-            this.btn_mantenimientoequipos.Click += new System.EventHandler(this.btn_mantenimientoequipos_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -251,17 +169,6 @@
             this.label4.Size = new System.Drawing.Size(110, 22);
             this.label4.TabIndex = 1;
             this.label4.Text = "Categorias";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::CapaVista.Properties.Resources.icono_usuario;
-            this.pictureBox1.Location = new System.Drawing.Point(11, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(162, 98);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // groupBox1
             // 
@@ -297,6 +204,99 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Movimientos";
             // 
+            // Btn_InventarioEquipos
+            // 
+            this.Btn_InventarioEquipos.BackgroundImage = global::CapaVista.Properties.Resources.simplificado;
+            this.Btn_InventarioEquipos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_InventarioEquipos.Location = new System.Drawing.Point(75, 33);
+            this.Btn_InventarioEquipos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_InventarioEquipos.Name = "Btn_InventarioEquipos";
+            this.Btn_InventarioEquipos.Size = new System.Drawing.Size(134, 126);
+            this.Btn_InventarioEquipos.TabIndex = 13;
+            this.Btn_InventarioEquipos.UseVisualStyleBackColor = true;
+            this.Btn_InventarioEquipos.Click += new System.EventHandler(this.Btn_InventarioEquipos_Click);
+            // 
+            // btn_movimientoinventario
+            // 
+            this.btn_movimientoinventario.BackgroundImage = global::CapaVista.Properties.Resources.inventario;
+            this.btn_movimientoinventario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_movimientoinventario.Location = new System.Drawing.Point(75, 203);
+            this.btn_movimientoinventario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_movimientoinventario.Name = "btn_movimientoinventario";
+            this.btn_movimientoinventario.Size = new System.Drawing.Size(131, 116);
+            this.btn_movimientoinventario.TabIndex = 8;
+            this.btn_movimientoinventario.UseVisualStyleBackColor = true;
+            this.btn_movimientoinventario.Click += new System.EventHandler(this.btn_movimientoinventario_Click);
+            // 
+            // btn_estado
+            // 
+            this.btn_estado.Image = global::CapaVista.Properties.Resources.instrumentos__1_;
+            this.btn_estado.Location = new System.Drawing.Point(39, 38);
+            this.btn_estado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_estado.Name = "btn_estado";
+            this.btn_estado.Size = new System.Drawing.Size(131, 116);
+            this.btn_estado.TabIndex = 11;
+            this.btn_estado.UseVisualStyleBackColor = true;
+            this.btn_estado.Click += new System.EventHandler(this.btn_estado_Click);
+            // 
+            // btn_mantenimientoequipos
+            // 
+            this.btn_mantenimientoequipos.BackgroundImage = global::CapaVista.Properties.Resources.sistema_informatico;
+            this.btn_mantenimientoequipos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_mantenimientoequipos.Location = new System.Drawing.Point(214, 203);
+            this.btn_mantenimientoequipos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_mantenimientoequipos.Name = "btn_mantenimientoequipos";
+            this.btn_mantenimientoequipos.Size = new System.Drawing.Size(131, 126);
+            this.btn_mantenimientoequipos.TabIndex = 2;
+            this.btn_mantenimientoequipos.UseVisualStyleBackColor = true;
+            this.btn_mantenimientoequipos.Click += new System.EventHandler(this.btn_mantenimientoequipos_Click);
+            // 
+            // btn_categorias
+            // 
+            this.btn_categorias.Image = global::CapaVista.Properties.Resources.categorizacion;
+            this.btn_categorias.Location = new System.Drawing.Point(39, 203);
+            this.btn_categorias.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_categorias.Name = "btn_categorias";
+            this.btn_categorias.Size = new System.Drawing.Size(131, 127);
+            this.btn_categorias.TabIndex = 10;
+            this.btn_categorias.UseVisualStyleBackColor = true;
+            this.btn_categorias.Click += new System.EventHandler(this.btn_categorias_Click);
+            // 
+            // btn_mantenimientousuarios
+            // 
+            this.btn_mantenimientousuarios.BackgroundImage = global::CapaVista.Properties.Resources.avatar;
+            this.btn_mantenimientousuarios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_mantenimientousuarios.Location = new System.Drawing.Point(377, 28);
+            this.btn_mantenimientousuarios.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_mantenimientousuarios.Name = "btn_mantenimientousuarios";
+            this.btn_mantenimientousuarios.Size = new System.Drawing.Size(131, 126);
+            this.btn_mantenimientousuarios.TabIndex = 6;
+            this.btn_mantenimientousuarios.UseVisualStyleBackColor = true;
+            this.btn_mantenimientousuarios.Click += new System.EventHandler(this.btn_mantenimientousuarios_Click);
+            // 
+            // btn_movimientobodegas
+            // 
+            this.btn_movimientobodegas.BackgroundImage = global::CapaVista.Properties.Resources.flecha_circular;
+            this.btn_movimientobodegas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_movimientobodegas.Location = new System.Drawing.Point(214, 38);
+            this.btn_movimientobodegas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_movimientobodegas.Name = "btn_movimientobodegas";
+            this.btn_movimientobodegas.Size = new System.Drawing.Size(131, 126);
+            this.btn_movimientobodegas.TabIndex = 4;
+            this.btn_movimientobodegas.UseVisualStyleBackColor = true;
+            this.btn_movimientobodegas.Click += new System.EventHandler(this.btn_movimientobodegas_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::CapaVista.Properties.Resources.icono_usuario;
+            this.pictureBox1.Location = new System.Drawing.Point(28, 11);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(125, 98);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -313,11 +313,11 @@
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.Menu_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
