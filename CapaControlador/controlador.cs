@@ -113,6 +113,8 @@ namespace CapaControlador
             box.ValueMember = "id_estado";
             box.SelectedIndex = -1;
         }
+
+     
         public void cargarBodegas(ComboBox box)
         {
             DataTable dt = c_Sentencias.obtenerBodega();

@@ -50,6 +50,16 @@ namespace CapaVista
         {
             DataTable dt = capaControlador_movimiento.obtenerEstados();
             dgv_estados.DataSource = dt;
+
+            // Cambiar encabezados visibles opcionalmente
+            if (dgv_estados.Columns.Contains("id_estado"))
+                dgv_estados.Columns["id_estado"].HeaderText = "ID";
+
+            if (dgv_estados.Columns.Contains("nombre_estado"))
+                dgv_estados.Columns["nombre_estado"].HeaderText = "Estado";
+
+            if (dgv_estados.Columns.Contains("descripcion"))
+                dgv_estados.Columns["descripcion"].HeaderText = "Descripción";
         }
 
         private void btn_modregistroestado_Click(object sender, EventArgs e)
@@ -106,13 +116,12 @@ namespace CapaVista
 
         private void dgv_estados_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) // validar que no sea header
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow fila = dgv_estados.Rows[e.RowIndex];
-
-                txt_idEstado.Text = fila.Cells["id_estado"].Value.ToString();
-                txt_nombreestado.Text = fila.Cells["nombre_estado"].Value.ToString();
-                txt_descripcionestado.Text = fila.Cells["descripcion"].Value.ToString();
+                txt_idEstado.Text = fila.Cells["id_estado"].Value?.ToString();
+                txt_nombreestado.Text = fila.Cells["nombre_estado"].Value?.ToString();
+                txt_descripcionestado.Text = fila.Cells["descripcion"].Value?.ToString();
             }
         }
 

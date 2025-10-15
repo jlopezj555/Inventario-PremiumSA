@@ -383,13 +383,12 @@ namespace CapaModelo
             DataTable dt = new DataTable();
             using (OdbcConnection connection = cn.Conexion())
             {
-                string query = "SELECT id_estado, nombre_estado FROM Estados_Equipos";
+                string query = "SELECT id_estado, nombre_estado, descripcion FROM Estados_Equipos";
                 using (OdbcDataAdapter da = new OdbcDataAdapter(query, connection))
                 {
                     da.Fill(dt);
                 }
             }
-
             return dt;
         }
         public DataTable obtenerBodega()
@@ -441,17 +440,18 @@ namespace CapaModelo
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         combo.DataSource = dt;
-                        combo.DisplayMember = "nombre_categoria";  // lo que se muestra
-                        combo.ValueMember = "id_categoria";        // lo que se guarda
-                        combo.SelectedIndex = -1; // Ninguno seleccionado al inicio
+                        combo.DisplayMember = "nombre_estado";  // ✅ corregido
+                        combo.ValueMember = "id_estado";        // ✅ corregido
+                        combo.SelectedIndex = -1;
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar categorías: " + ex.Message);
+                MessageBox.Show("Error al cargar estados: " + ex.Message);
             }
         }
+
         public void CargarBodegas(ComboBox combo)
         {
             try
