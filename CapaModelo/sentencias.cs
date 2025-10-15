@@ -749,10 +749,6 @@ namespace CapaModelo
             }
         }
 
-
-
-
-
         // Editar registro de inventario
         public void editarInventario(int id_inventario, int stock_minimo, int stock_actual)
         {
@@ -860,6 +856,52 @@ namespace CapaModelo
             return dt;
         }
 
+        public void modificarMovimiento(int idEquipo, int idUsuario, string tipoMovimiento, string observaciones)
+        {
+            OdbcConnection connection = cn.Conexion();
+            if (connection == null)
+            {
+                MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                string query_editar_MovimientoEstado = @"UPDATE Movimientos 
+                             SET id_usuario = ?, tipo_movimiento = ?, observaciones = ?
+                             WHERE id_equipo = ?";
+                OdbcCommand cmd2 = new OdbcCommand(query_editar_MovimientoEstado, connection);
+                cmd2.Parameters.AddWithValue("id_usuario", idUsuario);
+                cmd2.Parameters.AddWithValue("tipo_movimiento", tipoMovimiento);
+                cmd2.Parameters.AddWithValue("observaciones", observaciones);
+                cmd2.Parameters.AddWithValue("id_equipo", idEquipo);
 
+                int filas = cmd2.ExecuteNonQuery();
+                if (filas > 0)
+                {
+                    MessageBox.Show("Movimiento actualizado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el movimiento con el ID especificado");
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Hubo un error al intentar registrar el movimiento" + e.Message, "Error: ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void eliminarMovimiento(int idEquipo)
+        {
+            using (OdbcConnection connection = cn.Conexion())
+            {
+                string query = "DELETE FROM Movimientos WHERE id_equipo = ?";
+                using (OdbcCommand cmd = new OdbcCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@id_equipo", idEquipo);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

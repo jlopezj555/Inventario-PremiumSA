@@ -97,7 +97,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(9, 88);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(750, 512);
             this.panel1.TabIndex = 4;
@@ -106,7 +106,7 @@
             // 
             this.dgv_estados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_estados.Location = new System.Drawing.Point(167, 282);
-            this.dgv_estados.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgv_estados.Margin = new System.Windows.Forms.Padding(2);
             this.dgv_estados.Name = "dgv_estados";
             this.dgv_estados.RowHeadersWidth = 62;
             this.dgv_estados.RowTemplate.Height = 28;
@@ -117,7 +117,7 @@
             // txt_descripcionestado
             // 
             this.txt_descripcionestado.Location = new System.Drawing.Point(291, 246);
-            this.txt_descripcionestado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_descripcionestado.Margin = new System.Windows.Forms.Padding(2);
             this.txt_descripcionestado.Name = "txt_descripcionestado";
             this.txt_descripcionestado.Size = new System.Drawing.Size(220, 20);
             this.txt_descripcionestado.TabIndex = 32;
@@ -125,7 +125,7 @@
             // txt_nombreestado
             // 
             this.txt_nombreestado.Location = new System.Drawing.Point(291, 201);
-            this.txt_nombreestado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_nombreestado.Margin = new System.Windows.Forms.Padding(2);
             this.txt_nombreestado.Name = "txt_nombreestado";
             this.txt_nombreestado.Size = new System.Drawing.Size(220, 20);
             this.txt_nombreestado.TabIndex = 31;
@@ -133,8 +133,9 @@
             // txt_idEstado
             // 
             this.txt_idEstado.Location = new System.Drawing.Point(290, 155);
-            this.txt_idEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_idEstado.Margin = new System.Windows.Forms.Padding(2);
             this.txt_idEstado.Name = "txt_idEstado";
+            this.txt_idEstado.ReadOnly = true;
             this.txt_idEstado.Size = new System.Drawing.Size(220, 20);
             this.txt_idEstado.TabIndex = 30;
             // 
@@ -260,7 +261,7 @@
             this.ClientSize = new System.Drawing.Size(767, 607);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_mantenimientou);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Estado_de_equipos";
             this.Text = "Estado_de_equipos";
             this.panel_mantenimientou.ResumeLayout(false);

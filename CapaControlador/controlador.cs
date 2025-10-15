@@ -235,6 +235,13 @@ namespace CapaControlador
             box.ValueMember = "id_usuario";
             box.SelectedIndex = -1;
         }
-
+        public void modificarMovimiento(int idEquipo, int idUsuario, string tipoMovimiento, string observaciones)
+        {
+            c_Sentencias.modificarMovimiento(idEquipo, idUsuario, tipoMovimiento, observaciones);
+        }
+        public void eliminarMovimiento(int idMovimiento)
+        {
+            c_Sentencias.eliminarMovimiento(idMovimiento);
+        }
     }
 }

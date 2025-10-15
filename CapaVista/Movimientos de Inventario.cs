@@ -44,16 +44,17 @@ namespace CapaVista
             this.Close();
         }
 
-        private void btn_registrousuario_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void dgvMovimientos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow fila = dgvMovimientos.Rows[e.RowIndex];
+                cmbEquipo.Text = fila.Cells["Equipo"].Value?.ToString();
+                cmbUsuario.Text = fila.Cells["Usuario"].Value?.ToString();
+                cmbTipoMovimiento.Text = fila.Cells["tipo_movimiento"].Value?.ToString();
+                txtObservaciones.Text = fila.Cells["observaciones"].Value?.ToString();
+            }
         }
-
 
         private void CargarMovimientos()
         {
@@ -61,7 +62,6 @@ namespace CapaVista
             dgvMovimientos.DataSource = dt;
             dgvMovimientos.AutoResizeColumns();
         }
-
 
         private void LimpiarCampos()
         {
@@ -95,6 +95,65 @@ namespace CapaVista
             catch (Exception ex)
             {
                 MessageBox.Show("Error al registrar movimiento: " + ex.Message);
+            }
+        }
+
+        private void btn_modmovimiento_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idEquipo = Convert.ToInt32(cmbEquipo.Text);
+                int idUsuario = Convert.ToInt32(cmbUsuario.Text);
+                capaControlador_movimiento.modificarMovimiento(
+                    idEquipo,
+                    idUsuario,
+                    cmbTipoMovimiento.Text,
+                    txtObservaciones.Text
+                    );
+                CargarMovimientos();
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al editar: " + ex.Message);
+            }
+        }
+
+        private void btn_actualizarmovimiento_Click(object sender, EventArgs e)
+        {
+            CargarMovimientos();
+        }
+
+        private void btn_eliminarmovimiento_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(cmbEquipo.Text))
+            {
+                MessageBox.Show("Seleccione un movimiento de la lista primero.");
+                return;
+            }
+
+            int idEquipo = Convert.ToInt32(cmbEquipo.Text);
+
+            DialogResult result = MessageBox.Show(
+                "¿Está seguro que desea eliminar este movimiento?",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    capaControlador_movimiento.eliminarMovimiento(idEquipo);
+                    MessageBox.Show("Estado eliminado correctamente.");
+                    CargarMovimientos(); // refrescar DataGridView
+                    LimpiarCampos();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar: " + ex.Message);
+                }
             }
         }
     }

@@ -92,7 +92,7 @@ namespace CapaVista
             int idEstado = Convert.ToInt32(txt_idEstado.Text);
 
             DialogResult result = MessageBox.Show(
-                "¿Está seguro que desea eliminar esta categoría?",
+                "¿Está seguro que desea eliminar este estado?",
                 "Confirmar eliminación",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
