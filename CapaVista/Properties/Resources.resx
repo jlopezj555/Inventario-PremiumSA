@@ -127,11 +127,11 @@
   <data name="rotacion-de-puestos-de-trabajo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rotacion-de-puestos-de-trabajo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icono_usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icono_usuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="modificar_registro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\modificar_registro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="salir_registro" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\salir_registro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="flecha-circular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\flecha-circular.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="instrumentos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\instrumentos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,8 +154,8 @@
   <data name="agregar-usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\agregar-usuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="modificar_registro" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\modificar_registro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icono_usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono_usuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="avatar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\avatar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,8 +166,11 @@
   <data name="actualizar_registro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\actualizar_registro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="flecha-circular" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flecha-circular.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="salir_registro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\salir_registro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="images-convertido-a-25x25" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images-convertido-a-25x25.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ayuda_registro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ayuda_registro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,7 +184,7 @@
   <data name="images" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="images-convertido-a-25x25" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\images-convertido-a-25x25.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="simplificado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\simplificado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
