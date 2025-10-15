@@ -226,25 +226,24 @@ namespace CapaModelo
             using (OdbcConnection connection = cn.Conexion())
             {
                 string query = @"
-            SELECT 
-                e.id_equipo,
-                e.codigo_inventario,
-                e.nombre_equipo,
-                e.marca,
-                e.modelo,
-                e.numero_serie,
-                e.descripcion,
-                c.nombre_categoria AS categoria,
-                s.nombre_estado AS estado,
-                b.nombre_bodega AS bodega,
-                e.fecha_ingreso,
-                e.fecha_garantia,
-                e.observaciones
-            FROM Equipos e
-            LEFT JOIN Categorias c ON e.id_categoria = c.id_categoria
-            LEFT JOIN Estados_Equipos s ON e.id_estado = s.id_estado
-            LEFT JOIN Bodegas b ON e.id_bodega = b.id_bodega
-            ORDER BY e.id_equipo";
+    SELECT 
+        e.id_equipo,
+        e.nombre_equipo,
+        e.marca,
+        e.modelo,
+        e.numero_serie,
+        e.descripcion,
+        c.nombre_categoria AS categoria,
+        s.nombre_estado AS estado,
+        b.nombre_bodega AS bodega,
+        e.fecha_ingreso,
+        e.fecha_garantia,
+        e.observaciones
+    FROM Equipos e
+    LEFT JOIN Categorias c ON e.id_categoria = c.id_categoria
+    LEFT JOIN Estados_Equipos s ON e.id_estado = s.id_estado
+    LEFT JOIN Bodegas b ON e.id_bodega = b.id_bodega
+    ORDER BY e.id_equipo";
 
                 using (OdbcDataAdapter da = new OdbcDataAdapter(query, connection))
                 {
@@ -254,6 +253,7 @@ namespace CapaModelo
 
             return dt;
         }
+
         public void editar_equipos(
             int id_equipo,
             string codigoInventario,
@@ -806,6 +806,59 @@ namespace CapaModelo
             }
         }
 
+        // Registrar movimiento de equipo
+        public void registrarMovimiento(int idEquipo, int idUsuario, string tipoMovimiento, string observaciones)
+        {
+            using (OdbcConnection connection = cn.Conexion())
+            {
+                try
+                {
+                    // Llamada al procedimiento almacenado
+                    string query = "CALL registrar_movimiento(?, ?, ?, ?)";
+                    using (OdbcCommand cmd = new OdbcCommand(query, connection))
+                    {
+                        // Agregar parámetros en orden, sin nombres
+                        cmd.Parameters.AddWithValue("", idEquipo);
+                        cmd.Parameters.AddWithValue("", idUsuario);
+                        cmd.Parameters.AddWithValue("", tipoMovimiento);
+                        cmd.Parameters.AddWithValue("", observaciones);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al registrar movimiento: " + ex.Message);
+                }
+            }
+        }
+
+
+        public DataTable obtenerMovimientos()
+        {
+            DataTable dt = new DataTable();
+            using (OdbcConnection connection = cn.Conexion())
+            {
+                string query = @"
+        SELECT 
+            m.id_movimiento,
+            e.nombre_equipo AS Equipo,
+            u.nombre_completo AS Usuario,
+            m.tipo_movimiento,
+            m.fecha_movimiento,
+            m.observaciones
+        FROM Movimientos m
+        JOIN Equipos e ON m.id_equipo = e.id_equipo
+        JOIN Usuarios u ON m.id_usuario = u.id_usuario
+        ORDER BY m.fecha_movimiento DESC";
+
+                using (OdbcDataAdapter da = new OdbcDataAdapter(query, connection))
+                {
+                    da.Fill(dt);
+                }
+            }
+            return dt;
+        }
 
 
     }

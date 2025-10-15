@@ -170,6 +170,7 @@
             this.label8.Size = new System.Drawing.Size(237, 22);
             this.label8.TabIndex = 9;
             this.label8.Text = "Movimiento de inventario";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // btn_movimientoinventario
             // 

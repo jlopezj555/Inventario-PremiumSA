@@ -206,6 +206,35 @@ namespace CapaControlador
             c_Sentencias.eliminarInventario(id_inventario);
         }
 
+        public void guardarMovimiento(int idEquipo, int idUsuario, string tipoMovimiento, string observaciones)
+        {
+            c_Sentencias.registrarMovimiento(idEquipo, idUsuario, tipoMovimiento, observaciones);
+        }
+
+        public DataTable obtenerMovimientos()
+        {
+            return c_Sentencias.obtenerMovimientos(); // Método que devuelve todos los movimientos con JOIN a equipos y usuarios
+        }
+
+        // Llenar ComboBox de equipos
+        public void cargarEquipos(ComboBox box)
+        {
+            DataTable dt = c_Sentencias.obtenerEquipos();
+            box.DataSource = dt;
+            box.DisplayMember = "nombre_equipo";  // nombre que se mostrará en el ComboBox
+            box.ValueMember = "id_equipo";       // valor que se guardará
+            box.SelectedIndex = -1;              // ninguno seleccionado al inicio
+        }
+
+        // Llenar ComboBox de usuarios
+        public void cargarUsuarios(ComboBox box)
+        {
+            DataTable dt = c_Sentencias.obtenerUsuarios();
+            box.DataSource = dt;
+            box.DisplayMember = "nombre_completo";
+            box.ValueMember = "id_usuario";
+            box.SelectedIndex = -1;
+        }
 
     }
 }
