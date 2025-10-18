@@ -1,0 +1,6 @@
+@PremiumSAapi_HostAddress = http://localhost:5251
+
+GET {{PremiumSAapi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

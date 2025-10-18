@@ -1,0 +1,131 @@
+/* styles.css - temas: formularios rojos con texto y detalles blancos */
+:root{
+	--red-900: #b30000; /* fondo principal */
+	--red-700: #c82333; /* botones */
+	--red-500: #e05353; /* inputs */
+	--white: #ffffff;
+}
+
+body{
+	background: linear-gradient(180deg, #feecec 0%, #fff6f6 100%);
+	color: var(--red-900);
+	min-height:100vh;
+}
+
+.card{
+	background: var(--red-900);
+	color: var(--white);
+	box-shadow: 0 6px 18px rgba(179,0,0,0.18);
+	border: none;
+	position: relative; /* necesario para que ::before se posicione respecto a la card */
+}
+
+.card .card-body{
+	padding: 1.5rem;
+}
+
+/* Títulos y textos dentro de tarjetas */
+.card .card-title, .card h5, .card label, .form-text{
+	color: var(--white);
+}
+
+/* Inputs y selects con borde blanco y texto blanco */
+.form-control, .form-select, textarea.form-control{
+	background: rgba(255,255,255,0.06);
+	border: 1px solid rgba(255,255,255,0.35);
+	color: var(--white);
+}
+
+.form-control::placeholder, textarea.form-control::placeholder{
+	color: rgba(255,255,255,0.85);
+}
+
+.form-control:focus, .form-select:focus, textarea.form-control:focus{
+	background: rgba(255,255,255,0.04);
+	border-color: var(--white);
+	box-shadow: 0 0 0 0.2rem rgba(200,20,20,0.15);
+	color: var(--white);
+}
+
+/* Botones en rojo consistente con texto blanco */
+.btn-primary, .btn-success{
+	background: var(--red-700) !important;
+	border-color: var(--red-700) !important;
+	color: var(--white) !important;
+}
+
+.btn-outline-secondary{
+	color: var(--white) !important;
+	border-color: rgba(255,255,255,0.5) !important;
+}
+
+.btn-primary:hover, .btn-success:hover, .btn-outline-secondary:hover{
+	opacity: 0.95;
+}
+
+/* Caja específica del código generado */
+#codigoResult{
+	background: rgba(255,255,255,0.06);
+	padding:12px;
+	border-radius:6px;
+	color: var(--white);
+}
+
+/* Encabezado visible en la parte superior de la tarjeta */
+.card-encabezado{
+	display:flex;
+	align-items:center;
+	justify-content:flex-start;
+	gap: 12px;
+	padding: 0.75rem 1rem;
+	background: transparent;
+	/* aumentar la zona del encabezado sin tapar el contenido */
+	min-height:64px;
+}
+.card-encabezado img{
+	width: auto;
+	display:block;
+}
+.card-encabezado img.logo{
+	max-height:56px;
+}
+.card-encabezado img.banner{
+	max-height:56px;
+}
+
+/* Fondo tenue (watermark) usando la misma imagen del encabezado, no tapa el contenido */
+.card::before{
+	content: '';
+	position: absolute;
+	inset: 0;
+	/* ruta corregida: desde assets/css/ -> subir dos niveles hasta la raíz de formularios web */
+	background-image: url('../../src/encabezado.jpg');
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: 70% auto;
+	opacity: 0.06;
+	pointer-events: none;
+	z-index: 0;
+}
+
+/* Asegurar que el contenido de la card quede por encima del pseudo-elemento */
+.card > .card-body{
+	position: relative;
+	z-index: 1;
+}
+
+/* Alertas con estilo claro sobre fondo rojo */
+.alert{
+	margin-bottom: 1rem;
+}
+.alert-danger{ background: rgba(0,0,0,0.06); color: var(--white); border: 1px solid rgba(255,255,255,0.08); }
+.alert-success{ background: rgba(255,255,255,0.08); color: var(--white); border: 1px solid rgba(255,255,255,0.12); }
+.alert-warning{ background: rgba(255,255,255,0.06); color: var(--white); border: 1px solid rgba(255,255,255,0.08); }
+
+/* Enlaces blancos */
+a{ color: var(--white); }
+
+/* Ajustes responsivos */
+@media (max-width: 576px){
+	.card{ padding: 0.25rem; }
+}
