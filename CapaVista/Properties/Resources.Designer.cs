@@ -289,5 +289,15 @@ namespace CapaVista.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2025_10_15_at_3_11_38_PM {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2025-10-15 at 3.11.38 PM", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

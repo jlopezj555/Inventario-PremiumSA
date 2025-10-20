@@ -45,5 +45,10 @@ namespace CapaVista
             inicio.ShowDialog();
             this.Close();
         }
+
+        private void Registro_de_Usuario_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

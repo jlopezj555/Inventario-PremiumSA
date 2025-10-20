@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BCrypt.Net;
 
 
 
@@ -19,27 +20,44 @@ namespace CapaModelo
     {
         private conexion cn = new conexion();
 
-        // Registrar usuario nuevo
+        // Registrar usuario nuevo con validación de duplicados
         public void registrarUsuario(string nombre_completo, string usuario_login, string contrasena, string correo, string telefono, string puesto = null, string departamento = null)
         {
             using (OdbcConnection connection = cn.Conexion())
             {
                 try
                 {
-                    string query = @"INSERT INTO Usuarios 
-                                (nombre_completo, usuario_login, contrasena, puesto, departamento, telefono, correo)
-                                VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    // Verificar si el usuario o correo ya existe
+                    string queryValidar = "SELECT COUNT(*) FROM Usuarios WHERE usuario_login = ? OR correo = ?";
+                    OdbcCommand cmdValidar = new OdbcCommand(queryValidar, connection);
+                    cmdValidar.Parameters.AddWithValue("@usuario_login", usuario_login);
+                    cmdValidar.Parameters.AddWithValue("@correo", correo);
 
-                    OdbcCommand cmd = new OdbcCommand(query, connection);
-                    cmd.Parameters.AddWithValue("@nombre_completo", nombre_completo);
-                    cmd.Parameters.AddWithValue("@usuario_login", usuario_login);
-                    cmd.Parameters.AddWithValue("@contrasena", contrasena);
-                    cmd.Parameters.AddWithValue("@puesto", puesto ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@departamento", departamento ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@telefono", telefono ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@correo", correo);
+                    int existe = Convert.ToInt32(cmdValidar.ExecuteScalar());
 
-                    cmd.ExecuteNonQuery();
+                    if (existe > 0)
+                    {
+                        MessageBox.Show("Este usuario o correo ya está registrado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return; // No continuar con el registro
+                    }
+
+                    // Generar hash de la contraseña
+                    string hashContrasena = BCrypt.Net.BCrypt.HashPassword(contrasena);
+
+                    string queryInsert = @"INSERT INTO Usuarios 
+                                   (nombre_completo, usuario_login, contrasena, puesto, departamento, telefono, correo)
+                                   VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+                    OdbcCommand cmdInsert = new OdbcCommand(queryInsert, connection);
+                    cmdInsert.Parameters.AddWithValue("@nombre_completo", nombre_completo);
+                    cmdInsert.Parameters.AddWithValue("@usuario_login", usuario_login);
+                    cmdInsert.Parameters.AddWithValue("@contrasena", hashContrasena);
+                    cmdInsert.Parameters.AddWithValue("@puesto", puesto ?? (object)DBNull.Value);
+                    cmdInsert.Parameters.AddWithValue("@departamento", departamento ?? (object)DBNull.Value);
+                    cmdInsert.Parameters.AddWithValue("@telefono", telefono ?? (object)DBNull.Value);
+                    cmdInsert.Parameters.AddWithValue("@correo", correo);
+
+                    cmdInsert.ExecuteNonQuery();
 
                     MessageBox.Show("Usuario registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -50,7 +68,7 @@ namespace CapaModelo
             }
         }
 
-        //Logica para iniciar sesión
+        // Lógica para iniciar sesión
         public bool iniciarSesion(string nombre_usuario, string contrasena)
         {
             OdbcConnection connection = cn.Conexion();
@@ -59,15 +77,33 @@ namespace CapaModelo
                 MessageBox.Show("No se pudo conectar a la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
             try
             {
-                string query_iniciarSesion = "SELECT COUNT(*) FROM Usuarios WHERE usuario_login = ? AND contrasena = ?";
-                OdbcCommand cmd = new OdbcCommand(query_iniciarSesion, connection);
+                // Obtenemos el hash de la contraseña guardada
+                string query = "SELECT contrasena FROM Usuarios WHERE usuario_login = ?";
+                OdbcCommand cmd = new OdbcCommand(query, connection);
                 cmd.Parameters.AddWithValue("usuario_login", nombre_usuario);
-                cmd.Parameters.AddWithValue("contrasena", contrasena);
 
-                int resultado = Convert.ToInt32(cmd.ExecuteScalar());
-                return resultado > 0;
+                object result = cmd.ExecuteScalar();
+
+                if (result == null || result == DBNull.Value)
+                {
+                    MessageBox.Show("Usuario no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                string hashGuardado = result.ToString();
+
+                // 🔒 Verificamos el hash con la contraseña ingresada
+                bool valido = BCrypt.Net.BCrypt.Verify(contrasena, hashGuardado);
+
+                if (!valido)
+                {
+                    MessageBox.Show("Contraseña incorrecta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                return valido;
             }
             catch (Exception ex)
             {
