@@ -1,4 +1,9 @@
-﻿namespace PremiumSAapi.Dtos
+using System.Text.Json.Serialization;
+
+namespace PremiumSAapi.Dtos
 {
-    public class ValidateCodeDto { public string Codigo { get; set; } = null!; }
+    public class ValidateCodeDto {
+        [JsonPropertyName("codigo")]
+        public string Codigo { get; set; } = null!;
+    }
 }
