@@ -529,38 +529,67 @@ namespace CapaModelo
             return dt;
         }
         // Editar usuario existente
-        public void editarUsuario(int id_usuario, string nombre_completo, string usuario_login, string contrasena, string correo, string telefono, string puesto, string departamento)
+        public void editarUsuario(int idUsuario, string nombre, string usuario_login, string contrasena, string correo, string telefono, string puesto, string departamento)
         {
             using (OdbcConnection connection = cn.Conexion())
             {
                 try
                 {
-                    string query = @"UPDATE Usuarios
-                                 SET nombre_completo = ?, usuario_login = ?, contrasena = ?, correo = ?, telefono = ?, puesto = ?, departamento = ?
-                                 WHERE id_usuario = ?";
+                    string query;
+
+                    if (string.IsNullOrWhiteSpace(contrasena) || contrasena == "********")
+                    {
+                        // 👇 No cambiar la contraseña
+                        query = @"UPDATE Usuarios 
+                          SET nombre_completo = ?, usuario_login = ?, correo = ?, telefono = ?, puesto = ?, departamento = ?
+                          WHERE id_usuario = ?";
+                    }
+                    else
+                    {
+                        // 👇 Si hay una nueva contraseña, la hasheamos y actualizamos
+                        string hash = BCrypt.Net.BCrypt.HashPassword(contrasena);
+                        query = @"UPDATE Usuarios 
+                          SET nombre_completo = ?, usuario_login = ?, contrasena = ?, correo = ?, telefono = ?, puesto = ?, departamento = ?
+                          WHERE id_usuario = ?";
+                    }
 
                     OdbcCommand cmd = new OdbcCommand(query, connection);
-                    cmd.Parameters.AddWithValue("@nombre_completo", nombre_completo);
-                    cmd.Parameters.AddWithValue("@usuario_login", usuario_login);
-                    cmd.Parameters.AddWithValue("@contrasena", contrasena);
-                    cmd.Parameters.AddWithValue("@correo", correo);
-                    cmd.Parameters.AddWithValue("@telefono", telefono ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@puesto", puesto ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@departamento", departamento ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@id_usuario", id_usuario);
 
-                    int filas = cmd.ExecuteNonQuery();
-                    if (filas > 0)
-                        MessageBox.Show("Usuario actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cmd.Parameters.AddWithValue("@nombre_completo", nombre);
+                    cmd.Parameters.AddWithValue("@usuario_login", usuario_login);
+
+                    if (string.IsNullOrWhiteSpace(contrasena) || contrasena == "********")
+                    {
+                        // Sin contraseña
+                        cmd.Parameters.AddWithValue("@correo", correo);
+                        cmd.Parameters.AddWithValue("@telefono", telefono);
+                        cmd.Parameters.AddWithValue("@puesto", puesto);
+                        cmd.Parameters.AddWithValue("@departamento", departamento);
+                        cmd.Parameters.AddWithValue("@id_usuario", idUsuario);
+                    }
                     else
-                        MessageBox.Show("No se encontró el usuario con el ID especificado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    {
+                        // Con contraseña nueva
+                        string hash = BCrypt.Net.BCrypt.HashPassword(contrasena);
+                        cmd.Parameters.AddWithValue("@contrasena", hash);
+                        cmd.Parameters.AddWithValue("@correo", correo);
+                        cmd.Parameters.AddWithValue("@telefono", telefono);
+                        cmd.Parameters.AddWithValue("@puesto", puesto);
+                        cmd.Parameters.AddWithValue("@departamento", departamento);
+                        cmd.Parameters.AddWithValue("@id_usuario", idUsuario);
+                    }
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Usuario modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al actualizar usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al modificar usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
+
         // Eliminar usuario
         public void eliminarUsuario(int id_usuario)
         {

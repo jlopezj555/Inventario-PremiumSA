@@ -74,13 +74,13 @@ namespace CapaVista
                 int idUsuario = Convert.ToInt32(txt_idUsuario.Text);
                 capaControlador_usuarios.editarUsuario(
                     idUsuario,
-                    txt_nombreUsuario.Text,       // nombre_completo
-                    txt_usuarioLogin.Text,        // usuario_login (deberías tener un TextBox para esto)
-                    txtContra.Text,   // contraseña (deberías tener un TextBox para esto)
-                    txt_correoUsuario.Text,       // correo
-                    txt_telefonoUsuario.Text,     // telefono
-                    txt_puestoUsuario.Text,       // puesto
-                    txt_Departamento.Text         // departamento
+                    txt_nombreUsuario.Text,
+                    txt_usuarioLogin.Text,
+                    txtContra.Text,
+                    txt_correoUsuario.Text,
+                    txt_telefonoUsuario.Text,
+                    txt_puestoUsuario.Text,
+                    txt_Departamento.Text
                 );
 
                 CargarUsuarios();
@@ -92,22 +92,24 @@ namespace CapaVista
             }
         }
 
+
         private void dgv_usuarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) // validar que no sea header
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow fila = dgv_usuarios.Rows[e.RowIndex];
 
                 txt_idUsuario.Text = fila.Cells["id_usuario"].Value.ToString();
                 txt_nombreUsuario.Text = fila.Cells["nombre_completo"].Value.ToString();
                 txt_usuarioLogin.Text = fila.Cells["usuario_login"].Value.ToString();
-                txtContra.Text = fila.Cells["contrasena"].Value.ToString();
+                txtContra.Text = "********"; // 👈 No mostrar el hash
                 txt_puestoUsuario.Text = fila.Cells["puesto"].Value.ToString();
                 txt_Departamento.Text = fila.Cells["departamento"].Value.ToString();
                 txt_telefonoUsuario.Text = fila.Cells["telefono"].Value.ToString();
                 txt_correoUsuario.Text = fila.Cells["correo"].Value.ToString();
             }
         }
+
 
         private void btn_eliminarusuario_Click(object sender, EventArgs e)
         {
@@ -171,5 +173,7 @@ namespace CapaVista
             txtContra.UseSystemPasswordChar = true; // Ocultar contraseña
 
         }
+
+
     }
 }

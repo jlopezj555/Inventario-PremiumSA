@@ -31,6 +31,7 @@ namespace CapaVista
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_mantenimientou = new System.Windows.Forms.Panel();
+            this.salir_usuario = new System.Windows.Forms.Button();
             this.lbl_mantenimientousuarios = new System.Windows.Forms.Label();
             this.panel_menumantenimientou = new System.Windows.Forms.Panel();
             this.labelContra = new System.Windows.Forms.Label();
@@ -51,12 +52,11 @@ namespace CapaVista
             this.txt_nombreUsuario = new System.Windows.Forms.TextBox();
             this.lbl_nombreusuario = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_cambiarContrasena = new System.Windows.Forms.Button();
             this.btn_ayudausuario = new System.Windows.Forms.Button();
             this.btn_eliminarusuario = new System.Windows.Forms.Button();
             this.btn_actualizarusuario = new System.Windows.Forms.Button();
             this.btn_modregistrousuario = new System.Windows.Forms.Button();
-            this.salir_usuario = new System.Windows.Forms.Button();
+            this.btn_cambiarContrasena = new System.Windows.Forms.Button();
             this.panel_mantenimientou.SuspendLayout();
             this.panel_menumantenimientou.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_usuarios)).BeginInit();
@@ -73,6 +73,17 @@ namespace CapaVista
             this.panel_mantenimientou.Name = "panel_mantenimientou";
             this.panel_mantenimientou.Size = new System.Drawing.Size(807, 74);
             this.panel_mantenimientou.TabIndex = 0;
+            // 
+            // salir_usuario
+            // 
+            this.salir_usuario.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.salir_usuario.Image = global::CapaVista.Properties.Resources.salir_registro;
+            this.salir_usuario.Location = new System.Drawing.Point(3, 3);
+            this.salir_usuario.Name = "salir_usuario";
+            this.salir_usuario.Size = new System.Drawing.Size(71, 63);
+            this.salir_usuario.TabIndex = 20;
+            this.salir_usuario.UseVisualStyleBackColor = true;
+            this.salir_usuario.Click += new System.EventHandler(this.salir_usuario_Click);
             // 
             // lbl_mantenimientousuarios
             // 
@@ -129,7 +140,7 @@ namespace CapaVista
             // txtContra
             // 
             this.txtContra.Location = new System.Drawing.Point(145, 248);
-            this.txtContra.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtContra.Margin = new System.Windows.Forms.Padding(2);
             this.txtContra.Name = "txtContra";
             this.txtContra.Size = new System.Drawing.Size(185, 20);
             this.txtContra.TabIndex = 10;
@@ -137,7 +148,7 @@ namespace CapaVista
             // txt_usuarioLogin
             // 
             this.txt_usuarioLogin.Location = new System.Drawing.Point(145, 218);
-            this.txt_usuarioLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_usuarioLogin.Margin = new System.Windows.Forms.Padding(2);
             this.txt_usuarioLogin.Name = "txt_usuarioLogin";
             this.txt_usuarioLogin.Size = new System.Drawing.Size(185, 20);
             this.txt_usuarioLogin.TabIndex = 9;
@@ -170,7 +181,7 @@ namespace CapaVista
             // 
             this.txt_idUsuario.Enabled = false;
             this.txt_idUsuario.Location = new System.Drawing.Point(194, 155);
-            this.txt_idUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_idUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.txt_idUsuario.Name = "txt_idUsuario";
             this.txt_idUsuario.Size = new System.Drawing.Size(137, 20);
             this.txt_idUsuario.TabIndex = 15;
@@ -178,7 +189,7 @@ namespace CapaVista
             // txt_Departamento
             // 
             this.txt_Departamento.Location = new System.Drawing.Point(145, 314);
-            this.txt_Departamento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_Departamento.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Departamento.Name = "txt_Departamento";
             this.txt_Departamento.Size = new System.Drawing.Size(185, 20);
             this.txt_Departamento.TabIndex = 14;
@@ -198,7 +209,7 @@ namespace CapaVista
             // txt_puestoUsuario
             // 
             this.txt_puestoUsuario.Location = new System.Drawing.Point(146, 283);
-            this.txt_puestoUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_puestoUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.txt_puestoUsuario.Name = "txt_puestoUsuario";
             this.txt_puestoUsuario.Size = new System.Drawing.Size(185, 20);
             this.txt_puestoUsuario.TabIndex = 12;
@@ -218,7 +229,7 @@ namespace CapaVista
             // txt_correoUsuario
             // 
             this.txt_correoUsuario.Location = new System.Drawing.Point(145, 374);
-            this.txt_correoUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_correoUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.txt_correoUsuario.Name = "txt_correoUsuario";
             this.txt_correoUsuario.Size = new System.Drawing.Size(185, 20);
             this.txt_correoUsuario.TabIndex = 16;
@@ -238,7 +249,7 @@ namespace CapaVista
             // txt_telefonoUsuario
             // 
             this.txt_telefonoUsuario.Location = new System.Drawing.Point(145, 345);
-            this.txt_telefonoUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_telefonoUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.txt_telefonoUsuario.Name = "txt_telefonoUsuario";
             this.txt_telefonoUsuario.Size = new System.Drawing.Size(185, 20);
             this.txt_telefonoUsuario.TabIndex = 15;
@@ -261,7 +272,7 @@ namespace CapaVista
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -276,7 +287,7 @@ namespace CapaVista
             // txt_nombreUsuario
             // 
             this.txt_nombreUsuario.Location = new System.Drawing.Point(145, 187);
-            this.txt_nombreUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_nombreUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.txt_nombreUsuario.Name = "txt_nombreUsuario";
             this.txt_nombreUsuario.Size = new System.Drawing.Size(185, 20);
             this.txt_nombreUsuario.TabIndex = 8;
@@ -305,17 +316,6 @@ namespace CapaVista
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(531, 120);
             this.panel1.TabIndex = 2;
-            // 
-            // btn_cambiarContrasena
-            // 
-            this.btn_cambiarContrasena.Image = global::CapaVista.Properties.Resources.images_convertido_a_25x25;
-            this.btn_cambiarContrasena.Location = new System.Drawing.Point(335, 243);
-            this.btn_cambiarContrasena.Name = "btn_cambiarContrasena";
-            this.btn_cambiarContrasena.Size = new System.Drawing.Size(35, 25);
-            this.btn_cambiarContrasena.TabIndex = 11;
-            this.btn_cambiarContrasena.UseVisualStyleBackColor = true;
-            this.btn_cambiarContrasena.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_cambiarContrasena_MouseDown);
-            this.btn_cambiarContrasena.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_cambiarContrasena_MouseUp);
             // 
             // btn_ayudausuario
             // 
@@ -360,16 +360,16 @@ namespace CapaVista
             this.btn_modregistrousuario.UseVisualStyleBackColor = true;
             this.btn_modregistrousuario.Click += new System.EventHandler(this.btn_modregistrousuario_Click);
             // 
-            // salir_usuario
+            // btn_cambiarContrasena
             // 
-            this.salir_usuario.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.salir_usuario.Image = global::CapaVista.Properties.Resources.salir_registro;
-            this.salir_usuario.Location = new System.Drawing.Point(3, 3);
-            this.salir_usuario.Name = "salir_usuario";
-            this.salir_usuario.Size = new System.Drawing.Size(71, 63);
-            this.salir_usuario.TabIndex = 20;
-            this.salir_usuario.UseVisualStyleBackColor = true;
-            this.salir_usuario.Click += new System.EventHandler(this.salir_usuario_Click);
+            this.btn_cambiarContrasena.Image = global::CapaVista.Properties.Resources.images_convertido_a_25x25;
+            this.btn_cambiarContrasena.Location = new System.Drawing.Point(335, 248);
+            this.btn_cambiarContrasena.Name = "btn_cambiarContrasena";
+            this.btn_cambiarContrasena.Size = new System.Drawing.Size(35, 25);
+            this.btn_cambiarContrasena.TabIndex = 11;
+            this.btn_cambiarContrasena.UseVisualStyleBackColor = true;
+            this.btn_cambiarContrasena.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_cambiarContrasena_MouseDown);
+            this.btn_cambiarContrasena.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_cambiarContrasena_MouseUp);
             // 
             // Mantenimiento_de_Usuarios
             // 
