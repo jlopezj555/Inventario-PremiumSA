@@ -30,6 +30,7 @@ namespace CapaVista
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Mantenimiento_de_Equipos));
             this.panel_menumantenimientou = new System.Windows.Forms.Panel();
             this.fecha_garantia = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
@@ -57,14 +58,14 @@ namespace CapaVista
             this.txt_nombreEquipo = new System.Windows.Forms.TextBox();
             this.lbl_nombreequipo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel_mantenimientou = new System.Windows.Forms.Panel();
-            this.lbl_mantenimientoequipos = new System.Windows.Forms.Label();
             this.btn_ayudaequipo = new System.Windows.Forms.Button();
             this.btn_eliminarequipo = new System.Windows.Forms.Button();
             this.btn_actualizarequipo = new System.Windows.Forms.Button();
             this.btn_guardarregistroequipo = new System.Windows.Forms.Button();
             this.btn_modregistroequipo = new System.Windows.Forms.Button();
+            this.panel_mantenimientou = new System.Windows.Forms.Panel();
             this.salir_equipo = new System.Windows.Forms.Button();
+            this.lbl_mantenimientoequipos = new System.Windows.Forms.Label();
             this.panel_menumantenimientou.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_equipos)).BeginInit();
             this.panel1.SuspendLayout();
@@ -109,7 +110,7 @@ namespace CapaVista
             // fecha_garantia
             // 
             this.fecha_garantia.Location = new System.Drawing.Point(624, 272);
-            this.fecha_garantia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fecha_garantia.Margin = new System.Windows.Forms.Padding(2);
             this.fecha_garantia.Name = "fecha_garantia";
             this.fecha_garantia.Size = new System.Drawing.Size(215, 20);
             this.fecha_garantia.TabIndex = 19;
@@ -130,7 +131,7 @@ namespace CapaVista
             // 
             this.cmb_bodega.FormattingEnabled = true;
             this.cmb_bodega.Location = new System.Drawing.Point(622, 201);
-            this.cmb_bodega.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmb_bodega.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_bodega.Name = "cmb_bodega";
             this.cmb_bodega.Size = new System.Drawing.Size(182, 21);
             this.cmb_bodega.TabIndex = 17;
@@ -151,7 +152,7 @@ namespace CapaVista
             // 
             this.cmb_estado.FormattingEnabled = true;
             this.cmb_estado.Location = new System.Drawing.Point(622, 178);
-            this.cmb_estado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmb_estado.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_estado.Name = "cmb_estado";
             this.cmb_estado.Size = new System.Drawing.Size(182, 21);
             this.cmb_estado.TabIndex = 16;
@@ -172,7 +173,7 @@ namespace CapaVista
             // 
             this.cmb_idCategoria.FormattingEnabled = true;
             this.cmb_idCategoria.Location = new System.Drawing.Point(622, 151);
-            this.cmb_idCategoria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmb_idCategoria.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_idCategoria.Name = "cmb_idCategoria";
             this.cmb_idCategoria.Size = new System.Drawing.Size(182, 21);
             this.cmb_idCategoria.TabIndex = 15;
@@ -192,7 +193,7 @@ namespace CapaVista
             // txt_NumeroSerie
             // 
             this.txt_NumeroSerie.Location = new System.Drawing.Point(210, 258);
-            this.txt_NumeroSerie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_NumeroSerie.Margin = new System.Windows.Forms.Padding(2);
             this.txt_NumeroSerie.Name = "txt_NumeroSerie";
             this.txt_NumeroSerie.Size = new System.Drawing.Size(186, 20);
             this.txt_NumeroSerie.TabIndex = 13;
@@ -213,7 +214,7 @@ namespace CapaVista
             // 
             this.txt_idEquipo.Enabled = false;
             this.txt_idEquipo.Location = new System.Drawing.Point(210, 150);
-            this.txt_idEquipo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_idEquipo.Margin = new System.Windows.Forms.Padding(2);
             this.txt_idEquipo.Name = "txt_idEquipo";
             this.txt_idEquipo.Size = new System.Drawing.Size(186, 20);
             this.txt_idEquipo.TabIndex = 25;
@@ -221,7 +222,7 @@ namespace CapaVista
             // fecha_ingreso
             // 
             this.fecha_ingreso.Location = new System.Drawing.Point(622, 232);
-            this.fecha_ingreso.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fecha_ingreso.Margin = new System.Windows.Forms.Padding(2);
             this.fecha_ingreso.Name = "fecha_ingreso";
             this.fecha_ingreso.Size = new System.Drawing.Size(215, 20);
             this.fecha_ingreso.TabIndex = 18;
@@ -259,7 +260,7 @@ namespace CapaVista
             // txt_modeloEquipo
             // 
             this.txt_modeloEquipo.Location = new System.Drawing.Point(210, 231);
-            this.txt_modeloEquipo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_modeloEquipo.Margin = new System.Windows.Forms.Padding(2);
             this.txt_modeloEquipo.Name = "txt_modeloEquipo";
             this.txt_modeloEquipo.Size = new System.Drawing.Size(186, 20);
             this.txt_modeloEquipo.TabIndex = 12;
@@ -279,7 +280,7 @@ namespace CapaVista
             // txt_descripcionEquipo
             // 
             this.txt_descripcionEquipo.Location = new System.Drawing.Point(210, 282);
-            this.txt_descripcionEquipo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_descripcionEquipo.Margin = new System.Windows.Forms.Padding(2);
             this.txt_descripcionEquipo.Name = "txt_descripcionEquipo";
             this.txt_descripcionEquipo.Size = new System.Drawing.Size(186, 20);
             this.txt_descripcionEquipo.TabIndex = 14;
@@ -299,7 +300,7 @@ namespace CapaVista
             // txt_observaciones
             // 
             this.txt_observaciones.Location = new System.Drawing.Point(624, 300);
-            this.txt_observaciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_observaciones.Margin = new System.Windows.Forms.Padding(2);
             this.txt_observaciones.Name = "txt_observaciones";
             this.txt_observaciones.Size = new System.Drawing.Size(181, 20);
             this.txt_observaciones.TabIndex = 20;
@@ -331,7 +332,7 @@ namespace CapaVista
             // txt_marcaEquipo
             // 
             this.txt_marcaEquipo.Location = new System.Drawing.Point(210, 205);
-            this.txt_marcaEquipo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_marcaEquipo.Margin = new System.Windows.Forms.Padding(2);
             this.txt_marcaEquipo.Name = "txt_marcaEquipo";
             this.txt_marcaEquipo.Size = new System.Drawing.Size(186, 20);
             this.txt_marcaEquipo.TabIndex = 11;
@@ -351,7 +352,7 @@ namespace CapaVista
             // txt_nombreEquipo
             // 
             this.txt_nombreEquipo.Location = new System.Drawing.Point(210, 176);
-            this.txt_nombreEquipo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_nombreEquipo.Margin = new System.Windows.Forms.Padding(2);
             this.txt_nombreEquipo.Name = "txt_nombreEquipo";
             this.txt_nombreEquipo.Size = new System.Drawing.Size(186, 20);
             this.txt_nombreEquipo.TabIndex = 10;
@@ -381,29 +382,6 @@ namespace CapaVista
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(558, 121);
             this.panel1.TabIndex = 2;
-            // 
-            // panel_mantenimientou
-            // 
-            this.panel_mantenimientou.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_mantenimientou.Controls.Add(this.salir_equipo);
-            this.panel_mantenimientou.Controls.Add(this.lbl_mantenimientoequipos);
-            this.panel_mantenimientou.ForeColor = System.Drawing.SystemColors.Control;
-            this.panel_mantenimientou.Location = new System.Drawing.Point(50, 11);
-            this.panel_mantenimientou.Name = "panel_mantenimientou";
-            this.panel_mantenimientou.Size = new System.Drawing.Size(841, 74);
-            this.panel_mantenimientou.TabIndex = 2;
-            // 
-            // lbl_mantenimientoequipos
-            // 
-            this.lbl_mantenimientoequipos.AutoSize = true;
-            this.lbl_mantenimientoequipos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_mantenimientoequipos.ForeColor = System.Drawing.Color.White;
-            this.lbl_mantenimientoequipos.Location = new System.Drawing.Point(204, 16);
-            this.lbl_mantenimientoequipos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_mantenimientoequipos.Name = "lbl_mantenimientoequipos";
-            this.lbl_mantenimientoequipos.Size = new System.Drawing.Size(424, 32);
-            this.lbl_mantenimientoequipos.TabIndex = 2;
-            this.lbl_mantenimientoequipos.Text = "MANTENIMIENTO DE EQUIPOS";
             // 
             // btn_ayudaequipo
             // 
@@ -459,6 +437,17 @@ namespace CapaVista
             this.btn_modregistroequipo.UseVisualStyleBackColor = true;
             this.btn_modregistroequipo.Click += new System.EventHandler(this.btn_modregistroequipo_Click);
             // 
+            // panel_mantenimientou
+            // 
+            this.panel_mantenimientou.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_mantenimientou.Controls.Add(this.salir_equipo);
+            this.panel_mantenimientou.Controls.Add(this.lbl_mantenimientoequipos);
+            this.panel_mantenimientou.ForeColor = System.Drawing.SystemColors.Control;
+            this.panel_mantenimientou.Location = new System.Drawing.Point(50, 11);
+            this.panel_mantenimientou.Name = "panel_mantenimientou";
+            this.panel_mantenimientou.Size = new System.Drawing.Size(841, 74);
+            this.panel_mantenimientou.TabIndex = 2;
+            // 
             // salir_equipo
             // 
             this.salir_equipo.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -470,6 +459,18 @@ namespace CapaVista
             this.salir_equipo.UseVisualStyleBackColor = true;
             this.salir_equipo.Click += new System.EventHandler(this.salir_equipo_Click);
             // 
+            // lbl_mantenimientoequipos
+            // 
+            this.lbl_mantenimientoequipos.AutoSize = true;
+            this.lbl_mantenimientoequipos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_mantenimientoequipos.ForeColor = System.Drawing.Color.White;
+            this.lbl_mantenimientoequipos.Location = new System.Drawing.Point(204, 16);
+            this.lbl_mantenimientoequipos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_mantenimientoequipos.Name = "lbl_mantenimientoequipos";
+            this.lbl_mantenimientoequipos.Size = new System.Drawing.Size(424, 32);
+            this.lbl_mantenimientoequipos.TabIndex = 2;
+            this.lbl_mantenimientoequipos.Text = "MANTENIMIENTO DE EQUIPOS";
+            // 
             // Mantenimiento_de_Equipos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -478,7 +479,9 @@ namespace CapaVista
             this.ClientSize = new System.Drawing.Size(909, 688);
             this.Controls.Add(this.panel_menumantenimientou);
             this.Controls.Add(this.panel_mantenimientou);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Mantenimiento_de_Equipos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento de Equipos";
             this.Load += new System.EventHandler(this.Mantenimiento_de_Equipos_Load);
             this.panel_menumantenimientou.ResumeLayout(false);

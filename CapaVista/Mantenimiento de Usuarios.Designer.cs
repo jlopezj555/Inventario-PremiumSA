@@ -29,11 +29,13 @@ namespace CapaVista
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Mantenimiento_de_Usuarios));
             this.panel_mantenimientou = new System.Windows.Forms.Panel();
             this.salir_usuario = new System.Windows.Forms.Button();
             this.lbl_mantenimientousuarios = new System.Windows.Forms.Label();
             this.panel_menumantenimientou = new System.Windows.Forms.Panel();
+            this.btn_cambiarContrasena = new System.Windows.Forms.Button();
             this.labelContra = new System.Windows.Forms.Label();
             this.txtContra = new System.Windows.Forms.TextBox();
             this.txt_usuarioLogin = new System.Windows.Forms.TextBox();
@@ -56,7 +58,6 @@ namespace CapaVista
             this.btn_eliminarusuario = new System.Windows.Forms.Button();
             this.btn_actualizarusuario = new System.Windows.Forms.Button();
             this.btn_modregistrousuario = new System.Windows.Forms.Button();
-            this.btn_cambiarContrasena = new System.Windows.Forms.Button();
             this.panel_mantenimientou.SuspendLayout();
             this.panel_menumantenimientou.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_usuarios)).BeginInit();
@@ -124,6 +125,17 @@ namespace CapaVista
             this.panel_menumantenimientou.Name = "panel_menumantenimientou";
             this.panel_menumantenimientou.Size = new System.Drawing.Size(814, 421);
             this.panel_menumantenimientou.TabIndex = 1;
+            // 
+            // btn_cambiarContrasena
+            // 
+            this.btn_cambiarContrasena.Image = global::CapaVista.Properties.Resources.images_convertido_a_25x25;
+            this.btn_cambiarContrasena.Location = new System.Drawing.Point(335, 248);
+            this.btn_cambiarContrasena.Name = "btn_cambiarContrasena";
+            this.btn_cambiarContrasena.Size = new System.Drawing.Size(35, 25);
+            this.btn_cambiarContrasena.TabIndex = 11;
+            this.btn_cambiarContrasena.UseVisualStyleBackColor = true;
+            this.btn_cambiarContrasena.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_cambiarContrasena_MouseDown);
+            this.btn_cambiarContrasena.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_cambiarContrasena_MouseUp);
             // 
             // labelContra
             // 
@@ -269,14 +281,14 @@ namespace CapaVista
             // dgv_usuarios
             // 
             this.dgv_usuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_usuarios.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_usuarios.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_usuarios.Location = new System.Drawing.Point(376, 152);
             this.dgv_usuarios.Name = "dgv_usuarios";
             this.dgv_usuarios.RowHeadersWidth = 62;
@@ -360,17 +372,6 @@ namespace CapaVista
             this.btn_modregistrousuario.UseVisualStyleBackColor = true;
             this.btn_modregistrousuario.Click += new System.EventHandler(this.btn_modregistrousuario_Click);
             // 
-            // btn_cambiarContrasena
-            // 
-            this.btn_cambiarContrasena.Image = global::CapaVista.Properties.Resources.images_convertido_a_25x25;
-            this.btn_cambiarContrasena.Location = new System.Drawing.Point(335, 248);
-            this.btn_cambiarContrasena.Name = "btn_cambiarContrasena";
-            this.btn_cambiarContrasena.Size = new System.Drawing.Size(35, 25);
-            this.btn_cambiarContrasena.TabIndex = 11;
-            this.btn_cambiarContrasena.UseVisualStyleBackColor = true;
-            this.btn_cambiarContrasena.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_cambiarContrasena_MouseDown);
-            this.btn_cambiarContrasena.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_cambiarContrasena_MouseUp);
-            // 
             // Mantenimiento_de_Usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -379,7 +380,9 @@ namespace CapaVista
             this.ClientSize = new System.Drawing.Size(903, 487);
             this.Controls.Add(this.panel_menumantenimientou);
             this.Controls.Add(this.panel_mantenimientou);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Mantenimiento_de_Usuarios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento de Usuarios";
             this.Load += new System.EventHandler(this.Mantenimiento_de_Usuarios_Load);
             this.panel_mantenimientou.ResumeLayout(false);

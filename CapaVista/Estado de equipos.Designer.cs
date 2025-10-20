@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Estado_de_equipos));
             this.panel_mantenimientou = new System.Windows.Forms.Panel();
+            this.salir_equipo = new System.Windows.Forms.Button();
             this.lbl_mantenimientoequipos = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgv_estados = new System.Windows.Forms.DataGridView();
@@ -45,7 +47,6 @@
             this.btn_actualizarestado = new System.Windows.Forms.Button();
             this.btn_guardarregistroestado = new System.Windows.Forms.Button();
             this.btn_modregistroestado = new System.Windows.Forms.Button();
-            this.salir_equipo = new System.Windows.Forms.Button();
             this.panel_mantenimientou.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_estados)).BeginInit();
@@ -62,6 +63,17 @@
             this.panel_mantenimientou.Name = "panel_mantenimientou";
             this.panel_mantenimientou.Size = new System.Drawing.Size(750, 74);
             this.panel_mantenimientou.TabIndex = 3;
+            // 
+            // salir_equipo
+            // 
+            this.salir_equipo.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.salir_equipo.Image = global::CapaVista.Properties.Resources.salir_registro;
+            this.salir_equipo.Location = new System.Drawing.Point(3, 3);
+            this.salir_equipo.Name = "salir_equipo";
+            this.salir_equipo.Size = new System.Drawing.Size(71, 63);
+            this.salir_equipo.TabIndex = 1;
+            this.salir_equipo.UseVisualStyleBackColor = true;
+            this.salir_equipo.Click += new System.EventHandler(this.salir_equipo_Click);
             // 
             // lbl_mantenimientoequipos
             // 
@@ -86,7 +98,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(9, 88);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(750, 512);
             this.panel1.TabIndex = 4;
@@ -94,16 +106,16 @@
             // dgv_estados
             // 
             this.dgv_estados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_estados.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_estados.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_estados.Location = new System.Drawing.Point(167, 282);
-            this.dgv_estados.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgv_estados.Margin = new System.Windows.Forms.Padding(2);
             this.dgv_estados.Name = "dgv_estados";
             this.dgv_estados.RowHeadersWidth = 62;
             this.dgv_estados.RowTemplate.Height = 28;
@@ -114,7 +126,7 @@
             // txt_descripcionestado
             // 
             this.txt_descripcionestado.Location = new System.Drawing.Point(291, 246);
-            this.txt_descripcionestado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_descripcionestado.Margin = new System.Windows.Forms.Padding(2);
             this.txt_descripcionestado.Name = "txt_descripcionestado";
             this.txt_descripcionestado.Size = new System.Drawing.Size(220, 20);
             this.txt_descripcionestado.TabIndex = 32;
@@ -122,7 +134,7 @@
             // txt_nombreestado
             // 
             this.txt_nombreestado.Location = new System.Drawing.Point(291, 201);
-            this.txt_nombreestado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_nombreestado.Margin = new System.Windows.Forms.Padding(2);
             this.txt_nombreestado.Name = "txt_nombreestado";
             this.txt_nombreestado.Size = new System.Drawing.Size(220, 20);
             this.txt_nombreestado.TabIndex = 31;
@@ -131,7 +143,7 @@
             // 
             this.txt_idEstado.Enabled = false;
             this.txt_idEstado.Location = new System.Drawing.Point(290, 155);
-            this.txt_idEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_idEstado.Margin = new System.Windows.Forms.Padding(2);
             this.txt_idEstado.Name = "txt_idEstado";
             this.txt_idEstado.ReadOnly = true;
             this.txt_idEstado.Size = new System.Drawing.Size(220, 20);
@@ -240,17 +252,6 @@
             this.btn_modregistroestado.UseVisualStyleBackColor = true;
             this.btn_modregistroestado.Click += new System.EventHandler(this.btn_modregistroestado_Click);
             // 
-            // salir_equipo
-            // 
-            this.salir_equipo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.salir_equipo.Image = global::CapaVista.Properties.Resources.salir_registro;
-            this.salir_equipo.Location = new System.Drawing.Point(3, 3);
-            this.salir_equipo.Name = "salir_equipo";
-            this.salir_equipo.Size = new System.Drawing.Size(71, 63);
-            this.salir_equipo.TabIndex = 1;
-            this.salir_equipo.UseVisualStyleBackColor = true;
-            this.salir_equipo.Click += new System.EventHandler(this.salir_equipo_Click);
-            // 
             // Estado_de_equipos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -259,8 +260,10 @@
             this.ClientSize = new System.Drawing.Size(767, 607);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_mantenimientou);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Estado_de_equipos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Estado_de_equipos";
             this.panel_mantenimientou.ResumeLayout(false);
             this.panel_mantenimientou.PerformLayout();

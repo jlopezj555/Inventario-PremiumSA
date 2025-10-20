@@ -30,6 +30,7 @@ namespace CapaVista
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Movimiento_de_Bodegas));
             this.panel_menumantenimientou = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txt_nombreBodega = new System.Windows.Forms.TextBox();
@@ -42,15 +43,15 @@ namespace CapaVista
             this.lbl_contacto = new System.Windows.Forms.Label();
             this.dgv_bodegas = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel_mantenimientou = new System.Windows.Forms.Panel();
-            this.txt_idBodega = new System.Windows.Forms.TextBox();
-            this.lbl_mantenimientousuarios = new System.Windows.Forms.Label();
             this.btn_ayudabodega = new System.Windows.Forms.Button();
             this.btn_eliminarbodega = new System.Windows.Forms.Button();
             this.btn_actualizarbodega = new System.Windows.Forms.Button();
             this.btn_guardarregistrobodega = new System.Windows.Forms.Button();
             this.btn_modregistrobodega = new System.Windows.Forms.Button();
+            this.panel_mantenimientou = new System.Windows.Forms.Panel();
+            this.txt_idBodega = new System.Windows.Forms.TextBox();
             this.salir_movbodegas = new System.Windows.Forms.Button();
+            this.lbl_mantenimientousuarios = new System.Windows.Forms.Label();
             this.panel_menumantenimientou.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_bodegas)).BeginInit();
@@ -90,7 +91,7 @@ namespace CapaVista
             // txt_nombreBodega
             // 
             this.txt_nombreBodega.Location = new System.Drawing.Point(125, 31);
-            this.txt_nombreBodega.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_nombreBodega.Margin = new System.Windows.Forms.Padding(2);
             this.txt_nombreBodega.Name = "txt_nombreBodega";
             this.txt_nombreBodega.Size = new System.Drawing.Size(186, 20);
             this.txt_nombreBodega.TabIndex = 10;
@@ -122,7 +123,7 @@ namespace CapaVista
             // txt_capacidadBodega
             // 
             this.txt_capacidadBodega.Location = new System.Drawing.Point(125, 98);
-            this.txt_capacidadBodega.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_capacidadBodega.Margin = new System.Windows.Forms.Padding(2);
             this.txt_capacidadBodega.Name = "txt_capacidadBodega";
             this.txt_capacidadBodega.Size = new System.Drawing.Size(186, 20);
             this.txt_capacidadBodega.TabIndex = 12;
@@ -130,7 +131,7 @@ namespace CapaVista
             // txt_ubicacionBodega
             // 
             this.txt_ubicacionBodega.Location = new System.Drawing.Point(125, 62);
-            this.txt_ubicacionBodega.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_ubicacionBodega.Margin = new System.Windows.Forms.Padding(2);
             this.txt_ubicacionBodega.Name = "txt_ubicacionBodega";
             this.txt_ubicacionBodega.Size = new System.Drawing.Size(186, 20);
             this.txt_ubicacionBodega.TabIndex = 11;
@@ -204,39 +205,6 @@ namespace CapaVista
             this.panel1.Size = new System.Drawing.Size(586, 121);
             this.panel1.TabIndex = 2;
             // 
-            // panel_mantenimientou
-            // 
-            this.panel_mantenimientou.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_mantenimientou.Controls.Add(this.txt_idBodega);
-            this.panel_mantenimientou.Controls.Add(this.salir_movbodegas);
-            this.panel_mantenimientou.Controls.Add(this.lbl_mantenimientousuarios);
-            this.panel_mantenimientou.ForeColor = System.Drawing.SystemColors.Control;
-            this.panel_mantenimientou.Location = new System.Drawing.Point(50, 11);
-            this.panel_mantenimientou.Name = "panel_mantenimientou";
-            this.panel_mantenimientou.Size = new System.Drawing.Size(808, 74);
-            this.panel_mantenimientou.TabIndex = 2;
-            // 
-            // txt_idBodega
-            // 
-            this.txt_idBodega.Location = new System.Drawing.Point(760, 26);
-            this.txt_idBodega.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txt_idBodega.Name = "txt_idBodega";
-            this.txt_idBodega.Size = new System.Drawing.Size(67, 20);
-            this.txt_idBodega.TabIndex = 6;
-            this.txt_idBodega.Visible = false;
-            // 
-            // lbl_mantenimientousuarios
-            // 
-            this.lbl_mantenimientousuarios.AutoSize = true;
-            this.lbl_mantenimientousuarios.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_mantenimientousuarios.ForeColor = System.Drawing.Color.White;
-            this.lbl_mantenimientousuarios.Location = new System.Drawing.Point(322, 15);
-            this.lbl_mantenimientousuarios.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_mantenimientousuarios.Name = "lbl_mantenimientousuarios";
-            this.lbl_mantenimientousuarios.Size = new System.Drawing.Size(130, 32);
-            this.lbl_mantenimientousuarios.TabIndex = 2;
-            this.lbl_mantenimientousuarios.Text = "Bodegas";
-            // 
             // btn_ayudabodega
             // 
             this.btn_ayudabodega.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -290,6 +258,27 @@ namespace CapaVista
             this.btn_modregistrobodega.UseVisualStyleBackColor = true;
             this.btn_modregistrobodega.Click += new System.EventHandler(this.btn_modregistrobodega_Click);
             // 
+            // panel_mantenimientou
+            // 
+            this.panel_mantenimientou.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_mantenimientou.Controls.Add(this.txt_idBodega);
+            this.panel_mantenimientou.Controls.Add(this.salir_movbodegas);
+            this.panel_mantenimientou.Controls.Add(this.lbl_mantenimientousuarios);
+            this.panel_mantenimientou.ForeColor = System.Drawing.SystemColors.Control;
+            this.panel_mantenimientou.Location = new System.Drawing.Point(50, 11);
+            this.panel_mantenimientou.Name = "panel_mantenimientou";
+            this.panel_mantenimientou.Size = new System.Drawing.Size(808, 74);
+            this.panel_mantenimientou.TabIndex = 2;
+            // 
+            // txt_idBodega
+            // 
+            this.txt_idBodega.Location = new System.Drawing.Point(760, 26);
+            this.txt_idBodega.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_idBodega.Name = "txt_idBodega";
+            this.txt_idBodega.Size = new System.Drawing.Size(67, 20);
+            this.txt_idBodega.TabIndex = 6;
+            this.txt_idBodega.Visible = false;
+            // 
             // salir_movbodegas
             // 
             this.salir_movbodegas.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -301,6 +290,18 @@ namespace CapaVista
             this.salir_movbodegas.UseVisualStyleBackColor = true;
             this.salir_movbodegas.Click += new System.EventHandler(this.salir_movbodegas_Click);
             // 
+            // lbl_mantenimientousuarios
+            // 
+            this.lbl_mantenimientousuarios.AutoSize = true;
+            this.lbl_mantenimientousuarios.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_mantenimientousuarios.ForeColor = System.Drawing.Color.White;
+            this.lbl_mantenimientousuarios.Location = new System.Drawing.Point(322, 15);
+            this.lbl_mantenimientousuarios.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_mantenimientousuarios.Name = "lbl_mantenimientousuarios";
+            this.lbl_mantenimientousuarios.Size = new System.Drawing.Size(130, 32);
+            this.lbl_mantenimientousuarios.TabIndex = 2;
+            this.lbl_mantenimientousuarios.Text = "Bodegas";
+            // 
             // Movimiento_de_Bodegas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -309,7 +310,9 @@ namespace CapaVista
             this.ClientSize = new System.Drawing.Size(903, 512);
             this.Controls.Add(this.panel_menumantenimientou);
             this.Controls.Add(this.panel_mantenimientou);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Movimiento_de_Bodegas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bodegas";
             this.panel_menumantenimientou.ResumeLayout(false);
             this.panel_menumantenimientou.PerformLayout();

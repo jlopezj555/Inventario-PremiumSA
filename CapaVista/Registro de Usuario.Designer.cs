@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registro_de_Usuario));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,7 +54,7 @@
             // 
             this.pictureBox1.Image = global::CapaVista.Properties.Resources.agregar_usuario;
             this.pictureBox1.Location = new System.Drawing.Point(258, 46);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(101, 109);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -87,7 +88,7 @@
             // txt_nombreUsuario
             // 
             this.txt_nombreUsuario.Location = new System.Drawing.Point(228, 190);
-            this.txt_nombreUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_nombreUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.txt_nombreUsuario.Name = "txt_nombreUsuario";
             this.txt_nombreUsuario.Size = new System.Drawing.Size(187, 20);
             this.txt_nombreUsuario.TabIndex = 4;
@@ -107,7 +108,7 @@
             // txt_Contraseña
             // 
             this.txt_Contraseña.Location = new System.Drawing.Point(228, 274);
-            this.txt_Contraseña.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_Contraseña.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Contraseña.Name = "txt_Contraseña";
             this.txt_Contraseña.PasswordChar = '*';
             this.txt_Contraseña.Size = new System.Drawing.Size(187, 20);
@@ -128,7 +129,7 @@
             // txt_Correo
             // 
             this.txt_Correo.Location = new System.Drawing.Point(229, 454);
-            this.txt_Correo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_Correo.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Correo.Name = "txt_Correo";
             this.txt_Correo.Size = new System.Drawing.Size(187, 20);
             this.txt_Correo.TabIndex = 10;
@@ -148,7 +149,7 @@
             // txt_Telefono
             // 
             this.txt_Telefono.Location = new System.Drawing.Point(228, 406);
-            this.txt_Telefono.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_Telefono.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Telefono.Name = "txt_Telefono";
             this.txt_Telefono.Size = new System.Drawing.Size(187, 20);
             this.txt_Telefono.TabIndex = 9;
@@ -157,7 +158,7 @@
             // 
             this.btn_registrarUsuario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_registrarUsuario.Location = new System.Drawing.Point(229, 475);
-            this.btn_registrarUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_registrarUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.btn_registrarUsuario.Name = "btn_registrarUsuario";
             this.btn_registrarUsuario.Size = new System.Drawing.Size(186, 41);
             this.btn_registrarUsuario.TabIndex = 11;
@@ -179,7 +180,7 @@
             // txt_Usuariologin
             // 
             this.txt_Usuariologin.Location = new System.Drawing.Point(228, 232);
-            this.txt_Usuariologin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_Usuariologin.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Usuariologin.Name = "txt_Usuariologin";
             this.txt_Usuariologin.Size = new System.Drawing.Size(187, 20);
             this.txt_Usuariologin.TabIndex = 5;
@@ -199,7 +200,7 @@
             // txt_puesto
             // 
             this.txt_puesto.Location = new System.Drawing.Point(229, 322);
-            this.txt_puesto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_puesto.Margin = new System.Windows.Forms.Padding(2);
             this.txt_puesto.Name = "txt_puesto";
             this.txt_puesto.Size = new System.Drawing.Size(187, 20);
             this.txt_puesto.TabIndex = 7;
@@ -219,7 +220,7 @@
             // txt_departamento
             // 
             this.txt_departamento.Location = new System.Drawing.Point(228, 364);
-            this.txt_departamento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_departamento.Margin = new System.Windows.Forms.Padding(2);
             this.txt_departamento.Name = "txt_departamento";
             this.txt_departamento.Size = new System.Drawing.Size(187, 20);
             this.txt_departamento.TabIndex = 8;
@@ -260,8 +261,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Registro_de_Usuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de Usuario";
             this.Load += new System.EventHandler(this.Registro_de_Usuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

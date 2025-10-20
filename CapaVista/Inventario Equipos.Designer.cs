@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inventario_Equipos));
             this.panel_menumantenimientou = new System.Windows.Forms.Panel();
             this.cmb_idEquipo = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,14 +41,14 @@
             this.lbl_descripcionequipo = new System.Windows.Forms.Label();
             this.Id_Equipo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel_mantenimientou = new System.Windows.Forms.Panel();
-            this.lbl_mantenimientoequipos = new System.Windows.Forms.Label();
-            this.salir_equipo = new System.Windows.Forms.Button();
             this.btn_ayudaequipo = new System.Windows.Forms.Button();
             this.btn_eliminarinventario = new System.Windows.Forms.Button();
             this.btn_actualizarinventario = new System.Windows.Forms.Button();
             this.btn_guardarinventario = new System.Windows.Forms.Button();
             this.btn_modificarinventario = new System.Windows.Forms.Button();
+            this.panel_mantenimientou = new System.Windows.Forms.Panel();
+            this.salir_equipo = new System.Windows.Forms.Button();
+            this.lbl_mantenimientoequipos = new System.Windows.Forms.Label();
             this.panel_menumantenimientou.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_inventario)).BeginInit();
             this.panel1.SuspendLayout();
@@ -77,7 +78,7 @@
             // 
             this.cmb_idEquipo.FormattingEnabled = true;
             this.cmb_idEquipo.Location = new System.Drawing.Point(260, 187);
-            this.cmb_idEquipo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmb_idEquipo.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_idEquipo.Name = "cmb_idEquipo";
             this.cmb_idEquipo.Size = new System.Drawing.Size(186, 21);
             this.cmb_idEquipo.TabIndex = 31;
@@ -87,7 +88,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(139, 249);
+            this.label3.Location = new System.Drawing.Point(130, 250);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(127, 22);
@@ -97,7 +98,7 @@
             // txtStockActual
             // 
             this.txtStockActual.Location = new System.Drawing.Point(262, 254);
-            this.txtStockActual.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtStockActual.Margin = new System.Windows.Forms.Padding(2);
             this.txtStockActual.Name = "txtStockActual";
             this.txtStockActual.Size = new System.Drawing.Size(186, 20);
             this.txtStockActual.TabIndex = 33;
@@ -116,8 +117,9 @@
             // 
             // txt_codigoInventario
             // 
+            this.txt_codigoInventario.Enabled = false;
             this.txt_codigoInventario.Location = new System.Drawing.Point(260, 156);
-            this.txt_codigoInventario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_codigoInventario.Margin = new System.Windows.Forms.Padding(2);
             this.txt_codigoInventario.Name = "txt_codigoInventario";
             this.txt_codigoInventario.Size = new System.Drawing.Size(186, 20);
             this.txt_codigoInventario.TabIndex = 27;
@@ -126,14 +128,14 @@
             // 
             this.dgv_inventario.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgv_inventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_inventario.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_inventario.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_inventario.GridColor = System.Drawing.SystemColors.ButtonShadow;
             this.dgv_inventario.Location = new System.Drawing.Point(12, 286);
             this.dgv_inventario.Name = "dgv_inventario";
@@ -145,7 +147,7 @@
             // txtStockMinimo
             // 
             this.txtStockMinimo.Location = new System.Drawing.Point(262, 223);
-            this.txtStockMinimo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtStockMinimo.Margin = new System.Windows.Forms.Padding(2);
             this.txtStockMinimo.Name = "txtStockMinimo";
             this.txtStockMinimo.Size = new System.Drawing.Size(186, 20);
             this.txtStockMinimo.TabIndex = 32;
@@ -155,7 +157,7 @@
             this.lbl_descripcionequipo.AutoSize = true;
             this.lbl_descripcionequipo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_descripcionequipo.ForeColor = System.Drawing.Color.White;
-            this.lbl_descripcionequipo.Location = new System.Drawing.Point(132, 219);
+            this.lbl_descripcionequipo.Location = new System.Drawing.Point(124, 219);
             this.lbl_descripcionequipo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_descripcionequipo.Name = "lbl_descripcionequipo";
             this.lbl_descripcionequipo.Size = new System.Drawing.Size(133, 22);
@@ -187,40 +189,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(553, 121);
             this.panel1.TabIndex = 2;
-            // 
-            // panel_mantenimientou
-            // 
-            this.panel_mantenimientou.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_mantenimientou.Controls.Add(this.salir_equipo);
-            this.panel_mantenimientou.Controls.Add(this.lbl_mantenimientoequipos);
-            this.panel_mantenimientou.ForeColor = System.Drawing.SystemColors.Control;
-            this.panel_mantenimientou.Location = new System.Drawing.Point(10, 11);
-            this.panel_mantenimientou.Name = "panel_mantenimientou";
-            this.panel_mantenimientou.Size = new System.Drawing.Size(850, 74);
-            this.panel_mantenimientou.TabIndex = 7;
-            // 
-            // lbl_mantenimientoequipos
-            // 
-            this.lbl_mantenimientoequipos.AutoSize = true;
-            this.lbl_mantenimientoequipos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_mantenimientoequipos.ForeColor = System.Drawing.Color.White;
-            this.lbl_mantenimientoequipos.Location = new System.Drawing.Point(242, 23);
-            this.lbl_mantenimientoequipos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_mantenimientoequipos.Name = "lbl_mantenimientoequipos";
-            this.lbl_mantenimientoequipos.Size = new System.Drawing.Size(362, 32);
-            this.lbl_mantenimientoequipos.TabIndex = 2;
-            this.lbl_mantenimientoequipos.Text = "INVENTARIO DE EQUIPOS";
-            // 
-            // salir_equipo
-            // 
-            this.salir_equipo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.salir_equipo.Image = global::CapaVista.Properties.Resources.salir_registro;
-            this.salir_equipo.Location = new System.Drawing.Point(3, 3);
-            this.salir_equipo.Name = "salir_equipo";
-            this.salir_equipo.Size = new System.Drawing.Size(70, 63);
-            this.salir_equipo.TabIndex = 1;
-            this.salir_equipo.UseVisualStyleBackColor = true;
-            this.salir_equipo.Click += new System.EventHandler(this.salir_equipo_Click_1);
             // 
             // btn_ayudaequipo
             // 
@@ -277,16 +245,52 @@
             this.btn_modificarinventario.UseVisualStyleBackColor = true;
             this.btn_modificarinventario.Click += new System.EventHandler(this.btn_modregistroequipo_Click);
             // 
+            // panel_mantenimientou
+            // 
+            this.panel_mantenimientou.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_mantenimientou.Controls.Add(this.salir_equipo);
+            this.panel_mantenimientou.Controls.Add(this.lbl_mantenimientoequipos);
+            this.panel_mantenimientou.ForeColor = System.Drawing.SystemColors.Control;
+            this.panel_mantenimientou.Location = new System.Drawing.Point(10, 11);
+            this.panel_mantenimientou.Name = "panel_mantenimientou";
+            this.panel_mantenimientou.Size = new System.Drawing.Size(850, 74);
+            this.panel_mantenimientou.TabIndex = 7;
+            // 
+            // salir_equipo
+            // 
+            this.salir_equipo.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.salir_equipo.Image = global::CapaVista.Properties.Resources.salir_registro;
+            this.salir_equipo.Location = new System.Drawing.Point(3, 3);
+            this.salir_equipo.Name = "salir_equipo";
+            this.salir_equipo.Size = new System.Drawing.Size(70, 63);
+            this.salir_equipo.TabIndex = 1;
+            this.salir_equipo.UseVisualStyleBackColor = true;
+            this.salir_equipo.Click += new System.EventHandler(this.salir_equipo_Click_1);
+            // 
+            // lbl_mantenimientoequipos
+            // 
+            this.lbl_mantenimientoequipos.AutoSize = true;
+            this.lbl_mantenimientoequipos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_mantenimientoequipos.ForeColor = System.Drawing.Color.White;
+            this.lbl_mantenimientoequipos.Location = new System.Drawing.Point(242, 23);
+            this.lbl_mantenimientoequipos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_mantenimientoequipos.Name = "lbl_mantenimientoequipos";
+            this.lbl_mantenimientoequipos.Size = new System.Drawing.Size(362, 32);
+            this.lbl_mantenimientoequipos.TabIndex = 2;
+            this.lbl_mantenimientoequipos.Text = "INVENTARIO DE EQUIPOS";
+            // 
             // Inventario_Equipos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(875, 608);
+            this.ClientSize = new System.Drawing.Size(862, 684);
             this.Controls.Add(this.panel_mantenimientou);
             this.Controls.Add(this.panel_menumantenimientou);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Inventario_Equipos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventario_Equipos";
             this.panel_menumantenimientou.ResumeLayout(false);
             this.panel_menumantenimientou.PerformLayout();

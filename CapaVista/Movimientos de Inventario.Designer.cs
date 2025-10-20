@@ -30,6 +30,7 @@ namespace CapaVista
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Movimientos_de_Inventario));
             this.panel_menumantenimientou = new System.Windows.Forms.Panel();
             this.dgvMovimientos = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -42,14 +43,14 @@ namespace CapaVista
             this.lbl_observacion = new System.Windows.Forms.Label();
             this.lbl_empleadomov = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel_mantenimientou = new System.Windows.Forms.Panel();
-            this.lbl_movimientoinventario = new System.Windows.Forms.Label();
             this.btn_ayudamovimiento = new System.Windows.Forms.Button();
             this.btnRegistrarMovimiento = new System.Windows.Forms.Button();
             this.btn_eliminarmovimiento = new System.Windows.Forms.Button();
             this.btn_actualizarmovimiento = new System.Windows.Forms.Button();
             this.btn_modmovimiento = new System.Windows.Forms.Button();
+            this.panel_mantenimientou = new System.Windows.Forms.Panel();
             this.salir_movinventario = new System.Windows.Forms.Button();
+            this.lbl_movimientoinventario = new System.Windows.Forms.Label();
             this.panel_menumantenimientou.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovimientos)).BeginInit();
             this.panel2.SuspendLayout();
@@ -107,7 +108,7 @@ namespace CapaVista
             // 
             this.cmbEquipo.FormattingEnabled = true;
             this.cmbEquipo.Location = new System.Drawing.Point(234, 24);
-            this.cmbEquipo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbEquipo.Margin = new System.Windows.Forms.Padding(2);
             this.cmbEquipo.Name = "cmbEquipo";
             this.cmbEquipo.Size = new System.Drawing.Size(186, 21);
             this.cmbEquipo.TabIndex = 34;
@@ -116,7 +117,7 @@ namespace CapaVista
             // 
             this.cmbUsuario.FormattingEnabled = true;
             this.cmbUsuario.Location = new System.Drawing.Point(234, 61);
-            this.cmbUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.cmbUsuario.Name = "cmbUsuario";
             this.cmbUsuario.Size = new System.Drawing.Size(186, 21);
             this.cmbUsuario.TabIndex = 35;
@@ -125,7 +126,7 @@ namespace CapaVista
             // 
             this.cmbTipoMovimiento.FormattingEnabled = true;
             this.cmbTipoMovimiento.Location = new System.Drawing.Point(233, 93);
-            this.cmbTipoMovimiento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbTipoMovimiento.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTipoMovimiento.Name = "cmbTipoMovimiento";
             this.cmbTipoMovimiento.Size = new System.Drawing.Size(186, 21);
             this.cmbTipoMovimiento.TabIndex = 36;
@@ -145,7 +146,7 @@ namespace CapaVista
             // txtObservaciones
             // 
             this.txtObservaciones.Location = new System.Drawing.Point(234, 127);
-            this.txtObservaciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtObservaciones.Margin = new System.Windows.Forms.Padding(2);
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.Size = new System.Drawing.Size(185, 58);
@@ -201,29 +202,6 @@ namespace CapaVista
             this.panel1.Size = new System.Drawing.Size(586, 121);
             this.panel1.TabIndex = 16;
             // 
-            // panel_mantenimientou
-            // 
-            this.panel_mantenimientou.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_mantenimientou.Controls.Add(this.salir_movinventario);
-            this.panel_mantenimientou.Controls.Add(this.lbl_movimientoinventario);
-            this.panel_mantenimientou.ForeColor = System.Drawing.SystemColors.Control;
-            this.panel_mantenimientou.Location = new System.Drawing.Point(19, 12);
-            this.panel_mantenimientou.Name = "panel_mantenimientou";
-            this.panel_mantenimientou.Size = new System.Drawing.Size(740, 75);
-            this.panel_mantenimientou.TabIndex = 2;
-            // 
-            // lbl_movimientoinventario
-            // 
-            this.lbl_movimientoinventario.AutoSize = true;
-            this.lbl_movimientoinventario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_movimientoinventario.ForeColor = System.Drawing.Color.White;
-            this.lbl_movimientoinventario.Location = new System.Drawing.Point(232, 16);
-            this.lbl_movimientoinventario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_movimientoinventario.Name = "lbl_movimientoinventario";
-            this.lbl_movimientoinventario.Size = new System.Drawing.Size(357, 32);
-            this.lbl_movimientoinventario.TabIndex = 2;
-            this.lbl_movimientoinventario.Text = "Movimientos de Inventario";
-            // 
             // btn_ayudamovimiento
             // 
             this.btn_ayudamovimiento.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -278,6 +256,17 @@ namespace CapaVista
             this.btn_modmovimiento.UseVisualStyleBackColor = true;
             this.btn_modmovimiento.Click += new System.EventHandler(this.btn_modmovimiento_Click);
             // 
+            // panel_mantenimientou
+            // 
+            this.panel_mantenimientou.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_mantenimientou.Controls.Add(this.salir_movinventario);
+            this.panel_mantenimientou.Controls.Add(this.lbl_movimientoinventario);
+            this.panel_mantenimientou.ForeColor = System.Drawing.SystemColors.Control;
+            this.panel_mantenimientou.Location = new System.Drawing.Point(19, 12);
+            this.panel_mantenimientou.Name = "panel_mantenimientou";
+            this.panel_mantenimientou.Size = new System.Drawing.Size(740, 75);
+            this.panel_mantenimientou.TabIndex = 2;
+            // 
             // salir_movinventario
             // 
             this.salir_movinventario.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -289,6 +278,18 @@ namespace CapaVista
             this.salir_movinventario.UseVisualStyleBackColor = true;
             this.salir_movinventario.Click += new System.EventHandler(this.salir_movinventario_Click);
             // 
+            // lbl_movimientoinventario
+            // 
+            this.lbl_movimientoinventario.AutoSize = true;
+            this.lbl_movimientoinventario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_movimientoinventario.ForeColor = System.Drawing.Color.White;
+            this.lbl_movimientoinventario.Location = new System.Drawing.Point(232, 16);
+            this.lbl_movimientoinventario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_movimientoinventario.Name = "lbl_movimientoinventario";
+            this.lbl_movimientoinventario.Size = new System.Drawing.Size(357, 32);
+            this.lbl_movimientoinventario.TabIndex = 2;
+            this.lbl_movimientoinventario.Text = "Movimientos de Inventario";
+            // 
             // Movimientos_de_Inventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,7 +299,9 @@ namespace CapaVista
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_menumantenimientou);
             this.Controls.Add(this.panel_mantenimientou);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Movimientos_de_Inventario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Movimientos de Inventario";
             this.panel_menumantenimientou.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovimientos)).EndInit();
