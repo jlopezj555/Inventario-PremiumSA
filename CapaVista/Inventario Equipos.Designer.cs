@@ -126,7 +126,7 @@
             // 
             // dgv_inventario
             // 
-            this.dgv_inventario.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgv_inventario.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgv_inventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
