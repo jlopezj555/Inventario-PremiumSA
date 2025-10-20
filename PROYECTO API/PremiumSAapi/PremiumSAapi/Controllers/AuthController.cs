@@ -1,4 +1,4 @@
-﻿using BCrypt.Net;
+using BCrypt.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PremiumSAapi.Data;
@@ -26,13 +26,29 @@ namespace PremiumSAapi.Controllers
             var usuario = await _db.Usuarios.FirstOrDefaultAsync(u => u.UsuarioLogin == dto.UsuarioLogin);
             if (usuario == null) return BadRequest(new { message = "Usuario no encontrado" });
 
-            if (!BCrypt.Net.BCrypt.Verify(dto.Contrasena, usuario.ContrasenaHash))
+            bool passwordMatches;
+            try
+            {
+                passwordMatches = BCrypt.Net.BCrypt.Verify(dto.Contrasena, usuario.ContrasenaHash);
+            }
+            catch
+            {
+                passwordMatches = false;
+            }
+            if (!passwordMatches)
+            {
+                // Fallback a comparación en texto plano (para BD existente sin hash)
+                passwordMatches = dto.Contrasena == usuario.ContrasenaHash;
+            }
+            if (!passwordMatches)
                 return BadRequest(new { message = "Credenciales inválidas" });
 
-            var (ok, codigo, error) = await _authService.GenerarCodigoAsync(usuario.Id, minutosValidez: dto.MinutosValidez ?? 10);
+            var minutos = dto.MinutosValidez ?? 10;
+            var (ok, codigo, error) = await _authService.GenerarCodigoAsync(usuario.Id, minutosValidez: minutos);
             if (!ok) return StatusCode(500, new { message = "No fue posible generar el código", error });
 
-            return Ok(new { codigo, expiracionMinutos = dto.MinutosValidez ?? 10 });
+            var expiresAt = DateTime.UtcNow.AddMinutes(minutos);
+            return Ok(new { success = true, codigo, expiracionMinutos = minutos, expiresAt });
         }
 
         [HttpPost("validate-code")]
