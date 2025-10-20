@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Validar Código y Movimientos - Inventario PremiumSA</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-encabezado">
+            <img class="logo" src="src/logo.jpg" alt="logo" />
+            <img class="banner" src="src/encabezado.jpg" alt="encabezado" />
+          </div>
+          <div class="card-body">
+            <h4 class="card-title mb-4">Validar código de autorización</h4>
+            <div id="alert-placeholder"></div>
+            <form id="codeForm" class="mb-4">
+              <div class="row">
+                <div class="col-md-8 mb-3">
+                  <input type="text" id="authCode" class="form-control" placeholder="Introduce el código de 6 dígitos" required maxlength="6">
+                </div>
+                <div class="col-md-4 mb-3">
+                  <button class="btn btn-primary w-100" type="submit">Validar código</button>
+                </div>
+              </div>
+            </form>
+
+            <div id="moveSection" style="display:none;">
+              <h5>Registrar movimiento</h5>
+              <form id="moveForm">
+                <div class="mb-3">
+                  <label class="form-label">Tipo de movimiento</label>
+                  <select id="tipoMovimiento" class="form-select" required>
+                    <option value="Retiro">Retiro</option>
+                    <option value="Devolución">Devolución</option>
+                    <option value="Reparación">Reparación</option>
+                    <option value="Asignación">Asignación</option>
+                    <option value="Baja">Baja</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">ID de bodega donde se validó (opcional)</label>
+                  <input type="number" id="idBodega" class="form-control" placeholder="ID bodega">
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Productos (una línea por producto: id_equipo,cantidad)</label>
+                  <textarea id="productos" class="form-control" rows="4" placeholder="Ejemplo:\n12,1\n15,2" required></textarea>
+                  <div class="form-text">Cada línea: id_equipo, cantidad. El backend debe procesar cada producto.</div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Observaciones</label>
+                  <textarea id="observaciones" class="form-control" rows="2"></textarea>
+                </div>
+
+                <button class="btn btn-success" type="submit">Enviar movimiento</button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/validate_move.js"></script>
+</body>
+</html>
