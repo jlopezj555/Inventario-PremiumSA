@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', function(){
     if(!code){ showAlert('Introduce el código.'); return; }
 
     try{
-      const res = await fetch('/api/auth/validate-code', {
+      const base = (window.API_BASE_URL || '').replace(/\/$/, '');
+      const res = await fetch(`${base}/api/auth/validate-code`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ codigo: code })
@@ -77,7 +78,8 @@ document.addEventListener('DOMContentLoaded', function(){
     };
 
     try{
-      const res = await fetch('/api/movimientos', {
+      const base = (window.API_BASE_URL || '').replace(/\/$/, '');
+      const res = await fetch(`${base}/api/movimientos`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

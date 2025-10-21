@@ -24,7 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     try{
-      const res = await fetch('/api/auth/login', {
+      const base = (window.API_BASE_URL || '').replace(/\/$/, '');
+      const res = await fetch(`${base}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ usuario_login: usuario, contrasena })
